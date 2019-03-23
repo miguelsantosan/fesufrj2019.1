@@ -39,39 +39,26 @@ public class Cliente {
         this.cpf = Long.toString(id);
         ID_RECENTE = id;
 
+        Formatter formatadorDeCpf = new CPFFormatter();
+        String cpfNaoFormatado = this.cpf;
+        this.cpfFormatado = formatadorDeCpf.format(cpfNaoFormatado);
+
         this.aptoADirigir = true; //Se o cliente e cadastrado, assume-se que possa dirigir. Logo, inicializa true
     }
+
+    //=====DADOS DO CLIENTE - INICIO =====
 
     public int getIdade() {
         return this.idade;
     }
-
+    //CPF do cliente, essa e a string que sera usada para identificar o cliente
     public String getCpf() {
         return this.cpf;
     }
-
-
-    public void printCpfFormatado() {
-        if (this.cpfFormatado == null) {
-            Formatter formatadorDeCpf = new CPFFormatter();
-            String cpfNaoFormatado = this.cpf;
-            this.cpfFormatado = formatadorDeCpf.format(cpfNaoFormatado);
-        }
-        System.out.printf("%s\n",this.cpfFormatado);
+    //Imprime CPF formatado, com pontos e hifen, para ficar mais legivel ao usuario
+    public String getCpfFormatado() {
+        return this.cpfFormatado;
     }
-
-    /*
-    public void printCpfFormatado(){ //Teste de imprimir o CPF formatado usando MaskFormatter e JFormattedTextField
-        try {
-            MaskFormatter mascaraCpf = new MaskFormatter("###.###.###-##");
-            this.cpfFormatado = new JFormattedTextField(mascaraCpf);
-            //mascaraCpf.getDisplayValue(cpfFormatado);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        System.out.printf("%s\n", this.cpfFormatado);
-    }
-    */
 
     public int getHabilitacaoID() {
         return this.habilitacao.id;
@@ -84,9 +71,26 @@ public class Cliente {
     public void inverteAptidaoParaDirigir(){
         this.aptoADirigir = !this.aptoADirigir;
     }
+    //=====DADOS DO CLIENTE - FIM =====
 
+    //=====CARRO DO CLIENTE - INICIO =====
     public void alugarCarro(Carro carroAlugado) {
-        this.carroAtual = carroAlugado;
+        if (carroAtual == null) {
+            this.carroAtual = carroAlugado;
+        }
+        else{
+            System.out.printf("O cliente %s já possui um carro alugado.\n",this.cpfFormatado);
+        }
+    }
+
+    public void retornarCarro(){
+        if (carroAtual == null){
+            System.out.printf("O cliente %s não possui um carro alugado para devolver.\n", this.cpfFormatado);
+        }
+        else {
+            carroAtual.setDisponivelParaAlugar(false);
+            this.carroAtual = null;
+        }
     }
 
     public Carro getCarroAtual() {
@@ -96,6 +100,17 @@ public class Cliente {
     public String getMarcaDoCarroAtual(){
         return this.carroAtual.getMarcaDoCarro();
     }
+
+    public void dirigirCarroAlugado(int quilometros){
+        if (this.carroAtual != null){
+            System.out.printf("O cliente %s está dirigindo o carro %s.\n", this.cpfFormatado,this.carroAtual);
+            this.carroAtual.aumentaQuilometragem(quilometros);
+        }
+        else {
+            System.out.printf("O cliente %s não alugou um carro para dirigir.\n", this.cpfFormatado);
+        }
+    }
+    //=====CARRO DO CLIENTE - FIM =====
 
     public boolean isContrato() {
         return contrato;

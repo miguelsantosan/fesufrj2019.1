@@ -21,6 +21,6 @@ public class Contrato {
     }
 
     public void mostrarAssinante() {
-        this.assinante.printCpfFormatado();
+        System.out.printf("%s\n", this.assinante.getCpfFormatado());
     }
 }
