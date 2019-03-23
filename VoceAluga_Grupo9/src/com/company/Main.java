@@ -36,14 +36,14 @@ public class Main {
             clientes[i] = new Cliente();
             System.out.printf("Idade: %d\n", clientes[i].getIdade());
             //System.out.printf("CPF: %s\n", clientes[i].getCpf());
-            clientes[i].dirigirCarroAlugado();
+            clientes[i].dirigirCarroAlugado(1);
             System.out.printf("CPF: %s\n",clientes[i].getCpfFormatado());
             System.out.printf("Carro atual: %s\n", clientes[i].getCarroAtual());
             clientes[i].alugarCarro(myCarro);
             System.out.println("Aluguei o carro");
             System.out.printf("Marca do carro atual: %s\n",clientes[i].getCarroAtual().getMarcaDoCarro());
             String t = clientes[i].getCarroAtual().getMarcaDoCarro();
-            clientes[i].dirigirCarroAlugado();
+            clientes[i].dirigirCarroAlugado(1);
             if(t != "Toyota"){
                 System.out.println("Não é Toyota");
                 System.out.printf("É um %s\n",clientes[i].getCarroAtual().getMarcaDoCarro());

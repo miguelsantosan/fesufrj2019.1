@@ -14,7 +14,7 @@ public class Carro {
         return this.marca;
     }
 
-    public int getKilometragem() {
+    public int getQuilometragem() {
         return this.quilometragem;
     }
 
