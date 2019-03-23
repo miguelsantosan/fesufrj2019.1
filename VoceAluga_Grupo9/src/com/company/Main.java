@@ -11,14 +11,34 @@ public class Main {
 
     public static void main(String[] args) {
         Cliente clientes[] = new Cliente[NUMERO_CLIENTES];
-
+        Carro myCarro = new Carro(Marca.FIAT);
 
         for(int i = 0; i < NUMERO_CLIENTES; i++){
             clientes[i] = new Cliente();
+            System.out.println("Idade:");
             System.out.printf("%d\n", clientes[i].getIdade());
-            System.out.printf("%s\n", clientes[i].getCpf());
+            System.out.println("CPF:");
+            //System.out.printf("%s\n", clientes[i].getCpf());
             clientes[i].printCpfFormatado();
-            System.out.printf("%S\n", clientes[i].carroAtual);
+            System.out.println("Carro atual:");
+            System.out.printf("%S\n", clientes[i].getCarroAtual());
+            clientes[i].alugarCarro(myCarro);
+            System.out.println("Aluguei o carro:");
+            //System.out.println("Imprimir marca do Carro atual:");
+            //clientes[i].imprimirMarcaDoCarroAtual();
+            System.out.println("Marca do carro atual:");
+            System.out.printf("%s\n",clientes[i].getCarroAtual().getNomeDaMarcaDoCarro());
+            System.out.println("========");
+            String t = clientes[i].getCarroAtual().getNomeDaMarcaDoCarro();
+            Marca m = clientes[i].getCarroAtual().getMarcaDoCarro();
+            if(m != Marca.MERCEDES){
+                System.out.println("Não é Mercedez");
+            }
+
+            if(t != "Audi"){
+                System.out.println("Nao e Audi");
+                System.out.printf("É um %s\n",clientes[i].getCarroAtual().getMarcaDoCarro());
+            }
         }
 
     }

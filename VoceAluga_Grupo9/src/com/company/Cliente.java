@@ -16,17 +16,21 @@ public class Cliente {
     private String cpfFormatado; //CPF formatado com pontos e traco para facilitar a leitura do usuario
     private int idade;
     private boolean aptoADirigir; //Se estiver alcoolizado ou drogado, recebe false. Caso contrario permanece true
+    private boolean contrato;
     private Habilitacao habilitacao; //Habilitacao com seus dados
     private Apolice apolice; //Apolice de seguro
     private CartaoDeCredito cartao; //Cartao de credito com seus dados
+    private Carro carroAtual; //Carro alugado atualmente. Nao pode alugar outro enquanto for diferente de null
+    //private Contrato contrato;
     private HashMap<Long,Long> motoristasAutorizados; //Mapa contendo os CPF's dos motoristas autorizados pelo cliente
-    public Carro carroAtual; //Carro alugado atualmente. Nao pode alugar outro enquanto for diferente de null
+
 
     int randomNum = ThreadLocalRandom.current().nextInt(IDADE_MINIMA, IDADE_MAXIMA + 1);
 
     public Cliente() {
         //Idade gerada aleatoriamente para dar diversidade e nao precisar gerar idades manualmente
         this.idade = randomNum;
+
         //CPF gerado usando o relogio do sistema, para garantir que seja unico
         long id = System.currentTimeMillis() % ID_LIMITE;
         if (id <= ID_RECENTE){
@@ -34,6 +38,7 @@ public class Cliente {
         }
         this.cpf = Long.toString(id);
         ID_RECENTE = id;
+
         this.aptoADirigir = true; //Se o cliente e cadastrado, assume-se que possa dirigir. Logo, inicializa true
     }
 
@@ -78,5 +83,27 @@ public class Cliente {
 
     public void inverteAptidaoParaDirigir(){
         this.aptoADirigir = !this.aptoADirigir;
+    }
+
+    public void alugarCarro(Carro carroAlugado) {
+        this.carroAtual = carroAlugado;
+    }
+
+    public Carro getCarroAtual() {
+        return this.carroAtual;
+    }
+
+//    public void imprimirMarcaDoCarroAtual(){
+//        String marcaDoCarroAtual = this.carroAtual.getNomeDaMarcaDoCarro();
+//
+//        System.out.printf("%s\n",marcaDoCarroAtual);
+//    }
+
+    public boolean isContrato() {
+        return contrato;
+    }
+
+    public void assinarContrato() {
+        this.contrato = true;
     }
 }
