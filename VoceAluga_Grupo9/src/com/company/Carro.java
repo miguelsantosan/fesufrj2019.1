@@ -1,18 +1,18 @@
 package com.company;
 
 public class Carro {
-    private Marca marca;
+    private String marca;
 
-    public Carro(Marca marcaDoCarro){
+    public Carro(String marcaDoCarro){
         this.marca = marcaDoCarro;
     }
 
-    public Marca getMarcaDoCarro() {
+    public String getMarcaDoCarro() {
         return this.marca;
     }
 
-    public String getNomeDaMarcaDoCarro() {
-        return this.marca.nome;
-    }
+//    public String getNomeDaMarcaDoCarro() {
+//        return this.marca.nome;
+//    }
 
 }

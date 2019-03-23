@@ -93,11 +93,9 @@ public class Cliente {
         return this.carroAtual;
     }
 
-//    public void imprimirMarcaDoCarroAtual(){
-//        String marcaDoCarroAtual = this.carroAtual.getNomeDaMarcaDoCarro();
-//
-//        System.out.printf("%s\n",marcaDoCarroAtual);
-//    }
+    public String getMarcaDoCarroAtual(){
+        return this.carroAtual.getMarcaDoCarro();
+    }
 
     public boolean isContrato() {
         return contrato;
