@@ -22,7 +22,7 @@ public class Cliente {
     private CartaoDeCredito cartao; //Cartao de credito com seus dados
     private Carro carroAtual; //Carro alugado atualmente. Nao pode alugar outro enquanto for diferente de null
     //private Contrato contrato;
-    private HashMap<Long,Long> motoristasAutorizados; //Mapa contendo os CPF's dos motoristas autorizados pelo cliente
+    private HashMap<Long,String> motoristasAutorizados; //Mapa contendo os CPF's dos motoristas autorizados pelo cliente
 
 
     int randomNum = ThreadLocalRandom.current().nextInt(IDADE_MINIMA, IDADE_MAXIMA + 1);
@@ -68,6 +68,10 @@ public class Cliente {
         return this.habilitacao.validez;
     }
 
+    public boolean estaAptoParaDirigir(){
+        return this.aptoADirigir;
+    }
+
     public void inverteAptidaoParaDirigir(){
         this.aptoADirigir = !this.aptoADirigir;
     }
@@ -76,7 +80,12 @@ public class Cliente {
     //=====CARRO DO CLIENTE - INICIO =====
     public void alugarCarro(Carro carroAlugado) {
         if (carroAtual == null) {
-            this.carroAtual = carroAlugado;
+            if (carroAlugado.disponivelParaAlugar()) {
+                this.carroAtual = carroAlugado;
+                carroAlugado.carroFoiAlugado(this);
+            }
+            else
+                System.out.printf("O carro %s já foi alugado por outro cliente.\n", carroAlugado);
         }
         else{
             System.out.printf("O cliente %s já possui um carro alugado.\n",this.cpfFormatado);
@@ -90,6 +99,7 @@ public class Cliente {
         else {
             carroAtual.setDisponivelParaAlugar(false);
             this.carroAtual = null;
+            carroAtual.carroFoiRetornado();
         }
     }
 
@@ -102,21 +112,27 @@ public class Cliente {
     }
 
     public void dirigirCarroAlugado(int quilometros){
-        if (this.carroAtual != null){
-            System.out.printf("O cliente %s está dirigindo o carro %s.\n", this.cpfFormatado,this.carroAtual);
-            this.carroAtual.aumentaQuilometragem(quilometros);
+        if(aptoADirigir) {
+            if (this.carroAtual != null) {
+                System.out.printf("O cliente %s está dirigindo o carro %s.\n", this.cpfFormatado, this.carroAtual);
+                this.carroAtual.aumentaQuilometragem(quilometros);
+            } else {
+                System.out.printf("O cliente %s não alugou um carro para dirigir.\n", this.cpfFormatado);
+            }
         }
         else {
-            System.out.printf("O cliente %s não alugou um carro para dirigir.\n", this.cpfFormatado);
+            System.out.printf("O cliente %s não está apto para dirigir no momento.\n", this.cpfFormatado);
         }
     }
     //=====CARRO DO CLIENTE - FIM =====
 
+    //=====CONTRATO DO CLIENTE - INICIO =====
     public boolean isContrato() {
-        return contrato;
+        return this.contrato;
     }
 
     public void assinarContrato() {
         this.contrato = true;
     }
+    //=====CONTRATO DO CLIENTE - FIM =====
 }

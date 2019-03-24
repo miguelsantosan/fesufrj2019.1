@@ -4,10 +4,10 @@ public class Carro {
     private String marca;
     private int quilometragem;
     private boolean disponivel;
+    private Cliente clienteQueAlugou;
 
     public Carro(String marcaDoCarro){
         this.marca = marcaDoCarro;
-
     }
 
     public String getMarcaDoCarro() {
@@ -19,7 +19,10 @@ public class Carro {
     }
 
     public void aumentaQuilometragem(int quilometrosPercorridos){
-        this.quilometragem += quilometrosPercorridos;
+        //Quilometragem e private, entao usa-se uma funcao para aumentar
+        if(quilometrosPercorridos >= 0) {
+            this.quilometragem += quilometrosPercorridos;
+        }
     }
 
     public boolean disponivelParaAlugar() {
@@ -30,5 +33,17 @@ public class Carro {
         this.disponivel = disponivel;
     }
 
+    public void carroFoiAlugado(Cliente cliente) {
+        this.clienteQueAlugou = cliente;
+        this.setDisponivelParaAlugar(false);
+    }
 
+    public void carroFoiRetornado() {
+        this.clienteQueAlugou = null;
+        this.setDisponivelParaAlugar(true);
+    }
+
+    public Cliente getClienteQueAlugou() {
+        return this.clienteQueAlugou;
+    }
 }

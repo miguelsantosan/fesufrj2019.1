@@ -12,10 +12,11 @@ public class Contrato {
         this.validez = true;
     }
 
+    /*
     public void quebraDeContrato(){
         this.validez = false;
     }
-
+    */
     public String getAssinante() {
         return this.assinante.getCpf();
     }
