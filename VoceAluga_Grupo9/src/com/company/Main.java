@@ -24,24 +24,24 @@ public class Main {
         Carro myCarro = new Carro("Fiat");
 
         for(int i = 0; i < NUMERO_CLIENTES; i++){
-            clientes[i] = new Cliente();
-            System.out.printf("Idade: %d\n", clientes[i].getIdade());
+            clientes[i] = new Cliente(); //Criei o cliente
+            System.out.printf("Idade: %d\n", clientes[i].getIdade()); //Pego a idade
             //System.out.printf("CPF: %s\n", clientes[i].getCpf());
-            clientes[i].dirigirCarroAlugado(1);
-            System.out.printf("CPF: %s\n",clientes[i].getCpfFormatado());
-            System.out.printf("Carro atual: %s\n", clientes[i].getCarroAtual());
-            clientes[i].alugarCarro(myCarro);
+            System.out.printf("CPF: %s\n",clientes[i].getCpfFormatado()); //Pego o CPF formatado
+            System.out.printf("Carro atual: %s\n", clientes[i].getCarroAtual()); //Pego o carro atual
+            //clientes[i].dirigirCarroAlugado(1); //Tenta dirigir sem ter alugado um carro
+            clientes[i].alugarCarro(myCarro); //Aluguei o carro
             System.out.println("Aluguei o carro");
-            System.out.printf("Marca do carro atual: %s\n",clientes[i].getCarroAtual().getMarcaDoCarro());
+            System.out.printf("Marca do carro atual: %s\n",clientes[i].getMarcaDoCarroAtual());
+            clientes[i].dirigirCarroAlugado(1); //Dirigi o carro
             String t = clientes[i].getCarroAtual().getMarcaDoCarro();
-            clientes[i].dirigirCarroAlugado(1);
             if(!t.equals("TOYOTA")){
                 System.out.println("Não é Toyota");
-                System.out.printf("É um %s\n",clientes[i].getCarroAtual().getMarcaDoCarro());
+                System.out.printf("É um %s\n",clientes[i].getMarcaDoCarroAtual());
             }
             System.out.println("Vou devolver o carro:");
             clientes[i].retornarCarro();
-            System.out.printf("Carro atual: %s\n", clientes[i].getCarroAtual());
+            //System.out.printf("Carro atual: %s\n", clientes[i].getCarroAtual());
             System.out.println("Devolvi o carro:");
         }
 

@@ -97,9 +97,8 @@ public class Cliente {
             System.out.printf("O cliente %s não possui um carro alugado para devolver.\n", this.cpfFormatado);
         }
         else {
-            carroAtual.setDisponivelParaAlugar(false);
-            this.carroAtual = null;
             carroAtual.carroFoiRetornado();
+            this.carroAtual = null;
         }
     }
 

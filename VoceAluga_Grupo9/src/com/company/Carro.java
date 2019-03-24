@@ -8,6 +8,7 @@ public class Carro {
 
     public Carro(String marcaDoCarro){
         this.marca = marcaDoCarro;
+        this.disponivel = true;
     }
 
     public String getMarcaDoCarro() {
