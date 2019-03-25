@@ -1,5 +1,10 @@
 package com.company;
 
+
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Main {
     static final int IDADE_MINIMA = 25;
     static final int IDADE_MAXIMA = 75;
@@ -14,14 +19,22 @@ public class Main {
             "AUDI","BMW","CHEVROLET","CITROEN","FERRARI","FIAT","FORD","HONDA",
             "KIA","MERCEDES","MITSUBISHI","NISSAN","PEUGEOT","RENAULT","TOYOTA","VOLKSWAGEN"};
 
-    private static final String[] VETOR_PAISES = {
+    public static final String[] VETOR_PAISES = {
             "ÁFRICA DO SUL","ALEMANHA","ARGENTINA","AUSTRÁLIA","BÉLGICA","BOLÍVIA","BRASIL",
             "BULGÁRIA","CANADÁ","CHILE","CHINA","COLÔMBIA","ESPANHA","ESTADOS UNIDOS",
             "FRANÇA","ÍNDIA","JAPÃO","MARROCOS","MÉXICO","PORTUGAL","RÚSSIA"};
 
+    public static LinkedHashMap<String, LinkedHashSet<Enum>> apolicesPorPais = new LinkedHashMap<>();
+
+
+
     public static void main(String[] args) {
         Cliente clientes[] = new Cliente[NUMERO_CLIENTES];
         Carro myCarro = new Carro("Fiat");
+
+        for (String pais : VETOR_PAISES){
+            apolicesPorPais.put(pais,new LinkedHashSet<Enum>());
+        }
 
         for(int i = 0; i < NUMERO_CLIENTES; i++){
             clientes[i] = new Cliente(); //Criei o cliente
@@ -41,9 +54,30 @@ public class Main {
             }
             System.out.println("Vou devolver o carro:");
             clientes[i].retornarCarro();
-            //System.out.printf("Carro atual: %s\n", clientes[i].getCarroAtual());
+            System.out.printf("Carro atual: %s\n", clientes[i].getCarroAtual());
             System.out.println("Devolvi o carro:");
         }
 
+        insereApolicesPorPaisNoMapa(apolicesPorPais);
+
+        for (String pais : apolicesPorPais.keySet()){
+            System.out.println(pais + ": " + apolicesPorPais.get(pais));
+        }
+
+    }
+
+    public static void insereApolicesPorPaisNoMapa(LinkedHashMap<String, LinkedHashSet<Enum>> mapaDeApolices){
+        //Quero gerar um numero aleatorio de 0 a 3, se for 0 insiro o pais no Mapa
+        final int APOLICE_RANGE = 3;
+        //int condicaoParaInserir = ThreadLocalRandom.current().nextInt(0,  APOLICE_RANGE + 1);
+
+        for (String pais : mapaDeApolices.keySet()){
+            for (Apolice apolice : Apolice.values()){
+                int condicaoParaInserir = ThreadLocalRandom.current().nextInt(0,  APOLICE_RANGE + 1);
+                if (condicaoParaInserir == 0){
+                    mapaDeApolices.get(pais).add(apolice);
+                }
+            }
+        }
     }
 }
