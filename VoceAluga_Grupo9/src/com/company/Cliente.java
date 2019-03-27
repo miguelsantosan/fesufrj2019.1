@@ -15,6 +15,7 @@ public class Cliente {
     private String cpf; //CPF para identificar o cliente
     private String cpfFormatado; //CPF formatado com pontos e traco para facilitar a leitura do usuario
     private int idade;
+    private Pais paisAtual;
     private boolean aptoADirigir; //Se estiver alcoolizado ou drogado, recebe false. Caso contrario permanece true
     private boolean contrato;
     private Habilitacao habilitacao; //Habilitacao com seus dados
@@ -74,6 +75,14 @@ public class Cliente {
 
     public void inverteAptidaoParaDirigir(){
         this.aptoADirigir = !this.aptoADirigir;
+    }
+
+    public Pais getPaisDoCliente(){
+        return this.paisAtual;
+    }
+
+    public void mudarPaisDoCliente(Pais pais){
+        this.paisAtual = pais;
     }
     //=====DADOS DO CLIENTE - FIM =====
 

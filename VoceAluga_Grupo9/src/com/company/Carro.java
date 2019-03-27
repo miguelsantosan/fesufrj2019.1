@@ -11,6 +11,10 @@ public class Carro {
         this.disponivel = true;
     }
 
+    public Carro(MarcaDeCarro marcaDoCarro){
+
+    }
+
     public String getMarcaDoCarro() {
         return this.marca;
     }
