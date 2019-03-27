@@ -12,6 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import static com.company.Main.*;
 
 public class Cliente {
+    private String nome;
     private String cpf; //CPF para identificar o cliente
     private String cpfFormatado; //CPF formatado com pontos e traco para facilitar a leitura do usuario
     private int idade;
@@ -26,11 +27,11 @@ public class Cliente {
     private HashMap<Long,String> motoristasAutorizados; //Mapa contendo os CPF's dos motoristas autorizados pelo cliente
 
 
-    int randomNum = ThreadLocalRandom.current().nextInt(IDADE_MINIMA, IDADE_MAXIMA + 1);
+    //int randomNum = ThreadLocalRandom.current().nextInt(IDADE_MINIMA, IDADE_MAXIMA + 1);
 
-    public Cliente() {
+    public Cliente(String nome, int idade, String cpf) {
         //Idade gerada aleatoriamente para dar diversidade e nao precisar gerar idades manualmente
-        this.idade = randomNum;
+//        this.idade = randomNum;
 
         //CPF gerado usando o relogio do sistema, para garantir que seja unico
 //        long id = System.currentTimeMillis() % ID_LIMITE;
@@ -43,11 +44,18 @@ public class Cliente {
 //        Formatter formatadorDeCpf = new CPFFormatter();
 //        String cpfNaoFormatado = this.cpf;
 //        this.cpfFormatado = formatadorDeCpf.format(cpfNaoFormatado);
-
+        this.nome = nome;
+        this.idade = idade;
+        this.cpf = cpf;
         this.aptoADirigir = true; //Se o cliente e cadastrado, assume-se que possa dirigir. Logo, inicializa true
     }
 
     //=====DADOS DO CLIENTE - INICIO =====
+
+
+    public String getNome() {
+        return this.nome;
+    }
 
     public int getIdade() {
         return this.idade;

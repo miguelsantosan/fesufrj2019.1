@@ -1,5 +1,5 @@
 package com.company;
 
-public class CadastroCliente {
+public final class CadastroCliente {
 
 }

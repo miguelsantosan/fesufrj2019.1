@@ -3,6 +3,7 @@ package com.company;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
@@ -28,16 +29,33 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Cliente cliente = new Cliente();
         Carro myCarro = new Carro("Fiat");
 
         for (String pais : VETOR_PAISES){
             apolicesPorPais.put(pais,new LinkedHashSet<Enum>());
         }
 
-        fazTestesComCliente(cliente, myCarro);
+        String nome;
+        Scanner scanNome = new Scanner(System.in);
+        System.out.println("Digite seu nome:");
+        nome = scanNome.nextLine();
 
-        fazTesteComMapaDeApolices(apolicesPorPais);
+        int idade;
+        Scanner scanIdade = new Scanner(System.in);
+        System.out.println("Digite sua idade:");
+        idade = scanIdade.nextInt();
+
+        String cpf;
+        Scanner scanCPF = new Scanner(System.in);
+        System.out.println("Digite seu cpf:");
+        cpf = scanCPF.nextLine();
+        Cliente cliente = new Cliente(nome, idade, cpf);
+
+        System.out.printf("NOME: %s\nIDADE: %d\nCPF: %s\n", cliente.getNome(), cliente.getIdade(), cliente.getCpf());
+
+        //fazTestesComCliente(cliente, myCarro);
+        //fazTesteComMapaDeApolices(apolicesPorPais);
+
     }
 
     public static void fazTestesComCliente(Cliente cliente, Carro carro){
