@@ -1,7 +1,7 @@
 package com.company;
 
-import br.com.caelum.stella.format.CPFFormatter;
-import br.com.caelum.stella.format.Formatter;
+//import br.com.caelum.stella.format.CPFFormatter;
+//import br.com.caelum.stella.format.Formatter;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
@@ -12,7 +12,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import static com.company.Main.*;
 
 public class Cliente {
-    private String nome;
     private String cpf; //CPF para identificar o cliente
     private String cpfFormatado; //CPF formatado com pontos e traco para facilitar a leitura do usuario
     private int idade;
@@ -29,9 +28,9 @@ public class Cliente {
 
     int randomNum = ThreadLocalRandom.current().nextInt(IDADE_MINIMA, IDADE_MAXIMA + 1);
 
-    public Cliente(String nome, int idade, String cpf) {
+    public Cliente() {
         //Idade gerada aleatoriamente para dar diversidade e nao precisar gerar idades manualmente
-        //this.idade = randomNum;
+        this.idade = randomNum;
 
         //CPF gerado usando o relogio do sistema, para garantir que seja unico
 //        long id = System.currentTimeMillis() % ID_LIMITE;
@@ -45,10 +44,6 @@ public class Cliente {
 //        String cpfNaoFormatado = this.cpf;
 //        this.cpfFormatado = formatadorDeCpf.format(cpfNaoFormatado);
 
-
-        this.nome = nome;
-        this.idade = idade;
-        this.cpf = cpf;
         this.aptoADirigir = true; //Se o cliente e cadastrado, assume-se que possa dirigir. Logo, inicializa true
     }
 

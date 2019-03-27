@@ -3,11 +3,9 @@ package com.company;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
-import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class
-Main {
+public class Main {
     static final int IDADE_MINIMA = 25;
     static final int IDADE_MAXIMA = 75;
 
@@ -30,60 +28,50 @@ Main {
 
 
     public static void main(String[] args) {
-        Cliente clientes[] = new Cliente[NUMERO_CLIENTES];
+        Cliente cliente = new Cliente();
         Carro myCarro = new Carro("Fiat");
 
         for (String pais : VETOR_PAISES){
             apolicesPorPais.put(pais,new LinkedHashSet<Enum>());
         }
 
-        String nome;
-        Scanner scanNome = new Scanner(System.in);
-        System.out.println("Digite seu nome:");
-        nome = scanNome.next();
+        fazTestesComCliente(cliente, myCarro);
 
-        int idade;
-        Scanner scanIdade = new Scanner(System.in);
-        System.out.println("Digite sua idade:");
+        fazTesteComMapaDeApolices(apolicesPorPais);
+    }
 
+    public static void fazTestesComCliente(Cliente cliente, Carro carro){
+        System.out.printf("Idade: %d\n", cliente.getIdade()); //Pego a idade
+        System.out.printf("CPF: %s\n",cliente.getCpfFormatado()); //Pego o CPF formatado
 
-        for(int i = 0; i < NUMERO_CLIENTES; i++){
-            clientes[i] = new Cliente(); //Criei o cliente
-            System.out.printf("Idade: %d\n", clientes[i].getIdade()); //Pego a idade
-            System.out.printf("CPF: %s\n",clientes[i].getCpfFormatado()); //Pego o CPF formatado
+        System.out.printf("Carro atual: %s\n", cliente.getCarroAtual()); //Pego o carro atual
+        cliente.dirigirCarroAlugado(1); //Tenta dirigir sem ter alugado um carro
+        cliente.alugarCarro(carro); //Aluguei o carro
+        System.out.println("Aluguei o carro");
+        System.out.printf("Marca do carro atual: %s\n",cliente.getMarcaDoCarroAtual());
+        cliente.dirigirCarroAlugado(1); //Dirigi o carro
 
-            System.out.printf("Carro atual: %s\n", clientes[i].getCarroAtual()); //Pego o carro atual
-            clientes[i].dirigirCarroAlugado(1); //Tenta dirigir sem ter alugado um carro
-            clientes[i].alugarCarro(myCarro); //Aluguei o carro
-            System.out.println("Aluguei o carro");
-            System.out.printf("Marca do carro atual: %s\n",clientes[i].getMarcaDoCarroAtual());
-            clientes[i].dirigirCarroAlugado(1); //Dirigi o carro
-
-            String marcaDoCarroDoCliente = clientes[i].getMarcaDoCarroAtual();
-            Enum marcaErrada = MarcaDeCarro.TOYOTA;
-            if(!marcaDoCarroDoCliente.equals(marcaErrada)){
-                System.out.printf("Não é %s\n", marcaErrada);
-                System.out.printf("É um %s\n",clientes[i].getMarcaDoCarroAtual());
-            }
-            System.out.println("Vou devolver o carro:");
-            clientes[i].retornarCarro();
-            System.out.printf("Carro atual: %s\n", clientes[i].getCarroAtual());
-            System.out.println("Devolvi o carro");
+        String marcaDoCarroDoCliente = cliente.getMarcaDoCarroAtual();
+        Enum marcaErrada = MarcaDeCarro.TOYOTA;
+        if(!marcaDoCarroDoCliente.equals(marcaErrada)){
+            System.out.printf("Não é %s\n", marcaErrada);
+            System.out.printf("É um %s\n",cliente.getMarcaDoCarroAtual());
         }
+        System.out.println("Vou devolver o carro:");
+        cliente.retornarCarro();
+        System.out.printf("Carro atual: %s\n", cliente.getCarroAtual());
+        System.out.println("Devolvi o carro");
+    }
 
+    public static void fazTesteComMapaDeApolices(LinkedHashMap<String,LinkedHashSet<Enum>> mapa){
         System.out.println("Vou colocar apólices no mapa.");
-        insereApolicesPorPaisNoMapa(apolicesPorPais);
+        insereApolicesPorPaisNoMapa(mapa);
         System.out.println("Coloquei apólices no mapa.");
 
         System.out.println("Vou imprimir as apólices do mapa.");
         System.out.println("=====APÓLICES=====");
-        imprimeApolicesDosPaises(apolicesPorPais);
+        imprimeApolicesDosPaises(mapa);
         System.out.println("==================");
-
-//        for (String pais : apolicesPorPais.keySet()){
-//            System.out.println(pais + ": " + apolicesPorPais.get(pais));
-//        }
-
     }
 
     public static void insereApolicesPorPaisNoMapa(LinkedHashMap<String, LinkedHashSet<Enum>> mapaDeApolices){
