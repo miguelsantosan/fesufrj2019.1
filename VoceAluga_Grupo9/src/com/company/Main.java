@@ -3,9 +3,11 @@ package com.company;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Main {
+public class
+Main {
     static final int IDADE_MINIMA = 25;
     static final int IDADE_MAXIMA = 75;
 
@@ -34,6 +36,16 @@ public class Main {
         for (String pais : VETOR_PAISES){
             apolicesPorPais.put(pais,new LinkedHashSet<Enum>());
         }
+
+        String nome;
+        Scanner scanNome = new Scanner(System.in);
+        System.out.println("Digite seu nome:");
+        nome = scanNome.next();
+
+        int idade;
+        Scanner scanIdade = new Scanner(System.in);
+        System.out.println("Digite sua idade:");
+
 
         for(int i = 0; i < NUMERO_CLIENTES; i++){
             clientes[i] = new Cliente(); //Criei o cliente
