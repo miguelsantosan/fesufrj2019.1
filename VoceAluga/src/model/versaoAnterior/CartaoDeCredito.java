@@ -1,4 +1,5 @@
-package com.company;
+package model.versaoAnterior;
 
 public class CartaoDeCredito {
+
 }

@@ -1,4 +1,4 @@
-package com.company;
+package model.versaoAnterior;
 
 public class Habilitacao {
     public static int id;
