@@ -10,7 +10,7 @@ Project for Fundaments of Software Engineering - 2019.1
 3. baixe o JavaFx11 SDK aqui : https://gluonhq.com/products/javafx/<br>
   3.1 Extraia o conteudo (voce precisará do endereço da pasta depois)<br><br>
 4. Inicie o eclipse.<br><br>
-5. Va no menu ```Help >> Install new software...```
+5. Va no menu ```Help >> Install new software...```<br>
   5.1 em "work with" selecione: [sua versao do eclipse] - http://download.eclipse.org/releases/[sua versao do eclipse] <br>
   5.2 filtre o texto digitando e(fx)clipse e installe o pacote de instegração "integration bundles"<br>
   5.3 vá em ```window >> preferences >> java >> buildpath >> userlibraries ```,crie uma nova biblioteca e de o nome de JavaFX11 e adicione os aquivos JAR contidos na pasta lib da pasta em que você extraiu o JavaFX SDK<br><br>
