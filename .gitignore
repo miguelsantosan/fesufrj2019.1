@@ -37,7 +37,6 @@ target/
 .project
 
 # NetBeans specific
-VoceAluga/bin #adicionado para remover fxmls duplicados
 nbproject/private/
 build/
 nbbuild/
@@ -55,3 +54,7 @@ nb-configuration.xml
 release.properties
 pom.xml.releaseBackup
 pom.xml.tag
+
+#adicionado para remover fxmls duplicados
+/bin/
+VoceAluga/bin 

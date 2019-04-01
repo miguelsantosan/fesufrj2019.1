@@ -1,9 +1,7 @@
 package controller;
 
-import model.Funcionario;
 import model.server.ValidadorDeLogin;
-//import model.Main;
-
+import controller.ScenesManager;
 
 import java.io.IOException;
 
@@ -16,34 +14,34 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 
 public class LoginController {
-	
-//	private Main main= new Main();
+	ScenesManager manager = new ScenesManager();
+
 
     @FXML
-    private TextField user;
+    private TextField usuario;
     
     @FXML
-    private PasswordField password;
+    private PasswordField senha;
     
     @FXML
    	void processarLoginBotao(MouseEvent e) throws IOException {
-       	if(ValidadorDeLogin.validarLogin(user.getText(),password.getText())) {
-       		Funcionario funcionarioAtual = ValidadorDeLogin.getFuncionario(user.getText()); 
-       		System.out.println(funcionarioAtual.getNivelDeAcesso());
+       	if(ValidadorDeLogin.validarLogin(usuario.getText(),senha.getText())) {
+       		manager.mostrarTelaPrincipal();
        	}
        	else {
        		mostrarErroDeLogin();
        	}
    }
     
+    ///Exibe a caixa de texto contendo mensagem de erro
     public void mostrarErroDeLogin() {
     	Alert alert = new Alert(AlertType.ERROR);
     	alert.setTitle("Erro");
     	alert.setHeaderText("Erro");
     	alert.setContentText("Login ou usuário inválido");
     	alert.showAndWait();
-    	user.setText("");
-    	password.setText("");
+    	usuario.setText("");
+    	senha.setText("");
     }
 
     public void initialize() {
