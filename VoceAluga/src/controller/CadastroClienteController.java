@@ -15,4 +15,11 @@ public class CadastroClienteController {
 	void processarBotaoCancelar(MouseEvent e) throws IOException {
 		manager.mostrarTelaPrincipal();
 	}
+	
+	@FXML
+	void processarBotaoConfirmar(MouseEvent e) throws IOException{
+		
+	}
+	
+	
 }

@@ -1,12 +1,15 @@
 package controller;
 
-import model.Main;
 
 import java.io.IOException;
+
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 
 /***
  * 
@@ -16,31 +19,33 @@ import javafx.scene.Scene;
 
 
 public class ScenesManager {
+	
+	public static Stage primaryStage =  new Stage();
 
 	 public void mostrarTelaDeLogin() throws IOException {
-	    	// Exibe a tela de login
 	    	Parent root = FXMLLoader.load(getClass().getResource("../view/Login.fxml"));
-	        Main.primaryStage.setTitle("Você Aluga - Login");
-	        Main.primaryStage.setScene(new Scene(root));
+	    	primaryStage.setResizable(false);
+	    	primaryStage.initStyle(StageStyle.UNIFIED);
+	        primaryStage.setTitle("Você Aluga - Login");
+	        primaryStage.setScene(new Scene(root));
 	  }
 	 
 	 public void mostrarTelaPrincipal() throws IOException {
 		 	Parent root = FXMLLoader.load(getClass().getResource("../view/TelaPrincipal.fxml"));
-	        Main.primaryStage.setTitle("Você Aluga - Principal");
-	        
-	        Main.primaryStage.setScene(new Scene(root));
+	        primaryStage.setTitle("Você Aluga - Principal");
+	        primaryStage.setScene(new Scene(root));
 	 }
 	 
 	 public void mostrarTelaCadatroDeCliente() throws IOException {
 		 	Parent root = FXMLLoader.load(getClass().getResource("../view/CadastroCliente.fxml"));
-	        Main.primaryStage.setTitle("Você Aluga - Cadastrar Cliente");
-	        Main.primaryStage.setScene(new Scene(root));
+	        primaryStage.setTitle("Você Aluga - Cadastrar Cliente");
+	        primaryStage.setScene(new Scene(root));
 	 }
 	 
 	 public void mostrarResultadosBuscaCliente() throws IOException {
 		 	Parent root = FXMLLoader.load(getClass().getResource("../view/ResultadosBuscaCliente.fxml"));
-	        Main.primaryStage.setTitle("Você Aluga - Busca de Clientes");
-	        Main.primaryStage.setScene(new Scene(root));
+	        primaryStage.setTitle("Você Aluga - Busca de Clientes");
+	        primaryStage.setScene(new Scene(root));
 	 }
 
 	 

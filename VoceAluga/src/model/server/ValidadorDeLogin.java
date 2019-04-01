@@ -8,7 +8,7 @@ public class ValidadorDeLogin {
 	
 	//NAO IMPLEMENTADO
 	////Código apenas para teste essa classe deve conferir se o usuario e login constam no BD
-	//retorna nivel de acesso se ele constar ou 0 caso contrário
+	//retorna true se consta e armazena em FuncionarioLogado
 	public static boolean  validarLogin(String user,String password) {
 		if( user.equals(password)){
 			FuncionarioLogado = new Funcionario("nomedofuncionario","cpfdofuncionario","Vendedor");

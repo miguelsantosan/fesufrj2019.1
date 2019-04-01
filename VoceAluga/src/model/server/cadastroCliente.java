@@ -1,4 +1,4 @@
-package model.versaoAnterior;
+package model.server;
 
 public class cadastroCliente {
 
