@@ -4,20 +4,18 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.input.MouseEvent;
 
 import model.server.ValidadorDeLogin;
-
+import controller.ScenesManager;
 
 public class TelaPrincipalController {
+	
+	ScenesManager manager = new ScenesManager();
 		
-	 @FXML
-	 void processarBotao(MouseEvent e) throws IOException {
-	       
-	 }
-	 
 	 @FXML
 	 private Label usuario;
 	 
@@ -39,6 +37,14 @@ public class TelaPrincipalController {
 	 @FXML
 	 private Tab tabFuncionarios;
 	 
+	 
+	 @FXML
+	 void processarBotaoCadastrarNovoCliente(MouseEvent e) throws IOException {
+	       manager.mostrarTelaCadatroDeCliente();
+	 }
+	 
+	 
+	 
 	 public void initialize() {
 		 
 		 int nivel = ValidadorDeLogin.FuncionarioLogado.getNivelDeAcesso();
@@ -47,6 +53,7 @@ public class TelaPrincipalController {
 		 NivelDeAcesso.setText(Integer.toString(nivel));
 		 
 		 tabClientes.setDisable(false);
+		 
 		 
 		 
 		 if (nivel == 1) {
