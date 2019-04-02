@@ -16,7 +16,6 @@ import javafx.scene.input.MouseEvent;
 public class LoginController {
 	ScenesManager manager = new ScenesManager();
 
-
     @FXML
     private TextField usuario;
     

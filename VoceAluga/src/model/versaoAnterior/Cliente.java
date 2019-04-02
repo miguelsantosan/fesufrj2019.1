@@ -1,65 +1,41 @@
 package model.versaoAnterior;
-
-
-import javax.swing.*;
-
-import javax.swing.text.MaskFormatter;
-
-import java.text.ParseException;
-import java.util.HashMap;
-import java.util.concurrent.ThreadLocalRandom;
-
+import java.util.Date;
 
 public class Cliente {
   private String nome;
-  private String cpf; //CPF para identificar o cliente
-  private String cpfFormatado; //CPF formatado com pontos e traco para facilitar a leitura do usuario
-  private int idade;
+  private String cpf; 
+  private String passaporte;
+  private String cpfFormatado;
+  private String CEP;
+  private String email;
+  private Date dataDeNascimento;
   private Pais paisAtual;
-  private boolean aptoADirigir; //Se estiver alcoolizado ou drogado, recebe false. Caso contrario permanece true
   private boolean contrato;
-  private Habilitacao habilitacao; //Habilitacao com seus dados
-  private Apolice apolice; //Apolice de seguro
-  private CartaoDeCredito cartao; //Cartao de credito com seus dados
-  private Carro carroAtual; //Carro alugado atualmente. Nao pode alugar outro enquanto for diferente de null
-  //private Contrato contrato;
-  private HashMap<Long,String> motoristasAutorizados; //Mapa contendo os CPF's dos motoristas autorizados pelo cliente
+//  private Habilitacao habilitacao; 
+//  private Apolice apolice;
+//  private CartaoDeCredito cartao; 
+  private Carro carroAtual; 
 
-
-  //int randomNum = ThreadLocalRandom.current().nextInt(IDADE_MINIMA, IDADE_MAXIMA + 1);
-
-  public Cliente(String nome, int idade, String cpf) {
-      //Idade gerada aleatoriamente para dar diversidade e nao precisar gerar idades manualmente
-//      this.idade = randomNum;
-
-      //CPF gerado usando o relogio do sistema, para garantir que seja unico
-//      long id = System.currentTimeMillis() % ID_LIMITE;
-//      if (id <= ID_RECENTE){
-//          id = (ID_RECENTE + 1) % ID_LIMITE;
-//      }
-//      this.cpf = Long.toString(id);
-//      ID_RECENTE = id;
-//
-//      Formatter formatadorDeCpf = new CPFFormatter();
-//      String cpfNaoFormatado = this.cpf;
-//      this.cpfFormatado = formatadorDeCpf.format(cpfNaoFormatado);
+  public Cliente(String nome, String cpf) {
       this.nome = nome;
-      this.idade = idade;
       this.cpf = cpf;
-      this.aptoADirigir = true; //Se o cliente e cadastrado, assume-se que possa dirigir. Logo, inicializa true
+  }
+  
+  public Cliente() {
+	  
   }
 
-  //=====DADOS DO CLIENTE - INICIO =====
+  //=====DADOS DO CLIENTE  =====
 
-
+  // ---getters---
   public String getNome() {
       return this.nome;
   }
 
-  public int getIdade() {
-      return this.idade;
+  public Date getDataDeNascimento() {
+      return this.dataDeNascimento;
   }
-  //CPF do cliente, essa e a string que sera usada para identificar o cliente
+ 
   public String getCpf() {
       return this.cpf;
   }
@@ -68,32 +44,61 @@ public class Cliente {
       return this.cpfFormatado;
   }
 
-  public int getHabilitacaoID() {
-      return this.habilitacao.id;
-  }
-
-  public boolean getHabilitacaoValidez() {
-      return this.habilitacao.validez;
-  }
-
-  public boolean estaAptoParaDirigir(){
-      return this.aptoADirigir;
-  }
-
-  public void inverteAptidaoParaDirigir(){
-      this.aptoADirigir = !this.aptoADirigir;
-  }
-
   public Pais getPaisDoCliente(){
-      return this.paisAtual;
+	  return this.paisAtual;
+  }
+  
+  public String getPassaporte() {
+	  return this.passaporte;
+  }
+  
+  public String getCEP() {
+	  return this.CEP;
+  }
+  
+  public String getEmail() {
+	  return this.email;
+  }
+  
+//  public int getHabilitacaoID() {
+//      return this.habilitacao.id;
+//  }
+//
+//  public boolean getHabilitacaoValidez() {
+//      return this.habilitacao.validez;
+//  }
+
+  //---setters---
+  public void setNome(String nome) {
+      this.nome = nome;
   }
 
-  public void mudarPaisDoCliente(Pais pais){
-      this.paisAtual = pais;
+  public void setDataDeNascimento(Date data) {
+      this.dataDeNascimento = data;
   }
-  //=====DADOS DO CLIENTE - FIM =====
-
-  //=====CARRO DO CLIENTE - INICIO =====
+ 
+  public void setCpf(String cpf) {
+      this.cpf = cpf;
+  }
+  
+  public void setPaisDoCliente(Pais pais){
+	  this.paisAtual = pais;
+  }
+  
+  public void setPassaporte(String passaporte) {
+	  this.passaporte = passaporte;
+  }
+  
+  public void setCEP(String CEP) {
+	  this.CEP = CEP;
+  }
+  
+  public void setEmail(String email) {
+	  this.email = email;
+  }
+  
+  //=====CARRO DO CLIENTE =====
+  
   public void alugarCarro(Carro carroAlugado) {
       if (carroAtual == null) {
           if (carroAlugado.disponivelParaAlugar()) {
@@ -126,22 +131,9 @@ public class Cliente {
       return this.carroAtual.getMarcaDoCarro();
   }
 
-  public void dirigirCarroAlugado(int quilometros){
-      if(aptoADirigir) {
-          if (this.carroAtual != null) {
-              System.out.printf("O cliente %s está dirigindo o carro %s.\n", this.cpfFormatado, this.carroAtual);
-              this.carroAtual.aumentaQuilometragem(quilometros);
-          } else {
-              System.out.printf("O cliente %s não alugou um carro para dirigir.\n", this.cpfFormatado);
-          }
-      }
-      else {
-          System.out.printf("O cliente %s não está apto para dirigir no momento.\n", this.cpfFormatado);
-      }
-  }
-  //=====CARRO DO CLIENTE - FIM =====
 
-  //=====CONTRATO DO CLIENTE - INICIO =====
+  //=====CONTRATO DO CLIENTE =====
+  
   public boolean isContrato() {
       return this.contrato;
   }
@@ -149,5 +141,5 @@ public class Cliente {
   public void assinarContrato() {
       this.contrato = true;
   }
-  //=====CONTRATO DO CLIENTE - FIM =====
+  
 }

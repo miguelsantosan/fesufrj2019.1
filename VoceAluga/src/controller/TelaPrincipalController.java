@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -10,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import model.server.ValidadorDeLogin;
+import model.server.cadastroCliente;
+import model.versaoAnterior.Cliente;
 import controller.ScenesManager;
 
 public class TelaPrincipalController {
@@ -67,8 +70,26 @@ public class TelaPrincipalController {
 	 //NAOIMPLEMENTADO
 	 @FXML
 	 void processarBotaoBuscarCliente(MouseEvent e) throws IOException{
+		 	String nome = CampoNome.getText();
+		 	String CPF = CampoCPF.getText().trim();
+		 	String passaporte = CampoPassaporte.getText().trim();
+		 	String CEP = CampoCEP.getText().trim();
+		 	String email = CampoEmail.getText().trim();
+		 	
+		 	Cliente cliente= new Cliente();
+		 	
+		 	if(!CPF.equals("")) cliente.setCpf(CPF);
+		 	if(!nome.equals("")) cliente.setNome(nome);
+		 	if(!passaporte.equals("")) cliente.setPassaporte(passaporte);
+		 	if(!CEP.equals("")) cliente.setCEP(CEP);
+		 	if(!email.equals("")) cliente.setEmail(email);
+		 	
+		 	ArrayList<Cliente> clientes= cadastroCliente.buscarClientes(cliente);
+		 
 		 	manager.mostrarResultadosBuscaCliente();
 	 }
+	 
+	
 	 
 	 
 	 
