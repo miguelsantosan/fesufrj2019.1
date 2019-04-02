@@ -4,7 +4,7 @@ package model;
 
 public class Funcionario {
 	
-	private int nivelDeAcesso=1;
+	private int nivelDeAcesso = 1;
 	String nome;
 	String CPF;
 	String cargo;
@@ -26,8 +26,7 @@ public class Funcionario {
 	}
 
 	
-	
-	//--getters--
+	//---getters---
 	public int getNivelDeAcesso() {
 		return this.nivelDeAcesso;
 	}

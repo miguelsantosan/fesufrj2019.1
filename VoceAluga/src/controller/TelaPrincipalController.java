@@ -4,9 +4,9 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import model.server.ValidadorDeLogin;
@@ -37,10 +37,37 @@ public class TelaPrincipalController {
 	 @FXML
 	 private Tab tabFuncionarios;
 	 
+	 @FXML
+	 private TextField CampoNome;
+	 
+	 @FXML
+	 private TextField CampoCPF;
+	 
+	 @FXML
+	 private TextField CampoPassaporte;
+	 
+	 @FXML
+	 private TextField CampoCEP;
+	 
+	 @FXML
+	 private TextField CampoTelefone;
+	 
+	 @FXML
+	 private TextField CampoEmail;
+	 
+	 
+	 
+	 
 	 
 	 @FXML
 	 void processarBotaoCadastrarNovoCliente(MouseEvent e) throws IOException {
 	       manager.mostrarTelaCadatroDeCliente();
+	 }
+	 
+	 //NAOIMPLEMENTADO
+	 @FXML
+	 void processarBotaoBuscarCliente(MouseEvent e) throws IOException{
+		 	manager.mostrarResultadosBuscaCliente();
 	 }
 	 
 	 
