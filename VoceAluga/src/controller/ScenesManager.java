@@ -48,8 +48,4 @@ public class ScenesManager {
 	        primaryStage.setScene(new Scene(root));
 	 }
 
-	 
-//	 public void mostrarTelaPrincipalGerente() {
-//		 
-//	 }
 }

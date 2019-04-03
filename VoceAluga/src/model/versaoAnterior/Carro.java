@@ -1,5 +1,7 @@
 package model.versaoAnterior;
 
+import model.Cliente;
+
 public class Carro {
     private String marca;
     private int quilometragem;
