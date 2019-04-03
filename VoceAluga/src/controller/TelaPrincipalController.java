@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,7 +11,7 @@ import javafx.scene.input.MouseEvent;
 
 import model.server.ValidadorDeLogin;
 import model.server.cadastroCliente;
-import model.versaoAnterior.Cliente;
+import model.Cliente;
 import controller.ScenesManager;
 
 public class TelaPrincipalController {
@@ -84,7 +83,7 @@ public class TelaPrincipalController {
 		 	if(!CEP.equals("")) cliente.setCEP(CEP);
 		 	if(!email.equals("")) cliente.setEmail(email);
 		 	
-		 	ArrayList<Cliente> clientes= cadastroCliente.buscarClientes(cliente);
+		 	cadastroCliente.buscarClientes(cliente);
 		 
 		 	manager.mostrarResultadosBuscaCliente();
 	 }

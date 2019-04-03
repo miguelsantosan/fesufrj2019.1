@@ -6,6 +6,8 @@ import java.util.LinkedHashSet;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
+import model.Cliente;
+
 public class Main {
     static final int IDADE_MINIMA = 25;
     static final int IDADE_MAXIMA = 75;

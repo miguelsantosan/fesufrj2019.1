@@ -1,5 +1,6 @@
 package model.versaoAnterior;
 
+import model.Cliente;
 
 public class Contrato {
     private Cliente assinante;

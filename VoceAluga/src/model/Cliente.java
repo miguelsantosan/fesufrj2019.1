@@ -1,5 +1,8 @@
-package model.versaoAnterior;
+package model;
 import java.util.Date;
+
+import model.versaoAnterior.Carro;
+import model.versaoAnterior.Pais;
 
 public class Cliente {
   private String nome;

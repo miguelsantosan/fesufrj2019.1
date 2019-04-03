@@ -2,17 +2,27 @@ package model.server;
 
 import java.util.ArrayList;
 
-import model.versaoAnterior.Cliente;
+import model.Cliente;
 
 public class cadastroCliente {
+	private static ArrayList<Cliente> clientesBuscados;
+	private static Cliente clienteAtual;
 	
 	
-	public static ArrayList <Cliente> buscarClientes(Cliente cliente){
-		return new ArrayList<>();
+	public static void buscarClientes(Cliente cliente){
+		clientesBuscados = new ArrayList<Cliente>();
 	}
 	
-	public static Cliente buscarPorCPF(String CPF) {
-		return new Cliente();
+	public static ArrayList<Cliente> getClientesBuscados() {
+		return clientesBuscados;
+	}
+	
+	public static void buscarPorCPF(String CPF) {
+		clienteAtual = new Cliente();
+	}
+	
+	public static Cliente clienteAtual() {
+		return clienteAtual;
 	}
 
 }
