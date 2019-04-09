@@ -42,9 +42,15 @@ public class ScenesManager {
 	        primaryStage.setScene(new Scene(root));
 	 }
 	 
-	 public void mostrarResultadosBuscaCliente() throws IOException {
+	 public void mostrarTelaResultadosBuscaCliente() throws IOException {
 		 	Parent root = FXMLLoader.load(getClass().getResource("../view/ResultadosBuscaCliente.fxml"));
 	        primaryStage.setTitle("Você Aluga - Busca de Clientes");
+	        primaryStage.setScene(new Scene(root));
+	 }
+	 
+	 public void mostrarTelaInformacoesDoCliente() throws IOException{
+		 	Parent root = FXMLLoader.load(getClass().getResource("../view/InformacoesDoCliente.fxml"));
+		 	primaryStage.setTitle("Você Aluga - Dados do Cliente");
 	        primaryStage.setScene(new Scene(root));
 	 }
 
