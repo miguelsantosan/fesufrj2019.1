@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import model.server.ValidadorDeLogin;
-import model.server.cadastroCliente;
+import model.server.CadastroCliente;
 import model.Cliente;
 import controller.ScenesManager;
 
@@ -63,7 +63,8 @@ public class TelaPrincipalController {
 	 
 	 @FXML
 	 void processarBotaoCadastrarNovoCliente(MouseEvent e) throws IOException {
-	       manager.mostrarTelaCadatroDeCliente();
+		 CadastroCliente.setClienteAtual(new Cliente());
+		 manager.mostrarTelaCadatroDeCliente();
 	 }
 	 
 	 //NAOIMPLEMENTADO
@@ -83,9 +84,9 @@ public class TelaPrincipalController {
 		 	if(!CEP.equals("")) cliente.setCEP(CEP);
 		 	if(!email.equals("")) cliente.setEmail(email);
 		 	
-		 	cadastroCliente.buscarClientes(cliente);
+		 	CadastroCliente.buscarClientes(cliente);
 		 
-		 	manager.mostrarResultadosBuscaCliente();
+		 	manager.mostrarTelaResultadosBuscaCliente();
 	 }
 	 
 	

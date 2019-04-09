@@ -1,36 +1,41 @@
 package model;
 import java.util.Date;
-
-import model.versaoAnterior.Carro;
-import model.versaoAnterior.Pais;
+import model.Habilitacao;
 
 public class Cliente {
   private String nome;
   private String cpf; 
   private String passaporte;
   private String cpfFormatado;
-  private String CEP;
   private String email;
   private Date dataDeNascimento;
-  private Pais paisAtual;
-  private boolean contrato;
-//  private Habilitacao habilitacao; 
-//  private Apolice apolice;
-//  private CartaoDeCredito cartao; 
-  private Carro carroAtual; 
+  private Habilitacao habilitacao; 
+  
+  private String telefone;
+  
+  
+  private String CEP;
+  private String pais;
+  private String estado;
+  private String cidade;
+  private String bairro;
+  private String rua;
+  private String numero;
+  private String complemento;
+  
+
 
   public Cliente(String nome, String cpf) {
       this.nome = nome;
       this.cpf = cpf;
+      this.habilitacao= new Habilitacao();
   }
   
   public Cliente() {
-	  
+	  this.habilitacao= new Habilitacao();
   }
 
-  //=====DADOS DO CLIENTE  =====
-
-  // ---getters---
+  // ====getters====
   public String getNome() {
       return this.nome;
   }
@@ -42,14 +47,11 @@ public class Cliente {
   public String getCpf() {
       return this.cpf;
   }
-  //Imprime CPF formatado, com pontos e hifen, para ficar mais legivel ao usuario
+  
   public String getCpfFormatado() {
       return this.cpfFormatado;
   }
 
-  public Pais getPaisDoCliente(){
-	  return this.paisAtual;
-  }
   
   public String getPassaporte() {
 	  return this.passaporte;
@@ -63,15 +65,43 @@ public class Cliente {
 	  return this.email;
   }
   
-//  public int getHabilitacaoID() {
-//      return this.habilitacao.id;
-//  }
-//
-//  public boolean getHabilitacaoValidez() {
-//      return this.habilitacao.validez;
-//  }
-
-  //---setters---
+  public Habilitacao getHabilitacao() {
+	  return this.habilitacao;
+  }
+  
+  public String getPais() {
+	  return this.pais;
+  }
+  
+  public String getCidade() {
+	  return this.cidade;
+  }
+  
+  public String getEstado() {
+	  return this.estado;
+  }
+  
+  public String getBairro() {
+	  return this.bairro;
+  }
+  
+  public String getRua() {
+	  return this.rua;
+  }
+  
+  public String getNumero() {
+	  return this.numero;
+  }
+  
+  public String getComplemento() {
+	  return this.complemento;
+  }
+  
+  public String getTelefone() {
+	  return this.telefone;
+  }
+  
+  //====setters====
   public void setNome(String nome) {
       this.nome = nome;
   }
@@ -82,10 +112,6 @@ public class Cliente {
  
   public void setCpf(String cpf) {
       this.cpf = cpf;
-  }
-  
-  public void setPaisDoCliente(Pais pais){
-	  this.paisAtual = pais;
   }
   
   public void setPassaporte(String passaporte) {
@@ -100,49 +126,17 @@ public class Cliente {
 	  this.email = email;
   }
   
-  //=====CARRO DO CLIENTE =====
+  public void setHabilitacao(String numeroDeRegistro,String categoria, Date validade, Date dataDeEmissao) {
+	  this.habilitacao = new Habilitacao(numeroDeRegistro,categoria,validade,dataDeEmissao); 
+  }
   
-  public void alugarCarro(Carro carroAlugado) {
-      if (carroAtual == null) {
-          if (carroAlugado.disponivelParaAlugar()) {
-              this.carroAtual = carroAlugado;
-              carroAlugado.carroFoiAlugado(this);
-          }
-          else
-              System.out.printf("O carro %s já foi alugado por outro cliente.\n", carroAlugado);
-      }
-      else{
-          System.out.printf("O cliente %s já possui um carro alugado.\n",this.cpfFormatado);
-      }
+  public void setTelefone(String telefone) {
+	  this.telefone = telefone;
   }
 
-  public void retornarCarro(){
-      if (carroAtual == null){
-          System.out.printf("O cliente %s não possui um carro alugado para devolver.\n", this.cpfFormatado);
-      }
-      else {
-          carroAtual.carroFoiRetornado();
-          this.carroAtual = null;
-      }
-  }
-
-  public Carro getCarroAtual() {
-      return this.carroAtual;
-  }
-
-  public String getMarcaDoCarroAtual(){
-      return this.carroAtual.getMarcaDoCarro();
-  }
-
-
-  //=====CONTRATO DO CLIENTE =====
   
-  public boolean isContrato() {
-      return this.contrato;
-  }
-
-  public void assinarContrato() {
-      this.contrato = true;
-  }
+//  =====================
+  
+  
   
 }

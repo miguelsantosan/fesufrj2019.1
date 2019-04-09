@@ -4,9 +4,10 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResultadosBuscaClienteController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResultadosBuscaClienteController">
    <children>
-      <Button fx:id="BotaoVoltar" layoutX="349.0" layoutY="528.0" mnemonicParsing="false" onMouseClicked="#processarBotaoVoltar" prefHeight="40.0" prefWidth="104.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="Voltar" />
-      <ListView fx:id="lista" layoutX="9.0" layoutY="14.0" prefHeight="500.0" prefWidth="783.0" />
+      <Button layoutX="262.0" layoutY="528.0" mnemonicParsing="false" onMouseClicked="#processarBotaoCancelar" prefHeight="40.0" prefWidth="104.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="Cancelar" />
+      <ListView fx:id="listaExibidaNaTela" layoutX="9.0" layoutY="14.0" prefHeight="500.0" prefWidth="783.0" />
+      <Button layoutX="436.0" layoutY="528.0" mnemonicParsing="false" onMouseClicked="#processarBotaoConfirmar" prefHeight="40.0" prefWidth="104.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="Confirmar" />
    </children>
 </Pane>
