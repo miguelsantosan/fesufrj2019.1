@@ -13,7 +13,7 @@ import javafx.stage.StageStyle;
 
 /***
  * 
- * Essa Classe é responsável por exibir todas as telas do sistema
+ * Essa Classe e responsavel por exibir todas as telas do sistema
  *
  */
 
@@ -26,31 +26,43 @@ public class ScenesManager {
 	    	Parent root = FXMLLoader.load(getClass().getResource("../view/Login.fxml"));
 	    	primaryStage.setResizable(false);
 	    	primaryStage.initStyle(StageStyle.UNIFIED);
-	        primaryStage.setTitle("Você Aluga - Login");
+	        primaryStage.setTitle("Voce Aluga - Login");
 	        primaryStage.setScene(new Scene(root));
 	  }
 	 
 	 public void mostrarTelaPrincipal() throws IOException {
 		 	Parent root = FXMLLoader.load(getClass().getResource("../view/TelaPrincipal.fxml"));
-	        primaryStage.setTitle("Você Aluga - Principal");
+	        primaryStage.setTitle("Voce Aluga - Principal");
 	        primaryStage.setScene(new Scene(root));
 	 }
 	 
 	 public void mostrarTelaCadatroDeCliente() throws IOException {
 		 	Parent root = FXMLLoader.load(getClass().getResource("../view/CadastroCliente.fxml"));
-	        primaryStage.setTitle("Você Aluga - Cadastrar Cliente");
+	        primaryStage.setTitle("Voce Aluga - Cadastrar Cliente");
 	        primaryStage.setScene(new Scene(root));
 	 }
 	 
 	 public void mostrarTelaResultadosBuscaCliente() throws IOException {
 		 	Parent root = FXMLLoader.load(getClass().getResource("../view/ResultadosBuscaCliente.fxml"));
-	        primaryStage.setTitle("Você Aluga - Busca de Clientes");
+	        primaryStage.setTitle("Voce Aluga - Busca de Clientes");
 	        primaryStage.setScene(new Scene(root));
 	 }
 	 
 	 public void mostrarTelaInformacoesDoCliente() throws IOException{
 		 	Parent root = FXMLLoader.load(getClass().getResource("../view/InformacoesDoCliente.fxml"));
-		 	primaryStage.setTitle("Você Aluga - Dados do Cliente");
+		 	primaryStage.setTitle("Voce Aluga - Dados do Cliente");
+	        primaryStage.setScene(new Scene(root));
+	 }
+	 
+	 public void mostrarTelaCadastroDeVeiculo() throws IOException {
+		 	Parent root = FXMLLoader.load(getClass().getResource("../view/CadastroVeiculo.fxml"));
+	        primaryStage.setTitle("Voce Aluga - Cadastrar Veiculo");
+	        primaryStage.setScene(new Scene(root));
+	 }
+	 
+	 public void mostrarTelaResultadosBuscaVeiculo() throws IOException {
+		 	Parent root = FXMLLoader.load(getClass().getResource("../view/ResultadosBuscaVeiculo.fxml"));
+	        primaryStage.setTitle("Voce Aluga - Cadastrar Veiculo");
 	        primaryStage.setScene(new Scene(root));
 	 }
 
