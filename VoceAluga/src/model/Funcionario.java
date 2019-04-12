@@ -4,10 +4,12 @@ package model;
 
 public class Funcionario {
 	
-	private int nivelDeAcesso = 1;
+	protected int nivelDeAcesso = 1;
 	String nome;
 	String CPF;
 	String cargo;
+	String login;
+	String senha;
 	
 	//---Construtores---
 	public Funcionario(){
@@ -20,10 +22,17 @@ public class Funcionario {
 	}
 	
 	public Funcionario(String nome,String CPF,String cargo) {
+		this(nome,CPF);
 		this.cargo = cargo;
-		this.nome = nome;
-		this.CPF = CPF;
 	}
+	
+	public Funcionario(String nome,String CPF,String cargo,String login,String senha) {
+		this(nome,CPF,CPF);
+		this.login = login;
+		this.senha = senha;	
+	}
+	
+	
 
 	
 	//---getters---

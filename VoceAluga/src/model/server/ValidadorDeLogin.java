@@ -1,6 +1,7 @@
 package model.server;
 
 import model.Funcionario;
+import model.Gerente;
 
 public class ValidadorDeLogin {
 	
@@ -14,7 +15,10 @@ public class ValidadorDeLogin {
 			FuncionarioLogado = new Funcionario("nomedofuncionario","cpfdofuncionario","Vendedor");
 			return true;
 		}
-		
+		else if(user.equals(password+"1")){
+			FuncionarioLogado = new Gerente("nomedofuncionario","cpfdofuncionario","Gerente");
+			return true;
+		};		
 		return false;
 		
 		
