@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaPrincipalController">
   <children>
@@ -70,7 +69,7 @@
                                                 <Label layoutX="45.0" layoutY="36.0" text="Filial:" />
                                                 <TextField fx:id="CampoFilial" layoutX="92.0" layoutY="32.0" />
                                                 <TextField fx:id="CampoChassi" layoutX="92.0" layoutY="75.0" />
-                                                <Label layoutX="37.0" layoutY="79.0" prefHeight="17.0" prefWidth="43.0" text="Chassi:" />
+                                                <Label layoutX="26.0" layoutY="79.0" prefHeight="17.0" prefWidth="54.0" text="Chassi:" />
                                                 <TextField fx:id="CampoPlaca" layoutX="92.0" layoutY="116.0" />
                                                 <Label layoutX="37.0" layoutY="120.0" prefHeight="17.0" prefWidth="43.0" text="Placa:" />
                                              </children>
@@ -81,8 +80,8 @@
                                           <TextField fx:id="CampoAnoDeFabricacao" layoutX="379.0" layoutY="89.0" />
                                           <Label layoutX="332.0" layoutY="136.0" text="Classe:" />
                                           <TextField fx:id="CampoClasse" layoutX="379.0" layoutY="132.0" />
-                                          <Button fx:id="BotaoBuscarVeiculo" layoutX="624.0" layoutY="45.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="92.0" text="Buscar veiculo" />
-                                          <Button fx:id="BotaoBurcarVeiculo1" layoutX="547.0" layoutY="340.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="169.0" text="Cadastrar novo veiculo" />
+                                          <Button fx:id="BotaoBuscarVeiculo" layoutX="615.0" layoutY="81.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Buscar veiculo" />
+                                          <Button fx:id="BotaoBurcarVeiculo1" layoutX="581.0" layoutY="396.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="169.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Cadastrar novo veiculo" />
                                        </children>
                                     </AnchorPane>
                               </content>

@@ -4,15 +4,15 @@ import model.Cliente;
 
 public class Contrato {
     private Cliente assinante;
-    private boolean validez;
+//    private boolean validez;
 
     public Contrato(Cliente cliente){
         this.assinante = cliente;
     }
 
-    public void setValidez() {
-        this.validez = true;
-    }
+//    public void setValidez() {
+//        this.validez = true;
+//    }
 
     /*
     public void quebraDeContrato(){
@@ -23,7 +23,5 @@ public class Contrato {
         return this.assinante.getCpf();
     }
 
-    public void mostrarAssinante() {
-        System.out.printf("%s\n", this.assinante.getCpfFormatado());
-    }
+   
 }

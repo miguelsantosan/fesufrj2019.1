@@ -6,7 +6,6 @@ public class Cliente {
   private String nome;
   private String cpf; 
   private String passaporte;
-  private String cpfFormatado;
   private String email;
   private Date dataDeNascimento;
   private Habilitacao habilitacao; 
@@ -48,9 +47,7 @@ public class Cliente {
       return this.cpf;
   }
   
-  public String getCpfFormatado() {
-      return this.cpfFormatado;
-  }
+ 
 
   
   public String getPassaporte() {
