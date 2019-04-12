@@ -104,7 +104,7 @@ public class TelaPrincipalController {
 		 
 		 
 		 
-		 if (nivel == 1) {
+		 if (nivel == 0) {
 			 	
 	        	tabVeiculos.setDisable(true);;
 	        	tabFuncionarios.setDisable(true);

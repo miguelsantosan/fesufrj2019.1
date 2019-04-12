@@ -37,7 +37,7 @@ public class LoginController {
     	Alert alert = new Alert(AlertType.ERROR);
     	alert.setTitle("Erro");
     	alert.setHeaderText("Erro");
-    	alert.setContentText("Login ou usuário inválido");
+    	alert.setContentText("Login ou usuario invalido");
     	alert.showAndWait();
     	usuario.setText("");
     	senha.setText("");
