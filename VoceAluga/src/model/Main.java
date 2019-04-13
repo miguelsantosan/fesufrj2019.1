@@ -17,7 +17,6 @@ public class Main extends Application {
 		MySQLConnector.abrirConexao();
 		
     	manager.mostrarTelaDeLogin();
-//		manager.mostrarResultadosBuscaCliente();
         ScenesManager.primaryStage.show();
     }
 	

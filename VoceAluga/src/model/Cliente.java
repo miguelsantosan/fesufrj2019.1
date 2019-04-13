@@ -1,5 +1,5 @@
 package model;
-import java.util.Date;
+import java.time.LocalDate;
 import model.Habilitacao;
 
 public class Cliente {
@@ -7,7 +7,7 @@ public class Cliente {
   private String cpf; 
   private String passaporte;
   private String email;
-  private Date dataDeNascimento;
+  private LocalDate dataDeNascimento;
   private Habilitacao habilitacao; 
   
   private String telefone;
@@ -39,7 +39,7 @@ public class Cliente {
       return this.nome;
   }
 
-  public Date getDataDeNascimento() {
+  public LocalDate getDataDeNascimento() {
       return this.dataDeNascimento;
   }
  
@@ -103,7 +103,7 @@ public class Cliente {
       this.nome = nome;
   }
 
-  public void setDataDeNascimento(Date data) {
+  public void setDataDeNascimento(LocalDate data) {
       this.dataDeNascimento = data;
   }
  
@@ -123,7 +123,7 @@ public class Cliente {
 	  this.email = email;
   }
   
-  public void setHabilitacao(String numeroDeRegistro,String categoria, Date validade, Date dataDeEmissao) {
+  public void setHabilitacao(String numeroDeRegistro,String categoria, LocalDate validade, LocalDate dataDeEmissao) {
 	  this.habilitacao = new Habilitacao(numeroDeRegistro,categoria,validade,dataDeEmissao); 
   }
   
