@@ -29,7 +29,7 @@ public class MySQLConnector {
         try {
             connection = DriverManager.getConnection( 
             		"jdbc:mysql://"+enderecoServidor+"/"+nomeDoBancoDeDados , usuario, senha );
-            System.out.println("Conexao com o banco de dados estabelecida successfully");   
+            System.out.println("Conexao com o banco de dados estabelecida");   
         } catch (Exception e) {
             System.err.println("Nao foi possivel estabelecer a conexao");
             System.err.println(e);
