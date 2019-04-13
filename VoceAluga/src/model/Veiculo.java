@@ -1,10 +1,12 @@
 package model;
 
 public class Veiculo {
+	private Long id;
 	private String filial;
+	private String marca;
+	private String modelo;
 	private String placa;
 	private String chassi;
-	private String marca;
 	private char classe;
 	private int anoDeFabricacao;
 	private int tempoEmAnos;
@@ -17,18 +19,55 @@ public class Veiculo {
 	 * @param placa 		a placa do veiculo
 	 * @param quilometragem a quilometragem do veiculo
 	 */
-	public Veiculo(String chassi, String marca, String placa, float quilometragem){
-		this.chassi = chassi;
+	public Veiculo(String marca, String modelo, String placa, String chassi, float quilometragem){
 		this.marca = marca;
+		this.modelo = modelo;
 		this.placa = placa;
+		this.chassi = chassi;
 		this.quilometragem = quilometragem;
 		this.precisaManutencao = false;
+	}
+	
+	//================
+	//CONSTRUTOR TESTE
+	public Veiculo(Long id, String marca, String modelo, String placa, String chassi, float quilometragem){
+		this.id = id;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.placa = placa;
+		this.chassi = chassi;
+		this.quilometragem = quilometragem;
+		this.precisaManutencao = false;
+	}
+	//CONSTRUTOR TESTE
+	//================
+	
+	public Veiculo(){
+		this.precisaManutencao = false;
+	}
+	/**
+	 * @return o ID do veiculo
+	 */
+	public Long getID() {
+		return this.id;
 	}
 	/**
 	 * @return a filial atual do veiculo
 	 */
 	public String getFilial() {
 		return this.filial;
+	}
+	/**
+	 * @return a marca do veiculo
+	 */
+	public String getMarca() {
+		return this.marca;
+	}
+	/**
+	 * @return o modelo do veiculo
+	 */
+	public String getModelo() {
+		return this.modelo;
 	}
 	/**
 	 * @return a placa do veiculo
@@ -41,12 +80,6 @@ public class Veiculo {
 	 */
 	public String getChassi() {
 		return this.chassi;
-	}
-	/**
-	 * @return a marca do veiculo
-	 */
-	public String getMarca() {
-		return this.marca;
 	}
 	/**
 	 * @return a classe do veiculo
