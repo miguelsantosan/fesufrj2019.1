@@ -93,7 +93,7 @@ public class InformacoesDoClienteController {
 		
 		
 		labelNome.setText(cliente.getNome());
-	 	labelCPF.setText(cliente.getCpf());
+	 	labelCPF.setText(cliente.getCPFFormatado());
 	 	labelPais.setText(cliente.getPais());
 	 	labelEstado.setText(cliente.getEstado());
 	 	labelCidade.setText(cliente.getCidade());

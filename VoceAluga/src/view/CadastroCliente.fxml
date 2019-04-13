@@ -6,28 +6,28 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
- <!--   <?import controller.MaskField?>
--->
+    <?import controller.MaskField?>
+
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroClienteController">
    <children>
       <Label layoutX="155.0" layoutY="52.0" text="Nome:" />
       <Label layoutX="165.0" layoutY="99.0" text="CPF:" />
       <TextField fx:id="campoNome" layoutX="208.0" layoutY="47.0" />
       
-     <!--   <MaskField fx:id="campoCPF"  layoutX="208.0" layoutY="94.0" mask="DDD.DDD.DDD-DD"/>
-     -->
+      <MaskField fx:id="campoCPF"  layoutX="208.0" layoutY="94.0" mask="DDD.DDD.DDD-DD"/>
+    
       <DatePicker fx:id="campoDataDeNascimento" layoutX="207.0" layoutY="140.0" />
       <Label layoutX="116.0" layoutY="192.0" text="Passaporte:" />
       <TextField fx:id="campoPassaporte" layoutX="207.0" layoutY="187.0" />
       <Label layoutX="154.0" layoutY="329.0" prefHeight="16.0" prefWidth="37.0" text="CEP:" />
       
-     <!--    <MaskField fx:id="campoTelefone" layoutX="206.0" layoutY="234.0" mask="+DD (DD) DDDDDDDDD" placeholder="+__ (__) ________ "/>
-     --> 
+        <MaskField fx:id="campoTelefone" layoutX="206.0" layoutY="234.0" mask="+DD (DD) DDDDDDDDD" placeholder="+__ (__) ________ "/>
+    
       <Label layoutX="128.0" layoutY="239.0" prefHeight="16.0" prefWidth="74.0" text="Telefone:" />
      
       <TextField fx:id="campoEmail" layoutX="206.0" layoutY="281.0" />
-      <!--   <MaskField fx:id="campoCEP" layoutX="204.0" layoutY="324.0" mask="DDDDD-DDD" />
-      --> 
+        <MaskField fx:id="campoCEP" layoutX="204.0" layoutY="324.0" mask="DDDDD-DDD" />
+     
       <Label layoutX="144.0" layoutY="286.0" prefHeight="16.0" prefWidth="43.0" text="Email:" />
       <TextField fx:id="campoPais" layoutX="540.0" layoutY="45.0" />
       <Label layoutX="483.0" layoutY="94.0" prefHeight="16.0" prefWidth="52.0" text="Estado:" />
@@ -47,9 +47,9 @@
             <Label layoutX="31.0" layoutY="71.0" prefHeight="16.0" prefWidth="74.0" text="Categoria:" />
             <Label layoutX="34.0" layoutY="28.0" prefHeight="16.0" prefWidth="84.0" text="N° Registro:" />
             
-          <!--    <MaskField fx:id="campoNumeroDeRegistro" layoutX="120.0" layoutY="23.0" mask="DDDDDDDDDDD"/>
+           <MaskField fx:id="campoNumeroDeRegistro" layoutX="120.0" layoutY="23.0" mask="DDDDDDDDDDD"/>
             <MaskField fx:id="campoCategoria" layoutX="118.0" layoutY="66.0" mask="AA" placeholder="  "/>
-          -->  
+          
             <Label layoutX="372.0" layoutY="25.0" prefHeight="16.0" prefWidth="74.0" text="Validade:" />
             <DatePicker fx:id="campoValidade" layoutX="453.0" layoutY="20.0" />
             <Label layoutX="326.0" layoutY="69.0" prefHeight="16.0" prefWidth="114.0" text="Data de Emissão:" />

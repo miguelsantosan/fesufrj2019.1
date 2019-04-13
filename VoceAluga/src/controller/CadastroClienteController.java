@@ -92,7 +92,7 @@ public class CadastroClienteController {
 		
 		
 		campoNome.setText(cliente.getNome());
-	 	campoCPF.setPlainText(cliente.getCpf());
+	 	campoCPF.setPlainText(cliente.getCPF());
 	 	campoPais.setText(cliente.getPais());
 	 	campoEstado.setText(cliente.getEstado());
 	 	campoCidade.setText(cliente.getCidade());
