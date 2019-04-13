@@ -27,7 +27,7 @@ public class Funcionario {
 	}
 	
 	public Funcionario(String nome,String CPF,String cargo,String login,String senha) {
-		this(nome,CPF,CPF);
+		this(nome,CPF,cargo);
 		this.login = login;
 		this.senha = senha;	
 	}

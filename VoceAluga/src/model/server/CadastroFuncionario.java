@@ -23,6 +23,10 @@ public class CadastroFuncionario {
 		FuncionarioAtual = new Funcionario();
 	}
 	
+	public static void buscarPorLogin(String login) {
+		FuncionarioAtual = new Funcionario();
+	}
+	
 	public static Funcionario getFuncionarioAtual() {
 		
 		return FuncionarioAtual;
