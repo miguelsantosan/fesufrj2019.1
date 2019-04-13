@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import model.Cliente;
@@ -19,7 +20,7 @@ public class CadastroClienteController {
 	TextField campoNome;
 	
 	@FXML
-	TextField campoCPF;
+	MaskField campoCPF;
 	
 	@FXML
 	TextField campoPais;
@@ -28,7 +29,7 @@ public class CadastroClienteController {
 	TextField campoEstado;
 	
 	@FXML
-	TextField campoDataDeNascimento;
+	DatePicker campoDataDeNascimento;
 	
 	@FXML
 	TextField campoCidade;
@@ -40,7 +41,7 @@ public class CadastroClienteController {
 	TextField campoBairro;
 	
 	@FXML
-	TextField campoTelefone;
+	MaskField campoTelefone;
 	
 	@FXML
 	TextField campoRua;
@@ -52,22 +53,22 @@ public class CadastroClienteController {
 	TextField campoNumero;
 	
 	@FXML
-	TextField campoCEP;
+	MaskField campoCEP;
 	
 	@FXML
 	TextField campoComplemento;
 	
 	@FXML
-	TextField campoNumeroDeRegistro;
+	MaskField campoNumeroDeRegistro;
 	
 	@FXML
-	TextField campoValidade;
+	DatePicker campoValidade;
 	
 	@FXML
 	TextField campoCategoria;
 	
 	@FXML
-	TextField campoDataDeEmissao;
+	DatePicker campoDataDeEmissao;
 	
 	
 	@FXML
@@ -91,29 +92,29 @@ public class CadastroClienteController {
 		
 		
 		campoNome.setText(cliente.getNome());
-	 	campoCPF.setText(cliente.getCpf());
+	 	campoCPF.setPlainText(cliente.getCpf());
 	 	campoPais.setText(cliente.getPais());
 	 	campoEstado.setText(cliente.getEstado());
 	 	campoCidade.setText(cliente.getCidade());
 	 	campoPassaporte.setText(cliente.getPassaporte());
 	 	campoBairro.setText(cliente.getBairro());
-	 	campoTelefone.setText(cliente.getTelefone());
+	 	campoTelefone.setPlainText(cliente.getTelefone());
 	 	campoRua.setText(cliente.getRua());
 	 	campoEmail.setText(cliente.getEmail());
 	 	campoNumero.setText(cliente.getNumero());
-	 	campoCEP.setText(cliente.getCEP());
+	 	campoCEP.setPlainText(cliente.getCEP());
 	 	campoComplemento.setText(cliente.getComplemento());
 	 	
 	 	if(cliente.getDataDeNascimento()!=null)
-	 		campoDataDeNascimento.setText(cliente.getDataDeNascimento().toString());
+	 		campoDataDeNascimento.setValue(cliente.getDataDeNascimento());
 
-	 	campoNumeroDeRegistro.setText(habilitacao.getNumeroDeRegistro());
+	 	campoNumeroDeRegistro.setPlainText(habilitacao.getNumeroDeRegistro());
 	 	campoCategoria.setText(habilitacao.getCategoria());
 	 	
 	 	if(habilitacao.getDataDeEmissao()!=null)
-	 		campoDataDeEmissao.setText(habilitacao.getDataDeEmissao().toString());
+	 		campoDataDeEmissao.setValue(habilitacao.getDataDeEmissao());
 	 	if(habilitacao.getValidade()!=null)
-	 		campoValidade.setText(habilitacao.getValidade().toString());
+	 		campoValidade.setValue(habilitacao.getValidade());
 	}
 	
 }
