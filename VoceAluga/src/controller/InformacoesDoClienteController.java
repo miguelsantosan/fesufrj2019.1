@@ -73,7 +73,7 @@ public class InformacoesDoClienteController {
 	
 	@FXML
 	public void processarBotaoEditar(MouseEvent e) throws IOException {
-		manager.mostrarTelaCadatroDeCliente();
+		manager.mostrarTelaCadastroDeCliente();
 	}
 	
 	@FXML 
