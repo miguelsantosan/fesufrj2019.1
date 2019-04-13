@@ -89,6 +89,12 @@ public class TelaPrincipalController {
 		 	manager.mostrarTelaResultadosBuscaCliente();
 	 }
 	 
+	 
+	//NAOIMPLEMENTADO
+	 @FXML
+	 public void processarBotaoBuscarVeiculo(){
+		manager.mostrarTelaResultadosBuscaVeiculo();
+	 }
 	
 	 
 	 
