@@ -64,7 +64,7 @@ public class TelaPrincipalController {
 	 @FXML
 	 void processarBotaoCadastrarNovoCliente(MouseEvent e) throws IOException {
 		 CadastroCliente.setClienteAtual(new Cliente());
-		 manager.mostrarTelaCadatroDeCliente();
+		 manager.mostrarTelaCadastroDeCliente();
 	 }
 	 
 	 //NAOIMPLEMENTADO
