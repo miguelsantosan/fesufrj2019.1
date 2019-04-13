@@ -43,9 +43,45 @@ public class Cliente {
       return this.dataDeNascimento;
   }
  
-  public String getCpf() {
+  public String getCPF() {
       return this.cpf;
   }
+  
+  public String getCPFFormatado(){
+	  	String CPFFormatado = null;
+	  try{
+		  CPFFormatado = this.cpf.substring(0,3) +"." + this.cpf.substring(3,6)+ "."
+				  		+this.cpf.substring(6,9)+ "-" + this.cpf.substring(9,11);	
+	  }catch(IndexOutOfBoundsException e){
+		  System.err.println("Cliente.getCPFFormatado");
+		  System.err.println(e.getMessage());
+	  }
+	  return CPFFormatado;
+  }
+  
+  
+  public String getCEPFormatado(){
+		String CEPFormatado = null;
+		  try{
+			  CEPFormatado = this.CEP.substring(0,5) + "-" + this.CEP.substring(5);	
+		  }catch(IndexOutOfBoundsException e){
+			  System.err.println("Cliente.getCEPFormatado");
+			  System.err.println(e.getMessage());
+		  }
+		  return CEPFormatado;
+  }
+  
+  public String getTelefoneFormatado(){
+		String telefoneFormatado = null;
+		  try{
+			  telefoneFormatado = "+" + this.telefone.substring(0,2) + " (" +this.telefone.substring(2, 4)+ ") " 
+					  				  + this.telefone.substring(4);	
+		  }catch(IndexOutOfBoundsException e){
+			  System.err.println("Cliente.getCEPFormatado");
+			  System.err.println(e.getMessage());
+		  }
+		  return telefoneFormatado;
+}
   
  
 

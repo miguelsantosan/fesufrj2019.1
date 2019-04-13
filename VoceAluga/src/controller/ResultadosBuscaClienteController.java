@@ -52,7 +52,7 @@ public class ResultadosBuscaClienteController {
 		ObservableList <String> listaDeNomesDeClientesBuscados = FXCollections.observableArrayList();
 		
 		listaDeClientesBuscados.forEach(cliente ->{
-			listaDeNomesDeClientesBuscados.add(cliente.getNome() +"   "+cliente.getCpf());
+			listaDeNomesDeClientesBuscados.add(cliente.getNome() +"   "+cliente.getCPFFormatado());
 		});
 
 
