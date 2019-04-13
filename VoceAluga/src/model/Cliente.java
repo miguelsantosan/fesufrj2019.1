@@ -170,6 +170,34 @@ public class Cliente {
   
 //  =====================
   
-  
+  public static boolean ValidarCPF(String cpf){
+	  int digito1 = 0;
+	  int digito2 =0;
+	  int[] CPFComoArrayDeInt = new int[11];
+	  char[] CPFSeparado;
+	  
+	  //transforma o CPF em um array de int
+	  if (cpf.length() != 11) return false;
+	  CPFSeparado = cpf.toCharArray();
+	  for(int i=0; i<11; i++) CPFComoArrayDeInt[i] =  (char) (CPFSeparado[i]- '0');
+	  
+	  //confere se o primeiro digito de validacao esta correto
+	  for(int i=0; i<9 ;i++) digito1 += CPFComoArrayDeInt[i]*(10-i);
+	  digito1 = (digito1*10)%11;
+	  if(digito1!= CPFComoArrayDeInt[9]) return false;
+	  
+	  //confere se todos os digitos sao iguais
+	  int cont=0;
+	  for(int i=0;i<11;i++) if(digito1==CPFComoArrayDeInt[i]) cont++;
+	  if(cont==11) return false;
+	  
+	  //confere se o segundo digito de validacao esta correto
+	  for(int i=0; i<10; i++)  digito2+=CPFComoArrayDeInt[i]*(11-i);
+	  digito2 = (digito2*10)%11;
+	  if(digito2!= CPFComoArrayDeInt[10]) return false;
+		
+	  
+	  return true;
+  }
   
 }

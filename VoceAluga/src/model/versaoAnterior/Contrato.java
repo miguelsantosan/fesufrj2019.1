@@ -20,7 +20,7 @@ public class Contrato {
     }
     */
     public String getAssinante() {
-        return this.assinante.getCpf();
+        return this.assinante.getCPF();
     }
 
    
