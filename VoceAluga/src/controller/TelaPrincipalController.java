@@ -9,6 +9,8 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import model.Veiculo;
+import model.server.CadastroVeiculo;
 import model.server.ValidadorDeLogin;
 import model.server.CadastroCliente;
 import model.Cliente;
@@ -56,6 +58,24 @@ public class TelaPrincipalController {
 	 
 	 @FXML
 	 private TextField CampoEmail;
+
+	@FXML
+	private TextField CampoFilial;
+
+	@FXML
+	private TextField CampoChassi;
+
+	@FXML
+	private TextField CampoPlaca;
+
+	@FXML
+	private TextField CampoMarca;
+
+	@FXML
+	private TextField CampoAnoDeFabricacao;
+
+	@FXML
+	private TextField CampoClasse;
 	 
 	 
 	 
@@ -92,11 +112,38 @@ public class TelaPrincipalController {
 	 
 	//NAOIMPLEMENTADO
 	 @FXML
-	 public void processarBotaoBuscarVeiculo(){
-		manager.mostrarTelaResultadosBuscaVeiculo();
+	 public void processarBotaoBuscarVeiculo(MouseEvent e) throws IOException {
+	 	String filial = CampoFilial.getText();
+	 	String chassi = CampoChassi.getText();
+	 	String placa = CampoPlaca.getText();
+	 	String marca = CampoMarca.getText();
+	 	String ano = CampoAnoDeFabricacao.getText();
+	 	String classe = CampoClasse.getText();
+
+	 	Veiculo veiculo = new Veiculo();
+
+		 if(!filial.equals("")) veiculo.setFilial(filial);
+		 if(!chassi.equals("")) veiculo.setChassi(chassi);
+		 if(!placa.equals("")) veiculo.setPlaca(placa);
+		 if(!marca.equals("")) veiculo.setMarca(marca);
+		 if(!ano.equals("")) {
+			try {
+				veiculo.setAnoDeFabricacao(Integer.parseInt(ano));
+			} catch (NumberFormatException nfe) {
+				System.err.println("Erro na formatacao do Ano de Fabricacao do Veiculo");
+			}
+		 }
+		 if(!classe.equals("")) veiculo.setClasse(marca.charAt(0));
+
+		 CadastroVeiculo.buscarVeiculos(veiculo);
+		 manager.mostrarTelaResultadosBuscaVeiculo();
 	 }
-	
-	 
+
+	 @FXML
+	 void processarBotaoCadastrarNovoVeiculo(MouseEvent e) throws IOException {
+		CadastroVeiculo.setVeiculoAtual(new Veiculo());
+		manager.mostrarTelaCadastroDeVeiculo();
+	 }
 	 
 	 
 	 public void initialize() {

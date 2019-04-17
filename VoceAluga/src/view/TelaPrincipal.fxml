@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox  prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaPrincipalController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaPrincipalController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-       
+
             <TabPane prefHeight="27.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Untitled Tab 1">
@@ -28,7 +28,7 @@
                 </Tab>
               </tabs>
             </TabPane>
-            <Pane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
                   <Pane prefHeight="560.0" prefWidth="800.0">
                      <children>
@@ -52,7 +52,7 @@
                                                 <TextField fx:id="CampoTelefone" layoutX="463.0" layoutY="21.0" />
                                                 <Label layoutX="407.0" layoutY="72.0" prefHeight="16.0" prefWidth="53.0" text="Email:" />
                                                 <TextField fx:id="CampoEmail" layoutX="463.0" layoutY="67.0" />
-                                                <Button  layoutX="512.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#processarBotaoBuscarCliente" prefHeight="33.0" prefWidth="127.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Buscar Cliente" />
+                                                <Button layoutX="512.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#processarBotaoBuscarCliente" prefHeight="33.0" prefWidth="127.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Buscar Cliente" />
                                              </children>
                                           </Pane>
                                           <Button layoutX="573.0" layoutY="437.0" mnemonicParsing="false" onMouseClicked="#processarBotaoCadastrarNovoCliente" prefHeight="40.0" prefWidth="182.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Cadastrar Novo Cliente" />
@@ -80,7 +80,7 @@
                                           <TextField fx:id="CampoAnoDeFabricacao" layoutX="379.0" layoutY="89.0" />
                                           <Label layoutX="332.0" layoutY="136.0" text="Classe:" />
                                           <TextField fx:id="CampoClasse" layoutX="379.0" layoutY="132.0" />
-                                          <Button fx:id="BotaoBuscarVeiculo" layoutX="615.0" layoutY="81.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Buscar veiculo" />
+                                          <Button fx:id="BotaoBuscarVeiculo" layoutX="615.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#processarBotaoBuscarVeiculo" prefHeight="40.0" prefWidth="135.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Buscar veiculo" />
                                           <Button fx:id="BotaoBurcarVeiculo1" layoutX="581.0" layoutY="396.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="169.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Cadastrar novo veiculo" />
                                        </children>
                                     </AnchorPane>
