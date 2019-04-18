@@ -10,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 
 import controller.ScenesManager;
 import model.Veiculo;
-import model.server.CadastroVeiculo;
+import model.dao.CadastroVeiculo;
 
 public class ResultadosBuscaVeiculoController {
 	ScenesManager manager = new ScenesManager();

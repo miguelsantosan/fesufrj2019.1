@@ -10,10 +10,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import model.Veiculo;
-import model.server.CadastroVeiculo;
-import model.server.ValidadorDeLogin;
-import model.server.CadastroCliente;
+import model.dao.CadastroCliente;
+import model.dao.CadastroVeiculo;
+import model.dao.ValidadorDeLogin;
 import model.Cliente;
+import model.Funcionario;
 import controller.ScenesManager;
 
 public class TelaPrincipalController {
@@ -147,10 +148,11 @@ public class TelaPrincipalController {
 	 
 	 
 	 public void initialize() {
+		 Funcionario funcionarioLogado = ValidadorDeLogin.getFuncionarioLogado();
 		 
-		 int nivel = ValidadorDeLogin.FuncionarioLogado.getNivelDeAcesso();
-		 usuario.setText(ValidadorDeLogin.FuncionarioLogado.getNome());
-		 cargo.setText(ValidadorDeLogin.FuncionarioLogado.getCargo());
+		 int nivel = funcionarioLogado.getNivelDeAcesso();
+		 usuario.setText(funcionarioLogado.getNome());
+		 cargo.setText(funcionarioLogado.getCargo());
 		 NivelDeAcesso.setText(Integer.toString(nivel));
 		 
 		 tabClientes.setDisable(false);

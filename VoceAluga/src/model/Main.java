@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.server.MySQLConnector;
+import model.dao.MySQLConnector;
 import controller.ScenesManager;
 
 public class Main extends Application {

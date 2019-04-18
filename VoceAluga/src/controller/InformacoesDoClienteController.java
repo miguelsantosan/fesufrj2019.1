@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import model.Cliente;
 import model.Habilitacao;
-import model.server.CadastroCliente;
+import model.dao.CadastroCliente;
 
 public class InformacoesDoClienteController {
 	ScenesManager manager = new ScenesManager();

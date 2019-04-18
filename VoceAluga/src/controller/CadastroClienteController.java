@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import model.Cliente;
 import model.Habilitacao;
-import model.server.CadastroCliente;
+import model.dao.CadastroCliente;
 
 import java.io.IOException;
 
