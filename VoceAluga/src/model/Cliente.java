@@ -21,13 +21,38 @@ public class Cliente {
   private String rua;
   private String numero;
   private String complemento;
+  private int id;
   
-
-
+// construtor contendo todos os campos
+  public Cliente(int id,String nome,String cpf,String passaporte,String email,String telefone,String CEP,
+		         String pais, String estado, String cidade, String bairro, String rua, String numero, String complemento, LocalDate dataDeNascimento){
+	  
+	  this(nome,cpf,passaporte,CEP,telefone,email);
+	  this.id =id;
+	  this.pais = pais;
+	  this.estado = estado;
+	  this.cidade = cidade;
+	  this.bairro = bairro;
+	  this.rua = rua;
+	  this.numero = numero;
+	  this.complemento = complemento;
+	  this.dataDeNascimento = dataDeNascimento;
+	  
+  }
+  
+  // Esse construtor contem os elementos exatos da tela de busca
+  public Cliente(String nome,String cpf,String passaporte,String CEP, String telefone,String email){
+	  this(nome,cpf);
+	  this.passaporte = passaporte;
+	  this.CEP = CEP;
+	  this.telefone = telefone;
+	  this.email=email;
+  }
+  
   public Cliente(String nome, String cpf) {
+	  this();
       this.nome = nome;
       this.cpf = cpf;
-      this.habilitacao= new Habilitacao();
   }
   
   public Cliente() {
@@ -35,6 +60,10 @@ public class Cliente {
   }
 
   // ====getters====
+  public int getId(){
+	  return this.id;
+  }
+  
   public String getNome() {
       return this.nome;
   }

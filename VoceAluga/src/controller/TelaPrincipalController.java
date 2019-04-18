@@ -3,10 +3,12 @@ package controller;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 
 import model.Veiculo;
@@ -96,9 +98,11 @@ public class TelaPrincipalController {
 		 	String passaporte = CampoPassaporte.getText().trim();
 		 	String CEP = CampoCEP.getText().trim();
 		 	String email = CampoEmail.getText().trim();
+		 	String telefone = CampoTelefone.getText();
 		 	
 		 	Cliente cliente= new Cliente();
 		 	
+		 	if(!telefone.equals("")) cliente.setTelefone(telefone);
 		 	if(!CPF.equals("")) cliente.setCpf(CPF);
 		 	if(!nome.equals("")) cliente.setNome(nome);
 		 	if(!passaporte.equals("")) cliente.setPassaporte(passaporte);
@@ -106,11 +110,31 @@ public class TelaPrincipalController {
 		 	if(!email.equals("")) cliente.setEmail(email);
 		 	
 		 	CadastroCliente.buscarClientes(cliente);
-		 
-		 	manager.mostrarTelaResultadosBuscaCliente();
+		 	
+		 	if(CadastroCliente.getClientesBuscados().size()>0)
+		 		manager.mostrarTelaResultadosBuscaCliente();
+		 	else 
+		 		exibirErroNenhumClienteEncontrado();
 	 }
 	 
 	 
+	private void exibirErroNenhumClienteEncontrado() {
+		Alert alert = new Alert(AlertType.ERROR);
+    	alert.setTitle("Erro");
+    	alert.setHeaderText("Erro na busca");
+    	alert.setContentText("Nenhum cliente corresponde aos campos informados.");
+    	alert.showAndWait();
+    	
+    	CampoNome.setText("");
+    	CampoCPF.setText("");
+    	CampoPassaporte.setText("");
+    	CampoCEP.setText("");
+    	CampoTelefone.setText("");
+    	CampoEmail.setText("");
+    	
+		
+	}
+
 	//NAOIMPLEMENTADO
 	 @FXML
 	 public void processarBotaoBuscarVeiculo(MouseEvent e) throws IOException {

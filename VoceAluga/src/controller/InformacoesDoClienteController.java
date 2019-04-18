@@ -99,11 +99,11 @@ public class InformacoesDoClienteController {
 	 	labelCidade.setText(cliente.getCidade());
 	 	labelPassaporte.setText(cliente.getPassaporte());
 	 	labelBairro.setText(cliente.getBairro());
-	 	labelTelefone.setText(cliente.getTelefone());
+	 	labelTelefone.setText(cliente.getTelefoneFormatado());
 	 	labelRua.setText(cliente.getRua());
 	 	labelEmail.setText(cliente.getEmail());
 	 	labelNumero.setText(cliente.getNumero());
-	 	labelCEP.setText(cliente.getCEP());
+	 	labelCEP.setText(cliente.getCEPFormatado());
 	 	labelComplemento.setText(cliente.getComplemento());
 	 	
 	 	if(cliente.getDataDeNascimento()!=null)
