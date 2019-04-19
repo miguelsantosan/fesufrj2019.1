@@ -74,13 +74,22 @@ public class CadastroClienteController {
 	DatePicker campoDataDeEmissao;
 	
 	
+	public void initialize() {
+		if(CadastroCliente.getClienteAtual()!=null){
+			Cliente cliente = CadastroCliente.getClienteAtual();
+	 		preencherCamposComDadosDoCliente(cliente);	
+	 		campoCPF.setDisable(true);
+		}
+	
+	
+	}
 	
 	@FXML
 	void processarBotaoCancelar(MouseEvent e) throws IOException {
 		manager.mostrarTelaPrincipal();
 	}
 	
-	 TreeMap<String,String> gerarMapAPartirDoFormulario(){
+	 TreeMap<String,String> gerarMapAPartirDoFormularioCliente(){
 		TreeMap<String,String> campos = new TreeMap<>();
 		
 		if(campoNome.getText() != null) campos.put("nome",campoNome.getText());
@@ -99,39 +108,97 @@ public class CadastroClienteController {
 		if(!campoCEP.getPlainText().equals("")) campos.put("CEP", campoCEP.getPlainText());
 		if(campoComplemento.getText() !=null) campos.put("complemento", campoComplemento.getText());
 		
-		if(!campoNumeroDeRegistro.getPlainText().equals("")) campos.put("numeroDeRegistro", campoNumeroDeRegistro.getPlainText());
-		if(campoValidade.getValue()!=null) campos.put("validade", campoValidade.getValue().toString());
-		if(!campoCategoria.getPlainText().equals("")) campos.put("categoria", campoCategoria.getPlainText());
-		if(campoDataDeEmissao.getValue()!=null) campos.put("dataDeEmissao", campoDataDeEmissao.getValue().toString());
 		return campos;
 	}
 	 
+	 TreeMap<String,String> gerarMapAPartirDoFormularioHabilitacao(){
+		 	TreeMap<String,String> campos = new TreeMap<>();
+			if(!campoNumeroDeRegistro.getPlainText().equals("")) campos.put("numeroDeRegistro", campoNumeroDeRegistro.getPlainText());
+			if(campoValidade.getValue()!=null) campos.put("validade", campoValidade.getValue().toString());
+			if(!campoCategoria.getPlainText().equals("")) campos.put("categoria", campoCategoria.getPlainText());
+			if(campoDataDeEmissao.getValue()!=null) campos.put("dataDeEmissao", campoDataDeEmissao.getValue().toString());
+			
+			return campos;
+		
+	 }
+	 
+	 
+	 @FXML 
+	 void processarBotaoConfirmar(MouseEvent e) throws IOException{
+		 if(CadastroCliente.getClienteAtual()==null){
+			 System.out.println("Cadastrando cliente");
+			 adicionarCliente();
+		 }else{
+			 System.out.println("alterando cliente");
+			 alterarCliente();
+		 }
+	 }
 
 	
 	@FXML
-	void processarBotaoConfirmar(MouseEvent e) throws IOException{
-		TreeMap<String,String> campos = gerarMapAPartirDoFormulario();
+	void adicionarCliente() throws IOException{
 		
-		if(campos.containsKey("CPF") && !Cliente.ValidarCPF(campos.get("CPF"))){
-			mostrarErroDeCadastro("CPF inválido");
+		if(CadastroCliente.buscarPorCPF(campoCPF.getPlainText())){
+			mostrarErroDeCadastro("CPF já cadastrado");
+			return;
+		}
+		if(CadastroCliente.buscarPorPassaporte(campoPassaporte.getText())){
+			mostrarErroDeCadastro("Passaporte já cadastrado");
+			return;
+		}
+		
+		if(validarCampos() == false) return;
+		
+		TreeMap<String,String> camposCliente = gerarMapAPartirDoFormularioCliente();
+		
+		if(CadastroCliente.cadastrarCliente(camposCliente)){
+			mostrarMensagemDeSucesso("Cliente cadastrado com sucesso");
+			manager.mostrarTelaPrincipal();
 		}
 		else{
-			if(CadastroCliente.cadastrarCliente(campos)){
-				mostrarMensagemDeSucesso();
-				manager.mostrarTelaPrincipal();
-			}
-			else{
-				mostrarErroDeCadastro("Não foi possível cadastrar o cliente");
-			}
+			mostrarErroDeCadastro("Não foi possível cadastrar o cliente");
 		}
-		
-		
+
 	}
 	
-	public void mostrarMensagemDeSucesso() {
+	@FXML
+	void alterarCliente(){
+		if(validarCampos() == false) return;
+		
+		
+		TreeMap<String,String> camposCliente = gerarMapAPartirDoFormularioCliente();
+		
+		if(CadastroCliente.alterarCliente(camposCliente)){
+			mostrarMensagemDeSucesso("Cadastro alterado com sucesso");
+			manager.mostrarTelaPrincipal();
+		}
+		else{
+			mostrarErroDeCadastro("Não foi possível alterar o cadastro do cliente");
+		}
+	}
+	
+	boolean validarCampos(){
+		
+		if(campoNome.getText()== null || campoDataDeNascimento.getValue()== null || campoCEP.getPlainText().equals("")
+		   || campoPais.getText() == null || campoEstado.getText() == null || campoCidade.getText()== null || campoBairro.getText() ==null
+		   || campoRua.getText() == null || campoNumero.getText()==null){
+			mostrarErroDeCadastro("Preencha todos os campos obrigatórios");
+			return false;
+		}
+		if(campoCPF.getPlainText() == "" && campoPassaporte.getText() == null){
+			return false;
+		}
+		if(!Cliente.ValidarCPF(campoCPF.getPlainText())){
+			mostrarErroDeCadastro("CPF inválido");
+			return false;
+		}
+		return true;
+	}
+	
+	public void mostrarMensagemDeSucesso(String mensagem) {
     	Alert alert = new Alert(AlertType.INFORMATION);
     	alert.setTitle("Cadastro bem sucedido");
-    	alert.setHeaderText("Cliente cadastrado com sucesso");
+    	alert.setHeaderText(mensagem);
     	alert.setContentText("");
     	alert.showAndWait();
     }
@@ -144,14 +211,6 @@ public class CadastroClienteController {
     	alert.setContentText( mensagem);
     	alert.showAndWait();
     }
-	
-	
-	
-	public void initialize() {
-	 	Cliente cliente = CadastroCliente.getClienteAtual();
-	 	
-	 	preencherCamposComDadosDoCliente(cliente);	
-	}
 	
 	private void preencherCamposComDadosDoCliente(Cliente cliente) {
 		Habilitacao habilitacao = cliente.getHabilitacao();
