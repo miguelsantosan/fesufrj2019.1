@@ -26,12 +26,14 @@ public class CadastroCliente {
 			ResultSet rs    = stmt.executeQuery(query);
 			
 			while((rs.next())){
-		       	 clientesBuscados.add(new Cliente(rs.getInt("ID"),rs.getString("nome"),rs.getString("CPF"),rs.getString("passaporte"),rs.getString("email"),rs.getString("telefone"),rs.getString("CEP"),rs.getString("pais"),
- 						 rs.getString("estado"),rs.getString("cidade"),rs.getString("bairro"),rs.getString("rua"),rs.getString("numero"),rs.getString("complemento"),rs.getDate("dataDeNascimento").toLocalDate()));
+		       	 clientesBuscados.add(new Cliente(rs.getInt("ID"),rs.getString("nome"),rs.getString("CPF"),rs.getString("passaporte"),
+		       			 			rs.getString("email"),rs.getString("telefone"),rs.getString("CEP"),rs.getString("pais"),
+		       			 			rs.getString("estado"),rs.getString("cidade"),rs.getString("bairro"),rs.getString("rua"),
+		       			 			rs.getString("numero"),rs.getString("complemento"),rs.getDate("dataDeNascimento").toLocalDate()));
 			}
 			
 		} catch (SQLException e) {
-			System.err.println("model.dao.CadastroCliente: método prepararStatementDeCliente");
+			System.err.println("model.dao.CadastroCliente: método buscarClientes");
 			System.err.println(e.getMessage());
 		}
 		
@@ -76,12 +78,14 @@ public class CadastroCliente {
 		return campos;
 	}
 	
-	public static boolean cadastrarCliente(TreeMap<String,String> campos){
+	public static boolean alterarCliente(TreeMap<String,String> campos){
 		clientesBuscados = new ArrayList<Cliente>();
 		
-		String query = "INSERT INTO Clientes ";
-		query = adicionarParametrosQueryDeInsercao(query,campos);
+		buscarPorCPF(campos.get("CPF"));
 		
+		
+		String query = "UPDATE Clientes SET ";
+		query = adicionarParametrosQueryUpdate(query, campos);
 		System.out.println(query);
 		
 		try {
@@ -89,7 +93,51 @@ public class CadastroCliente {
 			stmt.executeUpdate(query);
 			return true;
 		} catch (SQLException e) {
-			System.err.println("model.dao.CadastroCliente: método prepararStatementDeCliente");
+			System.err.println("model.dao.CadastroCliente: método alterarCliente");
+			System.err.println(e.getMessage());
+			return false;
+		}
+	}
+	
+	public static String adicionarParametrosQueryUpdate(String query,TreeMap<String,String> campos){
+		boolean algumParametroAdicionado = false;
+		
+		for(String key : campos.keySet()){
+			if(algumParametroAdicionado){
+				query = query + ","+key+"=\""+campos.get(key)+"\" ";
+			}
+			else{
+				query = query +key+"=\""+campos.get(key)+"\" ";
+				algumParametroAdicionado=true;
+			}
+		}
+		
+		query = query + " WHERE ";
+		
+		if(campos.containsKey("CPF")){
+			query = query+"CPF=\""+ campos.get("CPF")+"\";";
+		}
+		else if(campos.containsKey("passaporte")){
+			query = query +"passaporte=\""+ campos.get("passaporte")+"\";";
+		}
+		
+	
+		
+		return query;
+	}
+	
+	public static boolean cadastrarCliente(TreeMap<String,String> campos){
+		
+		String query = "INSERT INTO Clientes ";
+		query = adicionarParametrosQueryDeInsercao(query,campos);
+
+		
+		try {
+			Statement stmt  = MySQLConnector.connection.createStatement();
+			stmt.executeUpdate(query);
+			return true;
+		} catch (SQLException e) {
+			System.err.println("model.dao.CadastroCliente: método cadastrarCliente");
 			System.err.println(e.getMessage());
 			return false;
 		}
@@ -125,15 +173,78 @@ public class CadastroCliente {
 		return query;
 	}
 	
+	public static boolean deletarCliente(String CPF){
+		String query = "DELETE FROM Clientes WHERE CPF=\""+CPF+"\";";
+		
+		
+		try {
+			Statement stmt  = MySQLConnector.connection.createStatement();
+			stmt.executeUpdate(query);
+			return true;
+		} catch (SQLException e) {
+			System.err.println("model.dao.CadastroCliente: método deletarCliente");
+			System.err.println(e.getMessage());
+
+			return false;
+		}
+	}
+	
 
 	
 	public static ArrayList<Cliente> getClientesBuscados() {
 		return clientesBuscados;
 	}
 	
-	public static void buscarPorCPF(String CPF) {
-		clienteAtual = new Cliente();
+	public static boolean buscarPorCPF(String CPF) {
+		clienteAtual = null;
+		
+		String query = "SELECT * FROM Clientes WHERE CPF=\""+CPF+"\";";
+		
+		
+		try {
+			Statement stmt  = MySQLConnector.connection.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			if(rs.next()){
+				clienteAtual = new Cliente(rs.getInt("ID"),rs.getString("nome"),rs.getString("CPF"),rs.getString("passaporte"),
+								rs.getString("email"),rs.getString("telefone"),rs.getString("CEP"),rs.getString("pais"),
+								rs.getString("estado"),rs.getString("cidade"),rs.getString("bairro"),rs.getString("rua"),
+								rs.getString("numero"),rs.getString("complemento"),rs.getDate("dataDeNascimento").toLocalDate());
+				return true;
+			}
+			return false;
+		} catch (SQLException e) {
+			System.err.println("model.dao.CadastroCliente: método buscarPorCPF");
+			System.err.println(e.getMessage());
+			return false;
+		}
 	}
+	
+	public static boolean buscarPorPassaporte(String passaporte) {
+		clienteAtual = null;
+		
+		String query = "SELECT * FROM Clientes WHERE passaporte=\""+passaporte+"\";";
+		
+		
+		
+		try {
+			Statement stmt  = MySQLConnector.connection.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			if(rs.next()){
+				clienteAtual = new Cliente(rs.getInt("ID"),rs.getString("nome"),rs.getString("CPF"),rs.getString("passaporte"),
+								rs.getString("email"),rs.getString("telefone"),rs.getString("CEP"),rs.getString("pais"),
+								rs.getString("estado"),rs.getString("cidade"),rs.getString("bairro"),rs.getString("rua"),
+								rs.getString("numero"),rs.getString("complemento"),rs.getDate("dataDeNascimento").toLocalDate());
+				return true;
+			}
+			return false;
+		} catch (SQLException e) {
+			System.err.println("model.dao.CadastroCliente: método buscarPorPassaporte");
+			System.err.println(e.getMessage());
+			return false;
+		}
+	}
+	
+	
 	
 	public static Cliente getClienteAtual() {
 		return clienteAtual;

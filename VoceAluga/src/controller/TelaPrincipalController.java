@@ -86,7 +86,7 @@ public class TelaPrincipalController {
 	 
 	 @FXML
 	 void processarBotaoCadastrarNovoCliente(MouseEvent e) throws IOException {
-		 CadastroCliente.setClienteAtual(new Cliente());
+		 CadastroCliente.setClienteAtual(null);
 		 manager.mostrarTelaCadastroDeCliente();
 	 }
 	 
@@ -111,7 +111,7 @@ public class TelaPrincipalController {
 		 	
 		 	CadastroCliente.buscarClientes(cliente);
 		 	
-		 	if(CadastroCliente.getClientesBuscados().size()>0)
+		 	if(CadastroCliente.getClientesBuscados() != null)
 		 		manager.mostrarTelaResultadosBuscaCliente();
 		 	else 
 		 		exibirErroNenhumClienteEncontrado();
