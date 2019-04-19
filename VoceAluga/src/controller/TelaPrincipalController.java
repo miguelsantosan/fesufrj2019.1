@@ -3,17 +3,20 @@ package controller;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 
 import model.Veiculo;
-import model.server.CadastroVeiculo;
-import model.server.ValidadorDeLogin;
-import model.server.CadastroCliente;
+import model.dao.CadastroCliente;
+import model.dao.CadastroVeiculo;
+import model.dao.ValidadorDeLogin;
 import model.Cliente;
+import model.Funcionario;
 import controller.ScenesManager;
 
 public class TelaPrincipalController {
@@ -95,9 +98,11 @@ public class TelaPrincipalController {
 		 	String passaporte = CampoPassaporte.getText().trim();
 		 	String CEP = CampoCEP.getText().trim();
 		 	String email = CampoEmail.getText().trim();
+		 	String telefone = CampoTelefone.getText();
 		 	
 		 	Cliente cliente= new Cliente();
 		 	
+		 	if(!telefone.equals("")) cliente.setTelefone(telefone);
 		 	if(!CPF.equals("")) cliente.setCpf(CPF);
 		 	if(!nome.equals("")) cliente.setNome(nome);
 		 	if(!passaporte.equals("")) cliente.setPassaporte(passaporte);
@@ -105,11 +110,31 @@ public class TelaPrincipalController {
 		 	if(!email.equals("")) cliente.setEmail(email);
 		 	
 		 	CadastroCliente.buscarClientes(cliente);
-		 
-		 	manager.mostrarTelaResultadosBuscaCliente();
+		 	
+		 	if(CadastroCliente.getClientesBuscados().size()>0)
+		 		manager.mostrarTelaResultadosBuscaCliente();
+		 	else 
+		 		exibirErroNenhumClienteEncontrado();
 	 }
 	 
 	 
+	private void exibirErroNenhumClienteEncontrado() {
+		Alert alert = new Alert(AlertType.ERROR);
+    	alert.setTitle("Erro");
+    	alert.setHeaderText("Nenhum cliente corresponde aos campos informados.");
+    	alert.setContentText("");
+    	alert.showAndWait();
+    	
+    	CampoNome.setText("");
+    	CampoCPF.setText("");
+    	CampoPassaporte.setText("");
+    	CampoCEP.setText("");
+    	CampoTelefone.setText("");
+    	CampoEmail.setText("");
+    	
+		
+	}
+
 	//NAOIMPLEMENTADO
 	 @FXML
 	 public void processarBotaoBuscarVeiculo(MouseEvent e) throws IOException {
@@ -147,10 +172,11 @@ public class TelaPrincipalController {
 	 
 	 
 	 public void initialize() {
+		 Funcionario funcionarioLogado = ValidadorDeLogin.getFuncionarioLogado();
 		 
-		 int nivel = ValidadorDeLogin.FuncionarioLogado.getNivelDeAcesso();
-		 usuario.setText(ValidadorDeLogin.FuncionarioLogado.getNome());
-		 cargo.setText(ValidadorDeLogin.FuncionarioLogado.getCargo());
+		 int nivel = funcionarioLogado.getNivelDeAcesso();
+		 usuario.setText(funcionarioLogado.getNome());
+		 cargo.setText(funcionarioLogado.getCargo());
 		 NivelDeAcesso.setText(Integer.toString(nivel));
 		 
 		 tabClientes.setDisable(false);

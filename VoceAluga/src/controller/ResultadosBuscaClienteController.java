@@ -10,7 +10,7 @@ import javafx.scene.control.ListView;
 
 import controller.ScenesManager;
 import model.Cliente;
-import model.server.CadastroCliente;
+import model.dao.CadastroCliente;
 
 
 

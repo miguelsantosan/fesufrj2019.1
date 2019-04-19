@@ -1,4 +1,4 @@
-package model.server;
+package model.dao;
 
 import java.util.ArrayList;
 
