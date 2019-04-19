@@ -1,6 +1,6 @@
 package model.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Map;
 
@@ -40,16 +40,14 @@ public class CadastroClienteTester {
 	
 	@Test 
 	public void testAdicionarParametrosAoStatement(){
-		Map<String,String> campos1 = CadastroCliente.obterValoresDosCamposDoCliente(cliente1);
 		Map<String,String> campos2 = CadastroCliente.obterValoresDosCamposDoCliente(cliente2);
 		
 		String statement = "SELECT * FROM table";
 		
-		String output1 =CadastroCliente.adicionarParametrosQuery(statement, campos1);
-		String output2 =CadastroCliente.adicionarParametrosQuery(statement, campos2);
+		String output2 =CadastroCliente.adicionarParametrosQueryDeBusca(statement, campos2);
+		
 		
 		assertEquals(statement,output2);
-		assertEquals("SELECT * FROM table WHERE telefone=\"552189898989\" AND passaporte=\"12378\" AND CPF=\"17181426095\" AND nome=\"Joaquim\" AND CEP=\"12345678\" ",output1);
 	}
 
 }

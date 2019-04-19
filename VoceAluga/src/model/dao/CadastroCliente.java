@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.Map;
 
 import model.Cliente;
@@ -19,7 +19,7 @@ public class CadastroCliente {
 		
 		Map<String,String> campos = obterValoresDosCamposDoCliente(cliente); 	
 		String query = "SELECT * FROM Clientes";
-		query = adicionarParametrosQuery(query,campos);
+		query = adicionarParametrosQueryDeBusca(query,campos);
 		
 		try {
 			Statement stmt  = MySQLConnector.connection.createStatement();
@@ -37,7 +37,7 @@ public class CadastroCliente {
 		
 	}
 	
-	public static String adicionarParametrosQuery(String query, Map<String,String> campos){
+	public static String adicionarParametrosQueryDeBusca(String query, Map<String,String> campos){
 		boolean algumParametroAdicionado = false; // indica se algum parametro ja foi adicionado apos WHERE
 		String[] nomeDosCampos = campos.keySet().toArray(new String[campos.size()]);
 
@@ -46,7 +46,7 @@ public class CadastroCliente {
 			query = query+" WHERE";
 			
 			for(int i=0; i<campos.size(); i++){
-					query= query + gerarParametroParaQuery(nomeDosCampos[i], campos, algumParametroAdicionado);
+					query= query + gerarParametroParaQueryDeBusca(nomeDosCampos[i], campos, algumParametroAdicionado);
 					algumParametroAdicionado = true;
 				}
 		}
@@ -55,7 +55,7 @@ public class CadastroCliente {
 		
 	
 		
-	public static String gerarParametroParaQuery(String nomeDoCampo,Map<String,String> campos,boolean algumParametroAdicionado){
+	public static String gerarParametroParaQueryDeBusca(String nomeDoCampo,Map<String,String> campos,boolean algumParametroAdicionado){
 		String parametro = " ";
 		if(algumParametroAdicionado) parametro = "AND ";
 		parametro = parametro + nomeDoCampo+"=\""+campos.get(nomeDoCampo)+"\" ";
@@ -64,21 +64,68 @@ public class CadastroCliente {
 	
 	
 	public static Map<String,String> obterValoresDosCamposDoCliente(Cliente cliente){
-		Map<String, String> campos = new HashMap<>();
+		Map<String, String> campos = new TreeMap<>();
 		if(cliente.getNome() != null) campos.put("nome", cliente.getNome());
 		if(cliente.getCPF() != null) campos.put("CPF", cliente.getCPF());
 		if(cliente.getPassaporte() != null) campos.put("passaporte",cliente.getPassaporte());
 		if(cliente.getCEP()!= null) campos.put("CEP", cliente.getCEP());
 		if(cliente.getTelefone()!= null) campos.put("telefone", cliente.getTelefone());
 		if(cliente.getEmail()!= null) campos.put("email", cliente.getEmail());
+
 		
 		return campos;
 	}
 	
+	public static boolean cadastrarCliente(TreeMap<String,String> campos){
+		clientesBuscados = new ArrayList<Cliente>();
+		
+		String query = "INSERT INTO Clientes ";
+		query = adicionarParametrosQueryDeInsercao(query,campos);
+		
+		System.out.println(query);
+		
+		try {
+			Statement stmt  = MySQLConnector.connection.createStatement();
+			stmt.executeUpdate(query);
+			return true;
+		} catch (SQLException e) {
+			System.err.println("model.dao.CadastroCliente: método prepararStatementDeCliente");
+			System.err.println(e.getMessage());
+			return false;
+		}
+	}
 	
+	public static String adicionarParametrosQueryDeInsercao(String query,TreeMap<String,String> campos){
+		boolean algumParametroAdicionado = false; // indica se algum parametro ja foi adicionado apos WHERE
+		
+		query = query+ " (";
+		for(String key : campos.keySet()){
+			if(!algumParametroAdicionado){
+				query= query + key;
+				algumParametroAdicionado = true;
+			}
+			else{
+				query = query +","+key;
+			}
+		}
+		query = query +") VALUES ("; 
+		algumParametroAdicionado=false;
+		
+		for(String key: campos.keySet()){
+			if(!algumParametroAdicionado){
+				query= query + "\""+campos.get(key)+"\"";
+				algumParametroAdicionado = true;
+			}
+			else{
+				query = query +","+"\""+campos.get(key)+"\"";
+			}
+		}
+		
+		query = query + ");";
+		return query;
+	}
 	
-	
-	
+
 	
 	public static ArrayList<Cliente> getClientesBuscados() {
 		return clientesBuscados;

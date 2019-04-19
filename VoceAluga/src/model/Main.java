@@ -15,8 +15,8 @@ public class Main extends Application {
 	@Override
     public void start(Stage primaryStage) throws IOException{
 		MySQLConnector.abrirConexao();
-		
-    	manager.mostrarTelaDeLogin();
+
+		manager.mostrarTelaDeLogin();
         ScenesManager.primaryStage.show();
     }
 	

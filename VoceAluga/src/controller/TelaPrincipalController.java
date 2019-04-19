@@ -121,8 +121,8 @@ public class TelaPrincipalController {
 	private void exibirErroNenhumClienteEncontrado() {
 		Alert alert = new Alert(AlertType.ERROR);
     	alert.setTitle("Erro");
-    	alert.setHeaderText("Erro na busca");
-    	alert.setContentText("Nenhum cliente corresponde aos campos informados.");
+    	alert.setHeaderText("Nenhum cliente corresponde aos campos informados.");
+    	alert.setContentText("");
     	alert.showAndWait();
     	
     	CampoNome.setText("");
