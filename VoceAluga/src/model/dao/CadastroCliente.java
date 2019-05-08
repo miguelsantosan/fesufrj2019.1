@@ -173,12 +173,23 @@ public class CadastroCliente {
 		algumParametroAdicionado=false;
 		
 		for(String key: campos.keySet()){
-			if(!algumParametroAdicionado){
-				query= query + "\""+campos.get(key)+"\"";
-				algumParametroAdicionado = true;
+			if((key.equals("CPF")||key.equals("passaporte"))&& campos.get(key).equals("")){
+				if(!algumParametroAdicionado){
+					query= query + "NULL";
+					algumParametroAdicionado = true;
+				}
+				else{
+					query = query +","+"NULL";
+				}
 			}
 			else{
-				query = query +","+"\""+campos.get(key)+"\"";
+				if(!algumParametroAdicionado){
+					query= query + "\""+campos.get(key)+"\"";
+					algumParametroAdicionado = true;
+				}
+				else{
+					query = query +","+"\""+campos.get(key)+"\"";
+				}
 			}
 		}
 		

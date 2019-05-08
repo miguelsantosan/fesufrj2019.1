@@ -137,12 +137,17 @@ public class CadastroClienteController {
 	
 	@FXML
 	void adicionarCliente() throws IOException{
+		if(campoPassaporte.getText().equals("") && campoCPF.getPlainText().equals("")){
+			mostrarErroDeCadastro("Preencha o CPF ou Passaporte");
+			return;
+		}
 		
-		if(CadastroCliente.buscarPorCPF(campoCPF.getPlainText())){
+		
+		if(!campoCPF.getText().equals("") &&CadastroCliente.buscarPorCPF(campoCPF.getPlainText())){
 			mostrarErroDeCadastro("CPF já cadastrado");
 			return;
 		}
-		if(CadastroCliente.buscarPorPassaporte(campoPassaporte.getText())){
+		if(!campoPassaporte.getText().equals("") && CadastroCliente.buscarPorPassaporte(campoPassaporte.getText())){
 			mostrarErroDeCadastro("Passaporte já cadastrado");
 			return;
 		}

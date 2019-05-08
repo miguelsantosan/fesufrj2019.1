@@ -12,7 +12,7 @@ public class Habilitacao {
 	  
   }
   
-  Habilitacao(String numeroDeRegistro,String categoria,LocalDate validade,LocalDate dataDeEmissao){
+  public Habilitacao(String numeroDeRegistro,String categoria,LocalDate validade,LocalDate dataDeEmissao){
 	  this.numeroDeRegistro = numeroDeRegistro;
 	  this.categoria = categoria;
 	  this.validade = validade;
