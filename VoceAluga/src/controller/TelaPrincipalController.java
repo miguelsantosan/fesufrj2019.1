@@ -90,7 +90,7 @@ public class TelaPrincipalController {
 		 manager.mostrarTelaCadastroDeCliente();
 	 }
 	 
-	 //NAOIMPLEMENTADO
+	 
 	 @FXML
 	 void processarBotaoBuscarCliente(MouseEvent e) throws IOException{
 		 	String nome = CampoNome.getText();

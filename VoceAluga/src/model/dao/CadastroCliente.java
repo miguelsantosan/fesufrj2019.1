@@ -79,8 +79,7 @@ public class CadastroCliente {
 	}
 	
 	public static boolean alterarCliente(TreeMap<String,String> campos){
-		clientesBuscados = new ArrayList<Cliente>();
-		
+
 		buscarPorCPF(campos.get("CPF"));
 		
 		
@@ -102,13 +101,27 @@ public class CadastroCliente {
 	public static String adicionarParametrosQueryUpdate(String query,TreeMap<String,String> campos){
 		boolean algumParametroAdicionado = false;
 		
+		System.out.println(campos.toString());
+		
 		for(String key : campos.keySet()){
-			if(algumParametroAdicionado){
-				query = query + ","+key+"=\""+campos.get(key)+"\" ";
+			
+			if((key.equals("CPF")||key.equals("passaporte"))&& campos.get(key).equals("")){ //nao permite que CPF ou passaporte vazio seja adicionado
+				if(algumParametroAdicionado){
+					query = query + ","+key+"=NULL ";
+				}
+				else{
+					query = query +key+"=NULL ";
+					algumParametroAdicionado=true;
+				}
 			}
 			else{
-				query = query +key+"=\""+campos.get(key)+"\" ";
-				algumParametroAdicionado=true;
+				if(algumParametroAdicionado){
+					query = query + ","+key+"=\""+campos.get(key)+"\" ";
+				}
+				else{
+					query = query +key+"=\""+campos.get(key)+"\" ";
+					algumParametroAdicionado=true;
+				}
 			}
 		}
 		
@@ -160,12 +173,23 @@ public class CadastroCliente {
 		algumParametroAdicionado=false;
 		
 		for(String key: campos.keySet()){
-			if(!algumParametroAdicionado){
-				query= query + "\""+campos.get(key)+"\"";
-				algumParametroAdicionado = true;
+			if((key.equals("CPF")||key.equals("passaporte"))&& campos.get(key).equals("")){
+				if(!algumParametroAdicionado){
+					query= query + "NULL";
+					algumParametroAdicionado = true;
+				}
+				else{
+					query = query +","+"NULL";
+				}
 			}
 			else{
-				query = query +","+"\""+campos.get(key)+"\"";
+				if(!algumParametroAdicionado){
+					query= query + "\""+campos.get(key)+"\"";
+					algumParametroAdicionado = true;
+				}
+				else{
+					query = query +","+"\""+campos.get(key)+"\"";
+				}
 			}
 		}
 		
