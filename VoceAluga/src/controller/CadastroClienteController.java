@@ -80,8 +80,6 @@ public class CadastroClienteController {
 	 		preencherCamposComDadosDoCliente(cliente);	
 	 		campoCPF.setDisable(true);
 		}
-	
-	
 	}
 	
 	@FXML
@@ -157,6 +155,9 @@ public class CadastroClienteController {
 		TreeMap<String,String> camposCliente = gerarMapAPartirDoFormularioCliente();
 		
 		if(CadastroCliente.cadastrarCliente(camposCliente)){
+			if(!campoNumeroDeRegistro.getPlainText().equals("")){
+				adicionarHabilitacao();
+			}
 			mostrarMensagemDeSucesso("Cliente cadastrado com sucesso");
 			manager.mostrarTelaPrincipal();
 		}
@@ -164,6 +165,42 @@ public class CadastroClienteController {
 			mostrarErroDeCadastro("Não foi possível cadastrar o cliente");
 		}
 
+	}
+	
+	void adicionarHabilitacao(){
+		TreeMap<String,String> camposHabilitacao = gerarMapAPartirDoFormularioHabilitacao();
+		if(!campoCPF.getPlainText().equals("")){
+			if(!CadastroCliente.cadastrarHabilitacaoPorCPF(campoCPF.getPlainText(), camposHabilitacao)){
+				mostrarErroDeCadastro("Erro ao cadastrar a habilitação");
+			}
+		}
+		
+		if(!campoPassaporte.getText().equals("")){
+			if(!CadastroCliente.cadastrarHabilitacaoPorPassaporte(campoPassaporte.getText(), camposHabilitacao)){
+				mostrarErroDeCadastro("Erro ao cadastrar a habilitação");
+			}
+		}
+	}
+	
+	void alterarHabilitacao(){
+		TreeMap<String,String> camposHabilitacao = gerarMapAPartirDoFormularioHabilitacao();
+		if(!campoCPF.getPlainText().equals("")){
+			if(!CadastroCliente.deletarHabilitacaoPorCPF(campoCPF.getPlainText())) mostrarErroDeCadastro("Erro ao cadastrar a habilitação");
+			if(!CadastroCliente.cadastrarHabilitacaoPorCPF(campoCPF.getPlainText(), camposHabilitacao)) mostrarErroDeCadastro("Erro ao cadastrar a habilitação");	
+		}
+		else if(!campoPassaporte.getText().equals("")){
+			if(!CadastroCliente.deletarHabilitacaoPorPassaporte(campoPassaporte.getText())) mostrarErroDeCadastro("Erro ao cadastrar a habilitação");
+			if(!CadastroCliente.cadastrarHabilitacaoPorPassaporte(campoPassaporte.getText(), camposHabilitacao)) mostrarErroDeCadastro("Erro ao cadastrar a habilitação");	
+		}
+	}
+	
+	void deletarHabilitacao(){
+		if(!campoCPF.getPlainText().equals("")){
+			if(!CadastroCliente.deletarHabilitacaoPorCPF(campoCPF.getPlainText())) mostrarErroDeCadastro("Erro ao remover a habilitação");
+		}
+		else if(!campoPassaporte.getText().equals("")){
+			if(!CadastroCliente.deletarHabilitacaoPorPassaporte(campoPassaporte.getText())) mostrarErroDeCadastro("Erro ao remover a habilitação");
+		}
 	}
 	
 	@FXML
@@ -174,12 +211,27 @@ public class CadastroClienteController {
 		TreeMap<String,String> camposCliente = gerarMapAPartirDoFormularioCliente();
 		
 		if(CadastroCliente.alterarCliente(camposCliente)){
+			if(!campoNumeroDeRegistro.getPlainText().equals("")){
+				alterarHabilitacao();
+			}
+			
+			if(camposDaHabilitacaoVazios() && CadastroCliente.getClienteAtual().getHabilitacao()!=null){
+				deletarHabilitacao();
+			}
 			mostrarMensagemDeSucesso("Cadastro alterado com sucesso");
 			manager.mostrarTelaPrincipal();
 		}
 		else{
 			mostrarErroDeCadastro("Não foi possível alterar o cadastro do cliente");
 		}
+	}
+	
+	boolean camposDaHabilitacaoVazios(){
+		if(!campoNumeroDeRegistro.getPlainText().equals("") || campoValidade.getValue() != null || campoDataDeEmissao.getValue() !=null ||
+				   !campoCategoria.getPlainText().equals("")){
+			return false;
+		}
+		return true;
 	}
 	
 	boolean validarCampos(){
@@ -196,6 +248,18 @@ public class CadastroClienteController {
 		if(!Cliente.ValidarCPF(campoCPF.getPlainText())){
 			mostrarErroDeCadastro("CPF inválido");
 			return false;
+		}
+		
+		
+		
+		if(!camposDaHabilitacaoVazios()){
+			if(campoNumeroDeRegistro.getPlainText().equals("") || campoValidade.getValue() == null || campoDataDeEmissao.getValue() ==null ||
+		       campoCategoria.getPlainText().equals("")){
+				mostrarErroDeCadastro("preencha todos os campos da habilitação");
+				return false;
+			}
+			
+			
 		}
 		return true;
 	}
@@ -216,6 +280,7 @@ public class CadastroClienteController {
     	alert.setContentText( mensagem);
     	alert.showAndWait();
     }
+    
 	
 	private void preencherCamposComDadosDoCliente(Cliente cliente) {
 		Habilitacao habilitacao = cliente.getHabilitacao();
