@@ -120,8 +120,7 @@ public class InformacoesDoClienteController {
 	public void initialize() {
 	 	Cliente cliente = CadastroCliente.getClienteAtual();
 	 	
-	 	preencherLabelsComDadosDoCliente(cliente);	
-		 
+	 	preencherLabelsComDadosDoCliente(cliente);
 	}
 	
 	private void preencherLabelsComDadosDoCliente(Cliente cliente) {
@@ -146,7 +145,6 @@ public class InformacoesDoClienteController {
 	 		labelDataDeNascimento.setText(cliente.getDataDeNascimento().toString());
 
 	 	if(cliente.getHabilitacao()!=null){
-	 		
 		 	labelNumeroDeRegistro.setText(habilitacao.getNumeroDeRegistro());
 		 	labelCategoria.setText(habilitacao.getCategoria());
 		 	if(habilitacao.getDataDeEmissao()!=null)

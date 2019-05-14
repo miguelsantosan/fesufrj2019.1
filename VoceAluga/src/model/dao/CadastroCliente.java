@@ -26,10 +26,20 @@ public class CadastroCliente {
 			ResultSet rs    = stmt.executeQuery(query);
 			
 			while((rs.next())){
-		       	 clientesBuscados.add(new Cliente(rs.getInt("ID"),rs.getString("nome"),rs.getString("CPF"),rs.getString("passaporte"),
-		       			 			rs.getString("email"),rs.getString("telefone"),rs.getString("CEP"),rs.getString("pais"),
-		       			 			rs.getString("estado"),rs.getString("cidade"),rs.getString("bairro"),rs.getString("rua"),
-		       			 			rs.getString("numero"),rs.getString("complemento"),rs.getDate("dataDeNascimento").toLocalDate()));
+				Cliente clienteEncontrado= new Cliente(rs.getInt("ID"),rs.getString("nome"),rs.getString("CPF"),rs.getString("passaporte"),
+   			 			rs.getString("email"),rs.getString("telefone"),rs.getString("CEP"),rs.getString("pais"),
+   			 			rs.getString("estado"),rs.getString("cidade"),rs.getString("bairro"),rs.getString("rua"),
+   			 			rs.getString("numero"),rs.getString("complemento"),rs.getDate("dataDeNascimento").toLocalDate());
+				
+		       	 
+		       	 if(buscarHabilitacaoPorCPF(clienteEncontrado.getCPF())){
+		       		 clienteEncontrado.setHabilitacao(CadastroHabilitacao.habilitacaoAtual);
+		       	 }
+		       	 else if(buscarHabilitacaoPorPassaporte(clienteEncontrado.getPassaporte())){
+		       		clienteEncontrado.setHabilitacao(CadastroHabilitacao.habilitacaoAtual);
+		       	 }
+		       	 
+		       	clientesBuscados.add(clienteEncontrado);
 			}
 			
 		} catch (SQLException e) {
@@ -197,6 +207,7 @@ public class CadastroCliente {
 		return query;
 	}
 	
+	
 	public static boolean deletarCliente(String CPF){
 		String query = "DELETE FROM Clientes WHERE CPF=\""+CPF+"\";";
 		
@@ -228,11 +239,21 @@ public class CadastroCliente {
 		try {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			if(rs.next()){
-				clienteAtual = new Cliente(rs.getInt("ID"),rs.getString("nome"),rs.getString("CPF"),rs.getString("passaporte"),
-								rs.getString("email"),rs.getString("telefone"),rs.getString("CEP"),rs.getString("pais"),
-								rs.getString("estado"),rs.getString("cidade"),rs.getString("bairro"),rs.getString("rua"),
-								rs.getString("numero"),rs.getString("complemento"),rs.getDate("dataDeNascimento").toLocalDate());
+			if(rs.next()){ 
+				Cliente clienteEncontrado = new Cliente(rs.getInt("ID"),rs.getString("nome"),rs.getString("CPF"),rs.getString("passaporte"),
+						rs.getString("email"),rs.getString("telefone"),rs.getString("CEP"),rs.getString("pais"),
+						rs.getString("estado"),rs.getString("cidade"),rs.getString("bairro"),rs.getString("rua"),
+						rs.getString("numero"),rs.getString("complemento"),rs.getDate("dataDeNascimento").toLocalDate());
+				
+				 if(buscarHabilitacaoPorCPF(clienteEncontrado.getCPF())){
+		       		 clienteEncontrado.setHabilitacao(CadastroHabilitacao.habilitacaoAtual);
+		       	 }
+		    
+		       	 
+		       	clientesBuscados.add(clienteEncontrado);
+				
+				
+				clienteAtual = clienteEncontrado;
 				return true;
 			}
 			return false;
@@ -247,17 +268,27 @@ public class CadastroCliente {
 		clienteAtual = null;
 		
 		String query = "SELECT * FROM Clientes WHERE passaporte=\""+passaporte+"\";";
-		
-		
-		
+
 		try {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-				clienteAtual = new Cliente(rs.getInt("ID"),rs.getString("nome"),rs.getString("CPF"),rs.getString("passaporte"),
-								rs.getString("email"),rs.getString("telefone"),rs.getString("CEP"),rs.getString("pais"),
-								rs.getString("estado"),rs.getString("cidade"),rs.getString("bairro"),rs.getString("rua"),
-								rs.getString("numero"),rs.getString("complemento"),rs.getDate("dataDeNascimento").toLocalDate());
+				Cliente clienteEncontrado = new Cliente(rs.getInt("ID"),rs.getString("nome"),rs.getString("CPF"),rs.getString("passaporte"),
+						rs.getString("email"),rs.getString("telefone"),rs.getString("CEP"),rs.getString("pais"),
+						rs.getString("estado"),rs.getString("cidade"),rs.getString("bairro"),rs.getString("rua"),
+						rs.getString("numero"),rs.getString("complemento"),rs.getDate("dataDeNascimento").toLocalDate());
+				
+				
+				
+				 if(buscarHabilitacaoPorPassaporte(clienteEncontrado.getPassaporte())){
+		       		 clienteEncontrado.setHabilitacao(CadastroHabilitacao.habilitacaoAtual);
+		       	 }
+		    
+		       	 
+		       	clientesBuscados.add(clienteEncontrado);
+				
+				
+				clienteAtual = clienteEncontrado;
 				return true;
 			}
 			return false;
@@ -274,8 +305,135 @@ public class CadastroCliente {
 		return clienteAtual;
 	}
 	
+	
+	
 	public static void setClienteAtual(Cliente cliente) {
 		clienteAtual = cliente;
 	}
+	
+	
+	public static boolean cadastrarHabilitacaoPorCPF(String CPF,Map<String,String> camposHabilitacao){
+		TreeMap<String,String> camposCliente = new TreeMap<>();
+		camposCliente.put("CPF", CPF);
+		camposCliente.put("habilitacaoNumeroDeRegistro", camposHabilitacao.get("numeroDeRegistro"));
+		if(buscarPorCPF(CPF))
+			if(alterarCliente(camposCliente))
+				if(CadastroHabilitacao.cadastrarHabilitacao(camposHabilitacao))
+					return true;				
 
+		return false;
+	}
+	
+	public static boolean cadastrarHabilitacaoPorPassaporte(String passaporte,Map<String,String> camposHabilitacao){
+		TreeMap<String,String> camposCliente = new TreeMap<>();
+		camposCliente.put("passaporte", passaporte);
+		camposCliente.put("habilitacaoNumeroDeRegistro", camposHabilitacao.get("numeroDeRegistro"));
+		if(buscarPorPassaporte(passaporte))
+			if(alterarCliente(camposCliente))
+				if(CadastroHabilitacao.cadastrarHabilitacao(camposHabilitacao))
+					return true;				
+			
+		return false;
+	}
+	
+	public static boolean deletarHabilitacaoPorCPF(String CPF){
+		
+		String query = "SELECT * FROM Clientes WHERE CPF=\""+CPF+"\";";
+		String numeroDeRegistro;
+		
+		try {
+			Statement stmt  = MySQLConnector.connection.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			if(rs.next()){
+				numeroDeRegistro = rs.getString("habilitacaoNumeroDeRegistro");
+				if(CadastroHabilitacao.deletarHabilitacao(numeroDeRegistro))
+					return true;	
+			}
+			return false;
+		} catch (SQLException e) {
+			System.err.println("model.dao.CadastroCliente: método deletarHabilitacaoPorCPF");
+			System.err.println(e.getMessage());
+			return false;
+		}
+			
+	}
+	
+	public static boolean deletarHabilitacaoPorPassaporte(String passaporte){
+		
+		String query = "SELECT * FROM Clientes WHERE passaporte=\""+passaporte+"\";";
+		String numeroDeRegistro;
+		
+		try {
+			Statement stmt  = MySQLConnector.connection.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			if(rs.next()){
+				numeroDeRegistro = rs.getString("habilitacaoNumeroDeRegistro");
+				if(CadastroHabilitacao.deletarHabilitacao(numeroDeRegistro))
+					return true;	
+			}
+			return false;
+		} catch (SQLException e) {
+			System.err.println("model.dao.CadastroCliente: método deletarHabilitacaoPorPassaporte");
+			System.err.println(e.getMessage());
+			return false;
+		}
+			
+	}
+	
+	public static boolean buscarHabilitacaoPorCPF(String CPF){
+		String query = "SELECT * FROM Clientes WHERE CPF=\""+CPF+"\";";
+		String numeroDeRegistro;
+		
+		try {
+			Statement stmt  = MySQLConnector.connection.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			if(rs.next()){
+				numeroDeRegistro = rs.getString("habilitacaoNumeroDeRegistro");
+				if(CadastroHabilitacao.buscarHabilitacaoPorNumeroDeRegistro(numeroDeRegistro)){
+					return true;
+				}
+						
+			}
+			return false;
+		} catch (SQLException e) {
+			System.err.println("model.dao.CadastroCliente: método buscarHabilitacaoPorCPF");
+			System.err.println(e.getMessage());
+			return false;
+		}
+	}
+
+	public static boolean buscarHabilitacaoPorPassaporte(String passaporte){
+		String query = "SELECT * FROM Clientes WHERE passaporte=\""+passaporte+"\";";
+		String numeroDeRegistro;
+		
+		try {
+			Statement stmt  = MySQLConnector.connection.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			if(rs.next()){
+				numeroDeRegistro = rs.getString("habilitacaoNumeroDeRegistro");
+				if(CadastroHabilitacao.buscarHabilitacaoPorNumeroDeRegistro(numeroDeRegistro)){
+					return true;
+				}
+						
+			}
+			return false;
+		} catch (SQLException e) {
+			System.err.println("model.dao.CadastroCliente: método buscarHabilitacaoPorPassaporte");
+			System.err.println(e.getMessage());
+			return false;
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

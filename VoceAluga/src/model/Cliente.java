@@ -192,6 +192,10 @@ public class Cliente {
 	  this.habilitacao = new Habilitacao(numeroDeRegistro,categoria,validade,dataDeEmissao); 
   }
   
+  public void setHabilitacao(Habilitacao h){
+	  setHabilitacao(h.getNumeroDeRegistro(),h.getCategoria(),h.getValidade(),h.getDataDeEmissao());
+  }
+  
   public void setTelefone(String telefone) {
 	  this.telefone = telefone;
   }

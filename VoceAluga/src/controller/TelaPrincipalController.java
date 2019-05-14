@@ -111,6 +111,7 @@ public class TelaPrincipalController {
 		 	
 		 	CadastroCliente.buscarClientes(cliente);
 		 	
+		 	
 		 	if(CadastroCliente.getClientesBuscados().size()>0)
 		 		manager.mostrarTelaResultadosBuscaCliente();
 		 	else 
