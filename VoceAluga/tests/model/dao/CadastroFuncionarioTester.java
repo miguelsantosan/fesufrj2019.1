@@ -53,6 +53,25 @@ public class CadastroFuncionarioTester {
 		assertEquals("Gerente",funcionario.getCargo());
 		
 	}
+	
+	@Test
+	public void testInsercaoBuscaRemocao(){
+		TreeMap<String,String> campos = new TreeMap<>();
+		campos.put("login", "abcdef");
+		campos.put("senha","abcdef");
+		campos.put("CPF", "11133344400");
+		campos.put("nome", "Renan");
+		campos.put("cargo", "Vendedor");
+		campos.put("nivelDeAcesso", "1");
+		assertTrue(CadastroFuncionario.cadastrarFuncionario(campos));
+		
+		assertTrue(CadastroFuncionario.buscarPorCPF("11133344400"));
+		assertEquals("11133344400",CadastroFuncionario.getFuncionarioAtual().getCPF());
+		assertEquals("Vendedor",CadastroFuncionario.getFuncionarioAtual().getCargo());	
+		
+		assertTrue(CadastroFuncionario.deletarFuncionario("11133344400"));
+		assertTrue(!CadastroFuncionario.buscarPorCPF("11133344400"));
+	}
 
 
 	@AfterClass

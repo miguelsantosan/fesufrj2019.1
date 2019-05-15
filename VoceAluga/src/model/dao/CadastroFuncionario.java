@@ -103,17 +103,74 @@ public class CadastroFuncionario {
 		}
 	}
 	
-	public static void buscarPorLogin(String login) {
-		funcionarioAtual = new Funcionario();
+	public static boolean cadastrarFuncionario(Map<String,String> campos){
+		String query = "INSERT INTO Funcionarios";
+		query = adicionarParametrosQueryDeInsercao(query,campos);
+
+		
+		try {
+			Statement stmt  = MySQLConnector.connection.createStatement();
+			stmt.executeUpdate(query);
+			return true;
+		} catch (SQLException e) {
+			System.err.println("model.dao.CadastroFuncionario: método cadastrarFuncionario");
+			System.err.println(e.getMessage());
+			return false;
+		}
+	}
+	
+	public static String adicionarParametrosQueryDeInsercao(String query,Map<String,String> campos){
+			boolean algumParametroAdicionado = false; // indica se algum parametro ja foi adicionado apos WHERE
+			
+			query = query+ " (";
+			for(String key : campos.keySet()){
+				if(!algumParametroAdicionado){
+					query= query + key;
+					algumParametroAdicionado = true;
+				}
+				else{
+					query = query +","+key;
+				}
+			}
+			query = query +") VALUES ("; 
+			algumParametroAdicionado=false;
+			
+			for(String key: campos.keySet()){
+					if(!algumParametroAdicionado){
+						query= query + "\""+campos.get(key)+"\"";
+						algumParametroAdicionado = true;
+					}
+					else{
+						query = query +","+"\""+campos.get(key)+"\"";
+					}
+				
+			}
+			
+			query = query + ");";
+			return query;
+		}
+	
+	public static boolean deletarFuncionario(String CPF){
+		String query = "DELETE FROM Funcionarios WHERE CPF=\""+CPF+"\";";
+		
+		
+		try {
+			Statement stmt  = MySQLConnector.connection.createStatement();
+			stmt.executeUpdate(query);
+			return true;
+		} catch (SQLException e) {
+			System.err.println("model.dao.CadastroFuncionario: método deletarFuncionario");
+			System.err.println(e.getMessage());
+
+			return false;
+		}
 	}
 	
 	public static Funcionario getFuncionarioAtual() {
 		return funcionarioAtual;
 	}
 	
-	public static void setFuncionarioAtual(Funcionario Funcionario) {
-		funcionarioAtual = Funcionario;
-	}
+	
 
 
 }
