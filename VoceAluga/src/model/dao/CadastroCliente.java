@@ -95,7 +95,6 @@ public class CadastroCliente {
 		
 		String query = "UPDATE Clientes SET ";
 		query = adicionarParametrosQueryUpdate(query, campos);
-		System.out.println(query);
 		
 		try {
 			Statement stmt  = MySQLConnector.connection.createStatement();
@@ -111,7 +110,6 @@ public class CadastroCliente {
 	public static String adicionarParametrosQueryUpdate(String query,TreeMap<String,String> campos){
 		boolean algumParametroAdicionado = false;
 		
-		System.out.println(campos.toString());
 		
 		for(String key : campos.keySet()){
 			
@@ -248,11 +246,7 @@ public class CadastroCliente {
 				 if(buscarHabilitacaoPorCPF(clienteEncontrado.getCPF())){
 		       		 clienteEncontrado.setHabilitacao(CadastroHabilitacao.habilitacaoAtual);
 		       	 }
-		    
-		       	 
-		       	clientesBuscados.add(clienteEncontrado);
-				
-				
+		    	
 				clienteAtual = clienteEncontrado;
 				return true;
 			}

@@ -32,9 +32,7 @@ public class Funcionario {
 		this.senha = senha;	
 	}
 	
-	
 
-	
 	//---getters---
 	public int getNivelDeAcesso() {
 		return this.nivelDeAcesso;
