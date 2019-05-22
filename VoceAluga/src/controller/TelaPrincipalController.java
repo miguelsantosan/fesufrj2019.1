@@ -75,48 +75,47 @@ public class TelaPrincipalController {
 	private TextField CampoMarca;
 
 	@FXML
+	private TextField CampoModelo;
+
+	@FXML
 	private TextField CampoAnoDeFabricacao;
 
 	@FXML
 	private TextField CampoClasse;
+
+	@FXML
+	void processarBotaoCadastrarNovoCliente(MouseEvent e) throws IOException {
+	 	CadastroCliente.setClienteAtual(null);
+		manager.mostrarTelaCadastroDeCliente();
+	}
 	 
 	 
-	 
-	 
-	 
-	 @FXML
-	 void processarBotaoCadastrarNovoCliente(MouseEvent e) throws IOException {
-		 CadastroCliente.setClienteAtual(null);
-		 manager.mostrarTelaCadastroDeCliente();
-	 }
-	 
-	 
-	 @FXML
-	 void processarBotaoBuscarCliente(MouseEvent e) throws IOException{
-		 	String nome = CampoNome.getText();
-		 	String CPF = CampoCPF.getText().trim();
-		 	String passaporte = CampoPassaporte.getText().trim();
-		 	String CEP = CampoCEP.getText().trim();
-		 	String email = CampoEmail.getText().trim();
-		 	String telefone = CampoTelefone.getText();
-		 	
-		 	Cliente cliente= new Cliente();
-		 	
-		 	if(!telefone.equals("")) cliente.setTelefone(telefone);
-		 	if(!CPF.equals("")) cliente.setCpf(CPF);
-		 	if(!nome.equals("")) cliente.setNome(nome);
-		 	if(!passaporte.equals("")) cliente.setPassaporte(passaporte);
-		 	if(!CEP.equals("")) cliente.setCEP(CEP);
-		 	if(!email.equals("")) cliente.setEmail(email);
-		 	
-		 	CadastroCliente.buscarClientes(cliente);
-		 	
-		 	
-		 	if(CadastroCliente.getClientesBuscados().size()>0)
-		 		manager.mostrarTelaResultadosBuscaCliente();
-		 	else 
-		 		exibirErroNenhumClienteEncontrado();
-	 }
+	@FXML
+	void processarBotaoBuscarCliente(MouseEvent e) throws IOException{
+		String nome = CampoNome.getText();
+		String CPF = CampoCPF.getText().trim();
+		String passaporte = CampoPassaporte.getText().trim();
+		String CEP = CampoCEP.getText().trim();
+		String email = CampoEmail.getText().trim();
+		String telefone = CampoTelefone.getText();
+
+		Cliente cliente= new Cliente();
+
+		if(!telefone.equals("")) cliente.setTelefone(telefone);
+		if(!CPF.equals("")) cliente.setCpf(CPF);
+		if(!nome.equals("")) cliente.setNome(nome);
+		if(!passaporte.equals("")) cliente.setPassaporte(passaporte);
+		if(!CEP.equals("")) cliente.setCEP(CEP);
+		if(!email.equals("")) cliente.setEmail(email);
+
+		CadastroCliente.buscarClientes(cliente);
+
+
+		if(CadastroCliente.getClientesBuscados().size()>0)
+			manager.mostrarTelaResultadosBuscaCliente();
+		else
+			exibirErroNenhumClienteEncontrado();
+	}
 	 
 	 
 	private void exibirErroNenhumClienteEncontrado() {
@@ -145,6 +144,7 @@ public class TelaPrincipalController {
 	 	String marca = CampoMarca.getText();
 	 	String ano = CampoAnoDeFabricacao.getText();
 	 	String classe = CampoClasse.getText();
+	 	String modelo = CampoModelo.getText();
 
 	 	Veiculo veiculo = new Veiculo();
 
@@ -152,6 +152,7 @@ public class TelaPrincipalController {
 		 if(!chassi.equals("")) veiculo.setChassi(chassi);
 		 if(!placa.equals("")) veiculo.setPlaca(placa);
 		 if(!marca.equals("")) veiculo.setMarca(marca);
+		 if(!modelo.equals("")) veiculo.setModelo(modelo);
 		 if(!ano.equals("")) {
 			try {
 				veiculo.setAnoDeFabricacao(Integer.parseInt(ano));

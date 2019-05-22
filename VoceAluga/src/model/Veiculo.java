@@ -13,9 +13,10 @@ public class Veiculo {
 	private boolean precisaManutencao;
 	/**
 	 * Construtor.
-	 * @param chassi 		o Numero de Identificacao (Chassi) do Veiculo
 	 * @param marca 		a marca do veiculo
+	 * @param modelo		o modelo do veiculo
 	 * @param placa 		a placa do veiculo
+	 * @param chassi 		o Numero de Identificacao (Chassi) do Veiculo
 	 * @param quilometragem a quilometragem do veiculo
 	 */
 	public Veiculo(String marca, String modelo, String placa, String chassi, float quilometragem){
@@ -40,7 +41,7 @@ public class Veiculo {
 	}
 	//CONSTRUTOR TESTE
 	//================
-	
+
 	public Veiculo(){
 		this.precisaManutencao = false;
 	}
@@ -56,7 +57,9 @@ public class Veiculo {
 	public String getFilial() {
 		return this.filial;
 	}
-
+	/**
+	 * @param filial a filial onde o veiculo esta atualmente
+	 */
 	public void setFilial(String filial) {
 		this.filial = filial;
 	}
@@ -66,7 +69,9 @@ public class Veiculo {
 	public String getMarca() {
 		return this.marca;
 	}
-
+	/**
+	 * @param marca a marca do veiculo
+	 */
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
@@ -76,7 +81,9 @@ public class Veiculo {
 	public String getModelo() {
 		return this.modelo;
 	}
-
+	/**
+	 * @param modelo o modelo do veiculo
+	 */
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
@@ -86,7 +93,9 @@ public class Veiculo {
 	public String getPlaca() {
 		return this.placa;
 	}
-
+	/**
+	 * @param placa a placa do veiculo
+	 */
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
@@ -96,7 +105,9 @@ public class Veiculo {
 	public String getChassi() {
 		return this.chassi;
 	}
-
+	/**
+	 * @param chassi o numero do chassi do carro
+	 */
 	public void setChassi(String chassi) {
 		this.chassi = chassi;
 	}
@@ -106,7 +117,9 @@ public class Veiculo {
 	public char getClasse() {
 		return this.classe;
 	}
-
+	/**
+	 * @param classe a classe do veiculo na locadora
+	 */
 	public void setClasse(char classe) {
 		this.classe = classe;
 	}
@@ -116,7 +129,9 @@ public class Veiculo {
 	public int getAnoDeFabricacao() {
 		return this.anoDeFabricacao;
 	}
-
+	/**
+	 * @param ano o ano em que o veiculo foi fabricado
+	 */
 	public void setAnoDeFabricacao(int ano) {
 		this.anoDeFabricacao = ano;
 	}
@@ -126,7 +141,9 @@ public class Veiculo {
 	public float getQuilometragem() {
 		return quilometragem;
 	}
-
+	/**
+	 * @param quilometragem a quilometragem do veiculo atual do veiculo
+	 */
 	public void setQuilometragem(long quilometragem) {
 		this.quilometragem = quilometragem;
 	}
