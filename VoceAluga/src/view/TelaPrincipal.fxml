@@ -104,10 +104,10 @@
                                                 <TextField fx:id="CampoCargoFuncionario" layoutX="459.0" layoutY="26.0" />
                                                 <Label layoutX="403.0" layoutY="77.0" prefHeight="16.0" prefWidth="54.0" text="Login:" />
                                                 <TextField fx:id="CampoLoginFuncionario" layoutX="459.0" layoutY="72.0" />
-                                                <Button layoutX="469.0" layoutY="151.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="154.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Buscar Funcionario" />
+                                                <Button layoutX="469.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#processarBotaoBuscarFuncionario" prefHeight="33.0" prefWidth="154.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Buscar Funcionario" />
                                              </children>
                                           </Pane>
-                                          <Button layoutX="542.0" layoutY="424.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="216.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Cadastrar Novo Funcionário" />
+                                          <Button layoutX="542.0" layoutY="424.0" mnemonicParsing="false" onMouseClicked="#processarBotaoCadastrarFuncionario" prefHeight="40.0" prefWidth="216.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" text="Cadastrar Novo Funcionário" />
                                        </children></AnchorPane>
                               </content>
                             </Tab>

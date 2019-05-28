@@ -44,6 +44,7 @@ public class CadastroFuncionarioTester {
 		
 	}
 	
+	
 	@Test
 	public void testBuscarPorCPF2(){
 		assertTrue(CadastroFuncionario.buscarPorCPF("01234567891"));
@@ -54,6 +55,14 @@ public class CadastroFuncionarioTester {
 		
 	}
 	
+	@Test 
+	public void testBuscarFuncionarios(){
+		TreeMap<String,String> campos = new TreeMap<>(); 
+		
+		assertTrue(CadastroFuncionario.buscarFuncionarios(campos));
+		assertTrue(CadastroFuncionario.getFuncionariosBuscados().size()>0);
+	}
+
 	@Test
 	public void testInsercaoBuscaRemocao(){
 		TreeMap<String,String> campos = new TreeMap<>();
