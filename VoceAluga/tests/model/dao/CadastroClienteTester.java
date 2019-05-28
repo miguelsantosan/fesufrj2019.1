@@ -18,8 +18,6 @@ public class CadastroClienteTester {
 		cliente1 = new Cliente("Joaquim","17181426095","12378","12345678","552189898989",null);
 		cliente2 = new Cliente(null,null,null,null,null,null);
 	}
-	
-	
 
 	@Test
 	public void testObterValoresDosCamposDoCliente() {
