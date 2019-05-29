@@ -49,4 +49,20 @@ public class Funcionario {
 	public String getCargo() {
 		return this.cargo;
 	}
+
+	public String getCPFFormatado(){
+	  	String CPFFormatado = null;
+	  try{
+		  CPFFormatado = this.CPF.substring(0,3) +"." + this.CPF.substring(3,6)+ "."
+				  		+this.CPF.substring(6,9)+ "-" + this.CPF.substring(9,11);	
+	  }catch(IndexOutOfBoundsException e){
+		  System.err.println("Cliente.getCPFFormatado");
+		  System.err.println(e.getMessage());
+	  }
+	  return CPFFormatado;
+  }
+
+	
+	
+	
 }

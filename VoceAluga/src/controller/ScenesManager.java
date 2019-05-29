@@ -113,6 +113,27 @@ public class ScenesManager {
 		 }
     
 	 }
+
+
+	public void mostrarTelaInformacoesDoFuncionario() {
+		// TODO Auto-generated method stub
+		System.err.println("não implementado: ScenesManager, método mostrarTelaInformacoesDoFuncionario");
+		
+	}
+
+
+	public void mostrarTelaResultadosBuscaFuncionario() {
+		 Parent root;
+		 try {
+			 
+			 root = FXMLLoader.load(getClass().getResource("../view/ResultadosBuscaFuncionario.fxml"));
+			 primaryStage.setTitle("Voce Aluga - Busca de Funcionarios");
+			 primaryStage.setScene(new Scene(root));
+		 } catch (IOException e) {
+			 System.err.println("Nao foi possivel exibir a telade resultados de busca de Funcionarios");
+			 System.err.println(e.getMessage());
+		 }
+	}
 	 
 	 
 	 

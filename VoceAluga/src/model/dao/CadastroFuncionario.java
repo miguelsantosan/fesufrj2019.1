@@ -169,6 +169,10 @@ public class CadastroFuncionario {
 	public static Funcionario getFuncionarioAtual() {
 		return funcionarioAtual;
 	}
+
+	public static void setFuncionarioAtual(Funcionario funcionario) {
+		funcionarioAtual = funcionario;
+	}
 	
 	
 
