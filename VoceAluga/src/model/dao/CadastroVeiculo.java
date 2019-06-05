@@ -21,11 +21,11 @@ public class CadastroVeiculo {
 		VeiculosBuscados = new ArrayList<Veiculo>();
 		//VeiculosBuscados.add(new Veiculo(123456L,"Fiat","Uno","ABC-1234","123456",30000));
 		//VeiculosBuscados.add(new Veiculo(456789L,"Ford","Ka","DEF-5678","456789",0));
-
+		
 		Map<String,String> campos = obterValoresDosCamposDoVeiculo(veiculo);
 		String query = "SELECT * FROM Veiculo";
 		query = adicionarParametrosQueryDeBusca(query,campos);
-
+		
 		try {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs    = stmt.executeQuery(query);
@@ -75,7 +75,10 @@ public class CadastroVeiculo {
 		if (veiculo.getPlaca() != null) campos.put("placa", veiculo.getPlaca());
 		if (veiculo.getMarca() != null) campos.put("marca", veiculo.getMarca());
 		if (veiculo.getModelo() != null) campos.put("modelo", veiculo.getModelo());
-		if (String.valueOf(veiculo.getAnoDeFabricacao()) != null) campos.put("ano", String.valueOf(veiculo.getAnoDeFabricacao()));
+		if (veiculo.getAnoDeFabricacao() != null){
+			campos.put("ano", String.valueOf(veiculo.getAnoDeFabricacao()));
+		}
+		
 
 		return campos;
 	}
