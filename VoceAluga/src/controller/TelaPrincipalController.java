@@ -180,6 +180,7 @@ public class TelaPrincipalController {
 		
 		Veiculo veiculo = new Veiculo();
 		
+		
 		if(!filial.equals("")) veiculo.setFilial(filial);
 		if(!chassi.equals("")) veiculo.setChassi(chassi);
 		if(!placa.equals("")) veiculo.setPlaca(placa);
@@ -194,13 +195,14 @@ public class TelaPrincipalController {
 		}
 		if(!classe.equals("")) veiculo.setClasse(marca.charAt(0));
 		
+		
 		CadastroVeiculo.buscarVeiculos(veiculo);
 		manager.mostrarTelaResultadosBuscaVeiculo();
 	}
 	
 	@FXML
 	void processarBotaoCadastrarNovoVeiculo(MouseEvent e) throws IOException {
-		CadastroVeiculo.setVeiculoAtual(new Veiculo());
+		CadastroVeiculo.setveiculoAtual(new Veiculo());
 		manager.mostrarTelaCadastroDeVeiculo();
 	}
 

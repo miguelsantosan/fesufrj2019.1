@@ -7,7 +7,7 @@ public class Veiculo {
 	private String placa;
 	private String marca;
 	private String modelo;
-	private int anoDeFabricacao;
+	private Integer anoDeFabricacao;
 	private float quilometragem;
 	private char classe;
 	private boolean precisaManutencao;
@@ -19,7 +19,7 @@ public class Veiculo {
 	 * @param chassi 		o Numero de Identificacao (Chassi) do Veiculo
 	 * @param quilometragem a quilometragem do veiculo
 	 */
-	public Veiculo(String filial, String chassi, String placa, String marca, String modelo, int ano, float quilometragem){
+	public Veiculo(String filial, String chassi, String placa, String marca, String modelo, Integer ano, float quilometragem){
 		this.filial = filial;
 		this.chassi = chassi;
 		this.placa = placa;
@@ -128,13 +128,13 @@ public class Veiculo {
 	/**
 	 * @return o ano de fabricacao do veiculo
 	 */
-	public int getAnoDeFabricacao() {
+	public Integer getAnoDeFabricacao() {
 		return this.anoDeFabricacao;
 	}
 	/**
 	 * @param ano o ano em que o veiculo foi fabricado
 	 */
-	public void setAnoDeFabricacao(int ano) {
+	public void setAnoDeFabricacao(Integer ano) {
 		this.anoDeFabricacao = ano;
 	}
 	/**
@@ -160,6 +160,11 @@ public class Veiculo {
 	 */
 	public void setPrecisaManutencao(boolean precisaManutencao) {
 		this.precisaManutencao = precisaManutencao;
+	}
+
+	public static boolean ValidarChassi(String text) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	

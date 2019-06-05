@@ -46,7 +46,7 @@ public class ResultadosBuscaFuncionarioController {
 	
 	public void initialize() {
 		
-		//gera lista de clientes com nome e cpf e exibe no elemento listaExibidaNaTela
+		//gera lista de funcionarios com nome e cpf e exibe no elemento listaExibidaNaTela
 		
 		listaDeFuncionariosBuscados.addAll(CadastroFuncionario.getFuncionariosBuscados());
 		ObservableList <String> listaDeNomesDeClientesBuscados = FXCollections.observableArrayList();
