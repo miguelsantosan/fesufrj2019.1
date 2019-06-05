@@ -128,7 +128,6 @@ public class TelaPrincipalController {
 			exibirErroNenhumClienteEncontrado();
 	}
 	 
-	 
 	private void exibirErroNenhumClienteEncontrado() {
 		Alert alert = new Alert(AlertType.ERROR);
     	alert.setTitle("Erro");
@@ -145,11 +144,6 @@ public class TelaPrincipalController {
     	
 		
 	}
-
-	
-	 
-
-
 
 //============Veículo===============
 

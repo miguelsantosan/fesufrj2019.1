@@ -39,13 +39,9 @@ public class ResultadosBuscaClienteController {
 	void processarBotaoCancelar(MouseEvent e) throws IOException {
 		manager.mostrarTelaPrincipal();
 	}
-	
 
-	
-	
-	
 	public void initialize() {
-		
+
 		//gera lista de clientes com nome e cpf e exibe no elemento listaExibidaNaTela
 		
 		listaDeClientesBuscados.addAll(CadastroCliente.getClientesBuscados());

@@ -12,8 +12,8 @@ import model.Cliente;
 public class CadastroCliente {
 	private static ArrayList<Cliente> clientesBuscados;
 	private static Cliente clienteAtual;
-	
-	
+
+
 	public  static void buscarClientes(Cliente cliente){
 		clientesBuscados = new ArrayList<Cliente>();
 		
@@ -30,8 +30,8 @@ public class CadastroCliente {
    			 			rs.getString("email"),rs.getString("telefone"),rs.getString("CEP"),rs.getString("pais"),
    			 			rs.getString("estado"),rs.getString("cidade"),rs.getString("bairro"),rs.getString("rua"),
    			 			rs.getString("numero"),rs.getString("complemento"),rs.getDate("dataDeNascimento").toLocalDate());
-				
-		       	 
+
+
 		       	 if(buscarHabilitacaoPorCPF(clienteEncontrado.getCPF())){
 		       		 clienteEncontrado.setHabilitacao(CadastroHabilitacao.habilitacaoAtual);
 		       	 }
@@ -64,16 +64,13 @@ public class CadastroCliente {
 		}
 		return query;
 	}
-		
-	
-		
+
 	public static String gerarParametroParaQueryDeBusca(String nomeDoCampo,Map<String,String> campos,boolean algumParametroAdicionado){
 		String parametro = " ";
 		if(algumParametroAdicionado) parametro = "AND ";
 		parametro = parametro + nomeDoCampo+"=\""+campos.get(nomeDoCampo)+"\" ";
 		return parametro;
 	}
-	
 	
 	public static Map<String,String> obterValoresDosCamposDoCliente(Cliente cliente){
 		Map<String, String> campos = new TreeMap<>();
@@ -141,14 +138,11 @@ public class CadastroCliente {
 		else if(campos.containsKey("passaporte")){
 			query = query +"passaporte=\""+ campos.get("passaporte")+"\";";
 		}
-		
-	
-		
+
 		return query;
 	}
 	
 	public static boolean cadastrarCliente(TreeMap<String,String> campos){
-		
 		String query = "INSERT INTO Clientes ";
 		query = adicionarParametrosQueryDeInsercao(query,campos);
 
@@ -204,12 +198,10 @@ public class CadastroCliente {
 		query = query + ");";
 		return query;
 	}
-	
-	
+
 	public static boolean deletarCliente(String CPF){
 		String query = "DELETE FROM Clientes WHERE CPF=\""+CPF+"\";";
-		
-		
+
 		try {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			stmt.executeUpdate(query);
@@ -221,9 +213,7 @@ public class CadastroCliente {
 			return false;
 		}
 	}
-	
 
-	
 	public static ArrayList<Cliente> getClientesBuscados() {
 		return clientesBuscados;
 	}
@@ -292,20 +282,15 @@ public class CadastroCliente {
 			return false;
 		}
 	}
-	
-	
-	
+
 	public static Cliente getClienteAtual() {
 		return clienteAtual;
 	}
-	
-	
-	
+
 	public static void setClienteAtual(Cliente cliente) {
 		clienteAtual = cliente;
 	}
-	
-	
+
 	public static boolean cadastrarHabilitacaoPorCPF(String CPF,Map<String,String> camposHabilitacao){
 		TreeMap<String,String> camposCliente = new TreeMap<>();
 		camposCliente.put("CPF", CPF);

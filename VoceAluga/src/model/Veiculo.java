@@ -19,11 +19,13 @@ public class Veiculo {
 	 * @param chassi 		o Numero de Identificacao (Chassi) do Veiculo
 	 * @param quilometragem a quilometragem do veiculo
 	 */
-	public Veiculo(String marca, String modelo, String placa, String chassi, float quilometragem){
+	public Veiculo(String filial, String chassi, String placa, String marca, String modelo, int ano, float quilometragem){
+		this.filial = filial;
+		this.chassi = chassi;
+		this.placa = placa;
 		this.marca = marca;
 		this.modelo = modelo;
-		this.placa = placa;
-		this.chassi = chassi;
+		this.anoDeFabricacao = ano;
 		this.quilometragem = quilometragem;
 		this.precisaManutencao = false;
 	}
