@@ -26,7 +26,7 @@ public class ResultadosBuscaVeiculoController {
 		int indexDoVeiculoSelecionado = listaExibidaNaTela.getSelectionModel().getSelectedIndex();
 		
 		if(indexDoVeiculoSelecionado!= -1) {
-			CadastroVeiculo.setVeiculoAtual(listaDeVeiculosBuscados.get(indexDoVeiculoSelecionado));
+			CadastroVeiculo.setveiculoAtual(listaDeVeiculosBuscados.get(indexDoVeiculoSelecionado));
 			manager.mostrarTelaInformacoesDoCliente();
 		}
 	}

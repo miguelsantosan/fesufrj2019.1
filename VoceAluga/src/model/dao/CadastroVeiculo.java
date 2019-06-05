@@ -23,7 +23,7 @@ public class CadastroVeiculo {
 		//VeiculosBuscados.add(new Veiculo(456789L,"Ford","Ka","DEF-5678","456789",0));
 
 		Map<String,String> campos = obterValoresDosCamposDoVeiculo(veiculo);
-		String query = "SELECT * FROM Veiculos";
+		String query = "SELECT * FROM Veiculo";
 		query = adicionarParametrosQueryDeBusca(query,campos);
 
 		try {
