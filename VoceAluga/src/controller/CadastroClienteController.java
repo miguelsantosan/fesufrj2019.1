@@ -87,7 +87,7 @@ public class CadastroClienteController {
 		manager.mostrarTelaPrincipal();
 	}
 	
-	 TreeMap<String,String> gerarMapAPartirDoFormularioCliente(){
+	TreeMap<String,String> gerarMapAPartirDoFormularioCliente(){
 		TreeMap<String,String> campos = new TreeMap<>();
 		
 		if(campoNome.getText() != null) campos.put("nome",campoNome.getText());
@@ -109,7 +109,7 @@ public class CadastroClienteController {
 		return campos;
 	}
 	 
-	 TreeMap<String,String> gerarMapAPartirDoFormularioHabilitacao(){
+	TreeMap<String,String> gerarMapAPartirDoFormularioHabilitacao(){
 		 	TreeMap<String,String> campos = new TreeMap<>();
 			if(!campoNumeroDeRegistro.getPlainText().equals("")) campos.put("numeroDeRegistro", campoNumeroDeRegistro.getPlainText());
 			if(campoValidade.getValue()!=null) campos.put("validade", campoValidade.getValue().toString());
@@ -119,10 +119,9 @@ public class CadastroClienteController {
 			return campos;
 		
 	 }
-	 
-	 
-	 @FXML 
-	 void processarBotaoConfirmar(MouseEvent e) throws IOException{
+
+	@FXML
+	void processarBotaoConfirmar(MouseEvent e) throws IOException{
 		 if(CadastroCliente.getClienteAtual()==null){
 			 System.out.println("Cadastrando cliente");
 			 adicionarCliente();
@@ -132,7 +131,6 @@ public class CadastroClienteController {
 		 }
 	 }
 
-	
 	@FXML
 	void adicionarCliente() throws IOException{
 		if(campoPassaporte.getText().equals("") && campoCPF.getPlainText().equals("")){
@@ -272,7 +270,6 @@ public class CadastroClienteController {
     	alert.showAndWait();
     }
 	
-	
     public void mostrarErroDeCadastro(String mensagem) {
     	Alert alert = new Alert(AlertType.ERROR);
     	alert.setTitle("Erro no Cadastro");
@@ -280,8 +277,7 @@ public class CadastroClienteController {
     	alert.setContentText( mensagem);
     	alert.showAndWait();
     }
-    
-	
+
 	private void preencherCamposComDadosDoCliente(Cliente cliente) {
 		Habilitacao habilitacao = cliente.getHabilitacao();
 		

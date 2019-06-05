@@ -287,7 +287,7 @@ public class CadastroVeiculo {
 		}
 	}
 	
-	public static Veiculo getveiculoAtual() {		
+	public static Veiculo getVeiculoAtual() {
 		return veiculoAtual;
 	}
 	

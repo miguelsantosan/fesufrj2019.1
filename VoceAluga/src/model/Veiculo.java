@@ -3,13 +3,13 @@ package model;
 public class Veiculo {
 	private Long id;
 	private String filial;
+	private String chassi;
+	private String placa;
 	private String marca;
 	private String modelo;
-	private String placa;
-	private String chassi;
-	private char classe;
 	private int anoDeFabricacao;
 	private float quilometragem;
+	private char classe;
 	private boolean precisaManutencao;
 	/**
 	 * Construtor.
