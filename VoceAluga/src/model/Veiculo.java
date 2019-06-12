@@ -4,6 +4,7 @@ public class Veiculo {
 	private Long id;
 	private String filial;
 	private String chassi;
+	private String RENAVAM;
 	private String placa;
 	private String marca;
 	private String modelo;
@@ -11,6 +12,7 @@ public class Veiculo {
 	private float quilometragem;
 	private char classe;
 	private boolean precisaManutencao;
+	private String informacoesAdicionais;
 	/**
 	 * Construtor.
 	 * @param marca 		a marca do veiculo
@@ -19,15 +21,18 @@ public class Veiculo {
 	 * @param chassi 		o Numero de Identificacao (Chassi) do Veiculo
 	 * @param quilometragem a quilometragem do veiculo
 	 */
-	public Veiculo(String filial, String chassi, String placa, String marca, String modelo, Integer ano, float quilometragem){
+	public Veiculo(String filial, String chassi, String RENAVAM, String placa, String marca,
+				   String modelo, Integer ano, float quilometragem, String informacoesAdicionais){
 		this.filial = filial;
 		this.chassi = chassi;
+		this.RENAVAM = RENAVAM;
 		this.placa = placa;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.anoDeFabricacao = ano;
 		this.quilometragem = quilometragem;
 		this.precisaManutencao = false;
+		this.informacoesAdicionais = informacoesAdicionais;
 	}
 	
 	//================
@@ -114,6 +119,18 @@ public class Veiculo {
 		this.chassi = chassi;
 	}
 	/**
+	 * @return o RENAVAM do veiculo
+	 */
+	public String getRENAVAM() {
+		return RENAVAM;
+	}
+	/**
+	 * @param RENAVAM o RENAVAM do veiculo
+	 */
+	public void setRENAVAM(String RENAVAM) {
+		this.RENAVAM = RENAVAM;
+	}
+	/**
 	 * @return a classe do veiculo
 	 */
 	public char getClasse() {
@@ -161,11 +178,21 @@ public class Veiculo {
 	public void setPrecisaManutencao(boolean precisaManutencao) {
 		this.precisaManutencao = precisaManutencao;
 	}
-
+	/**
+	 * @return as informacoes adicionais do veiculo
+	 */
+	public String getInformacoesAdicionais() {
+		return informacoesAdicionais;
+	}
+	/**
+	 * @param informacoesAdicionais informacoes adicionais que o veiculo pode possuir
+	 */
+	public void setInformacoesAdicionais(String informacoesAdicionais) {
+		this.informacoesAdicionais = informacoesAdicionais;
+	}
 	public static boolean ValidarChassi(String text) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	
 }

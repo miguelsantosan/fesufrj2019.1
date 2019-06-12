@@ -32,10 +32,10 @@ public class CadastroVeiculo {
 
 			while((rs.next())){
 				Veiculo veiculoEncontrado = new Veiculo(rs.getString("filial"),
-						rs.getString("chassi"),rs.getString("placa"),
-						rs.getString("marca"), rs.getString("modelo"),
-						rs.getInt("ano"),rs.getInt("quilometragem"));
-
+						rs.getString("chassi"),rs.getString("RENAVAM"),
+						rs.getString("placa"),rs.getString("marca"),
+						rs.getString("modelo"),rs.getInt("ano"),
+						rs.getInt("quilometragem"),rs.getString("info_adicionais"));
 				VeiculosBuscados.add(veiculoEncontrado);
 			}
 
@@ -72,13 +72,14 @@ public class CadastroVeiculo {
 		Map<String, String> campos = new TreeMap<>();
 		if (veiculo.getFilial() != null) campos.put("filial", veiculo.getFilial());
 		if (veiculo.getChassi() != null) campos.put("chassi", veiculo.getChassi());
+		if (veiculo.getRENAVAM() != null) campos.put("RENAVAM", veiculo.getRENAVAM());
 		if (veiculo.getPlaca() != null) campos.put("placa", veiculo.getPlaca());
 		if (veiculo.getMarca() != null) campos.put("marca", veiculo.getMarca());
 		if (veiculo.getModelo() != null) campos.put("modelo", veiculo.getModelo());
 		if (veiculo.getAnoDeFabricacao() != null){
 			campos.put("ano", String.valueOf(veiculo.getAnoDeFabricacao()));
 		}
-		
+		if (veiculo.getInformacoesAdicionais() != null) campos.put("info_adicionais", veiculo.getInformacoesAdicionais());
 
 		return campos;
 	}
@@ -107,7 +108,7 @@ public class CadastroVeiculo {
 		
 		for(String key : campos.keySet()){
 
-			if((key.equals("chassi"))&& campos.get(key).equals("")){ //nao permite que CPF ou passaporte vazio seja adicionado
+			if((key.equals("chassi"))&& campos.get(key).equals("")){ //nao permite que Chassi vazio seja adicionado
 				if(algumParametroAdicionado){
 					query = query + ","+key+"=NULL ";
 				}
@@ -220,11 +221,11 @@ public class CadastroVeiculo {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-				Veiculo veiculoEncontrado = new Veiculo(
-						rs.getString("filial"),
-						rs.getString("chassi"),rs.getString("placa"),
-						rs.getString("marca"), rs.getString("modelo"),
-						rs.getInt("ano"),rs.getInt("quilometragem"));
+				Veiculo veiculoEncontrado = new Veiculo(rs.getString("filial"),
+						rs.getString("chassi"),rs.getString("RENAVAM"),
+						rs.getString("placa"),rs.getString("marca"),
+						rs.getString("modelo"),rs.getInt("ano"),
+						rs.getInt("quilometragem"),rs.getString("info_adicionais"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
@@ -246,11 +247,11 @@ public class CadastroVeiculo {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-				Veiculo veiculoEncontrado = new Veiculo(
-						rs.getString("filial"),
-						rs.getString("chassi"),rs.getString("placa"),
-						rs.getString("marca"), rs.getString("modelo"),
-						rs.getInt("ano"),rs.getInt("quilometragem"));
+				Veiculo veiculoEncontrado = new Veiculo(rs.getString("filial"),
+						rs.getString("chassi"),rs.getString("RENAVAM"),
+						rs.getString("placa"),rs.getString("marca"),
+						rs.getString("modelo"),rs.getInt("ano"),
+						rs.getInt("quilometragem"),rs.getString("informacoes adicionais"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
@@ -273,11 +274,11 @@ public class CadastroVeiculo {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-				Veiculo veiculoEncontrado = new Veiculo(
-						rs.getString("filial"),
-						rs.getString("chassi"),rs.getString("placa"),
-						rs.getString("marca"), rs.getString("modelo"),
-						rs.getInt("ano"),rs.getInt("quilometragem"));
+				Veiculo veiculoEncontrado = new Veiculo(rs.getString("filial"),
+						rs.getString("chassi"),rs.getString("RENAVAM"),
+						rs.getString("placa"),rs.getString("marca"),
+						rs.getString("modelo"),rs.getInt("ano"),
+						rs.getInt("quilometragem"),rs.getString("informacoes adicionais"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;

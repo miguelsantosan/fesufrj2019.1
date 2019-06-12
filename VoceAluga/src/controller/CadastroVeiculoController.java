@@ -28,6 +28,9 @@ public class CadastroVeiculoController {
     TextField campoChassi;
 
     @FXML
+    TextField campoRENAVAM;
+
+    @FXML
     TextField campoClasse;
 
     @FXML
@@ -38,6 +41,9 @@ public class CadastroVeiculoController {
 
     @FXML
     TextField campoQuilometragem;
+
+    @FXML
+    TextField campoInformacoesAdicionais;
 
     @FXML
     Button BotaoCancelar;
@@ -74,12 +80,14 @@ public class CadastroVeiculoController {
         TreeMap<String,String> campos = new TreeMap<>();
 
         if(!campoChassi.equals("")) campos.put("chassi", campoChassi.getText());
+        if(!campoRENAVAM.equals("")) campos.put("RENAVAM", campoRENAVAM.getText());
         if(campoFilial.getText() != null) campos.put("filail", campoFilial.getText());
         if(campoPlaca.getText() != null) campos.put("placa", campoPlaca.getText());
         if(campoMarca.getText() != null) campos.put("marca", campoMarca.getText());
         if(campoModelo.getText()!=null) campos.put("modelo", campoModelo.getText());
         if(campoAno.getText() != null) campos.put("ano", campoAno.getText());
         if(campoQuilometragem.getText() !=null) campos.put("quilometragem", campoQuilometragem.getText());
+        if(campoInformacoesAdicionais.getText() != null) campos.put("informacoes adicionais", campoInformacoesAdicionais.getText());
 
         return campos;
     }
@@ -167,9 +175,11 @@ public class CadastroVeiculoController {
         campoMarca.setText(veiculo.getMarca());
         campoAno.setText(String.valueOf(veiculo.getAnoDeFabricacao()));
         campoChassi.setText(veiculo.getChassi());
+        campoRENAVAM.setText(veiculo.getRENAVAM());
         campoClasse.setText(String.valueOf(veiculo.getClasse()));
         campoPlaca.setText(veiculo.getPlaca());
         campoModelo.setText(veiculo.getModelo());
         campoFilial.setText(veiculo.getFilial());
+        campoInformacoesAdicionais.setText(veiculo.getInformacoesAdicionais());
     }
 }
