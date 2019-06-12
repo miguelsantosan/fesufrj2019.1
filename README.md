@@ -23,3 +23,6 @@ Project for Fundaments of Software Engineering - 2019.1
   1.2 Extraia a pasta no seu computador.<br><br>
 2. Abra o projeto no eclipse e vá em ```window >> preferences >> java >> buildpath >> userlibraries ``` crie uma nova biblioteca, chame de SQLConnector e adicione o .jar presente na pasta que voce extraiu.<br><br>
 3. Clique com o botão direito no projeto e em ```build path >> Add library``` e adicione a biblioteca SQLConnector que voce acabou de criar.
+
+## Link para download do SceneBuilder
+  https://gluonhq.com/products/scene-builder/
