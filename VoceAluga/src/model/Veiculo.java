@@ -9,7 +9,7 @@ public class Veiculo {
 	private String marca;
 	private String modelo;
 	private Integer anoDeFabricacao;
-	private float quilometragem;
+	private Integer quilometragem;
 	private char classe;
 	private boolean precisaManutencao;
 	private String informacoesAdicionais;
@@ -22,7 +22,7 @@ public class Veiculo {
 	 * @param quilometragem a quilometragem do veiculo
 	 */
 	public Veiculo(String filial, String chassi, String RENAVAM, String placa, String marca,
-				   String modelo, Integer ano, float quilometragem, String informacoesAdicionais){
+				   String modelo, Integer ano, Integer quilometragem, String informacoesAdicionais){
 		this.filial = filial;
 		this.chassi = chassi;
 		this.RENAVAM = RENAVAM;
@@ -37,7 +37,7 @@ public class Veiculo {
 	
 	//================
 	//CONSTRUTOR TESTE
-	public Veiculo(Long id, String marca, String modelo, String placa, String chassi, float quilometragem){
+	public Veiculo(Long id, String marca, String modelo, String placa, String chassi, Integer quilometragem){
 		this.id = id;
 		this.marca = marca;
 		this.modelo = modelo;
@@ -133,8 +133,8 @@ public class Veiculo {
 	/**
 	 * @return a classe do veiculo
 	 */
-	public char getClasse() {
-		return this.classe;
+	public String getClasse() {
+		return String.valueOf(this.classe);
 	}
 	/**
 	 * @param classe a classe do veiculo na locadora
@@ -157,13 +157,13 @@ public class Veiculo {
 	/**
 	 * @return a quilometragem do veiculo
 	 */
-	public float getQuilometragem() {
+	public Integer getQuilometragem() {
 		return quilometragem;
 	}
 	/**
 	 * @param quilometragem a quilometragem do veiculo atual do veiculo
 	 */
-	public void setQuilometragem(long quilometragem) {
+	public void setQuilometragem(Integer quilometragem) {
 		this.quilometragem = quilometragem;
 	}
 	/**

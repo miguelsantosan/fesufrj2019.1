@@ -193,7 +193,7 @@ public class TelaPrincipalController {
 				System.err.println("Erro na formatacao do Ano de Fabricacao do Veiculo");
 			}
 		}
-		if(!classe.equals("")) veiculo.setClasse(marca.charAt(0));
+		if(!classe.equals("")) veiculo.setClasse(classe.charAt(0));
 		
 		
 		CadastroVeiculo.buscarVeiculos(veiculo);
@@ -202,7 +202,7 @@ public class TelaPrincipalController {
 	
 	@FXML
 	void processarBotaoCadastrarNovoVeiculo(MouseEvent e) throws IOException {
-		CadastroVeiculo.setveiculoAtual(new Veiculo());
+		CadastroVeiculo.setveiculoAtual(null);
 		manager.mostrarTelaCadastroDeVeiculo();
 	}
 

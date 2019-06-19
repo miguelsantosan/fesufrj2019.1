@@ -10,57 +10,57 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
+
+import controller.ScenesManager;
 import model.Veiculo;
 import model.dao.CadastroVeiculo;
 
 public class InformacoesDoVeiculoController {
 
     ScenesManager manager = new ScenesManager();
-    @FXML
-    private Label labelInformacoesAdicionais;
 
     @FXML
-    private Label labelMarca;
+    public Label labelFilial;
 
     @FXML
-    private Label labelModelo;
+    public Label labelMarca;
 
     @FXML
-    private Label labelAno;
+    public Label labelModelo;
 
     @FXML
-    private Label labelPlaca;
+    public Label labelAno;
 
     @FXML
-    private Label labelQuilometragem;
+    public Label labelQuilometragem;
 
     @FXML
-    private Label labelChassi;
+    public Label labelPlaca;
 
     @FXML
-    private Label labelRENAVAM;
+    public Label labelClasse;
 
     @FXML
-    private Label labelClasse;
+    public Label labelChassi;
 
     @FXML
-    private Label labelEstado;
+    public Label labelRENAVAM;
 
     @FXML
-    private Label labelManutencao;
+    public Label labelInformacoesAdicionais;
+
+    @FXML
+    public void processarBotaoVoltar(MouseEvent e) throws IOException {
+        manager.mostrarTelaPrincipal();
+    }
+
+    @FXML
+    public void processarBotaoEditar(MouseEvent e) throws IOException {
+        manager.mostrarTelaCadastroDeVeiculo();
+    }
 
     @FXML
     void processarBotaoDeletar(MouseEvent event) {
-
-    }
-
-    @FXML
-    void processarBotaoEditar(MouseEvent event) {
-
-    }
-
-    @FXML
-    void processarBotaoVoltar(MouseEvent event) {
 
     }
 
@@ -70,35 +70,18 @@ public class InformacoesDoVeiculoController {
         preencherLabelsComDadosDoVeiculo(veiculo);
     }
 
-    private void preencherLabelsComDadosDoVeiculo(Veiculo veiculo) {
-        Habilitacao habilitacao = veiculo.getHabilitacao();
+    public void preencherLabelsComDadosDoVeiculo(Veiculo veiculo) {
 
+        if(veiculo.getFilial()!=null)labelFilial.setText(veiculo.getFilial());
+        if(veiculo.getChassi()!=null)labelChassi.setText(veiculo.getChassi());
 
-        if(veiculo.getNome()!=null)labelNome.setText(veiculo.getNome());
-        if(veiculo.getCPF()!=null)labelCPF.setText(veiculo.getCPFFormatado());
-
-        if(veiculo.getPais()!=null)labelPais.setText(veiculo.getPais());
-        if(veiculo.getEstado()!=null)labelEstado.setText(veiculo.getEstado());
-        if(veiculo.getCidade()!=null)labelCidade.setText(veiculo.getCidade());
-        if(veiculo.getPassaporte()!=null)labelPassaporte.setText(veiculo.getPassaporte());
-        if(veiculo.getBairro()!=null)labelBairro.setText(veiculo.getBairro());
-        if(veiculo.getTelefone()!=null)labelTelefone.setText(veiculo.getTelefoneFormatado());
-        if(veiculo.getRua()!=null)labelRua.setText(veiculo.getRua());
-        if(veiculo.getEmail()!=null)labelEmail.setText(veiculo.getEmail());
-        if(veiculo.getNumero()!=null)labelNumero.setText(veiculo.getNumero());
-        if(veiculo.getCEP()!=null)labelCEP.setText(veiculo.getCEPFormatado());
-        if(veiculo.getComplemento()!=null)labelComplemento.setText(veiculo.getComplemento());
-        if(veiculo.getDataDeNascimento()!=null)
-            labelDataDeNascimento.setText(veiculo.getDataDeNascimento().toString());
-
-        if(veiculo.getHabilitacao()!=null){
-            labelNumeroDeRegistro.setText(habilitacao.getNumeroDeRegistro());
-            labelCategoria.setText(habilitacao.getCategoria());
-            if(habilitacao.getDataDeEmissao()!=null)
-                labelDataDeEmissao.setText(habilitacao.getDataDeEmissao().toString());
-            if(habilitacao.getValidade()!=null)
-                labelValidade.setText(habilitacao.getValidade().toString());
-        }
-
+        if(veiculo.getRENAVAM()!=null)labelRENAVAM.setText(veiculo.getRENAVAM());
+        if(veiculo.getPlaca()!=null)labelPlaca.setText(veiculo.getPlaca());
+        if(veiculo.getClasse()!=null)labelClasse.setText(veiculo.getClasse());
+        if(veiculo.getMarca()!=null)labelMarca.setText(veiculo.getMarca());
+        if(veiculo.getModelo()!=null)labelModelo.setText(veiculo.getModelo());
+        if(veiculo.getAnoDeFabricacao()!=null)labelAno.setText(String.valueOf(veiculo.getAnoDeFabricacao()));
+        if(veiculo.getQuilometragem()!=null)labelQuilometragem.setText(String.valueOf(veiculo.getQuilometragem()));
+        if(veiculo.getInformacoesAdicionais()!=null)labelInformacoesAdicionais.setText(veiculo.getInformacoesAdicionais());
     }
 }

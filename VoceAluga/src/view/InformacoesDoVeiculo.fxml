@@ -4,34 +4,32 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InformacoesDoVeiculoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroVeiculoController">
    <children>
-      <Label layoutX="151.0" layoutY="45.0" text="Marca:" />
-      <Label layoutX="144.0" layoutY="87.0" text="Modelo:" />
-      <Label layoutX="152.0" layoutY="185.0" text="Placa:" />
-      <Label layoutX="461.0" layoutY="232.0" prefHeight="16.0" prefWidth="74.0" text="RENAVAM:" />
-      <Label layoutX="86.0" layoutY="234.0" prefHeight="16.0" prefWidth="114.0" text="Quilometragem:" />
-      <Label layoutX="472.0" layoutY="185.0" prefHeight="16.0" prefWidth="52.0" text="Chassi:" />
-      <Label layoutX="491.0" layoutY="87.0" prefHeight="16.0" prefWidth="39.0" text="Filial:" />
-      <Label layoutX="446.0" layoutY="137.0" prefHeight="16.0" prefWidth="91.0" text="Manutenção:" />
-      <Pane layoutX="84.0" layoutY="377.0" prefHeight="133.0" prefWidth="657.0" style="-fx-border-color: lightBlue; -fx-background-radius: 10px; -fx-border-radius: 10px;">
-         <children>
-            <Label fx:id="labelInformacoesAdicionais" layoutX="25.0" layoutY="28.0" prefHeight="16.0" prefWidth="281.0" text="       " />
-         </children>
+      <Label layoutX="155.0" layoutY="52.0" text="Filial:" />
+      <Label layoutX="148.0" layoutY="99.0" prefHeight="16.0" prefWidth="52.0" text="Marca:" />
+      <Label layoutX="159.0" layoutY="192.0" prefHeight="16.0" prefWidth="34.0" text="Ano:" />
+      <Label layoutX="483.0" layoutY="145.0" prefHeight="16.0" prefWidth="52.0" text="Chassi:" />
+      <Label layoutX="455.0" layoutY="194.0" prefHeight="16.0" prefWidth="72.0" text="RENAVAM:" />
+      <Label layoutX="486.0" layoutY="50.0" prefHeight="16.0" prefWidth="41.0" text="Placa:" />
+      <Label layoutX="139.0" layoutY="140.0" prefHeight="26.0" prefWidth="61.0" text="Modelo:" />
+      <Label layoutX="481.0" layoutY="99.0" prefHeight="16.0" prefWidth="52.0" text="Classe:" />
+      <Label layoutX="85.0" layoutY="238.0" prefHeight="16.0" prefWidth="109.0" text="Quilometragem:" />
+      <Label layoutX="85.0" layoutY="280.0" prefHeight="16.0" prefWidth="162.0" text="Informações adicionais:" />
+      <Pane layoutX="86.0" layoutY="319.0" prefHeight="119.0" prefWidth="631.0" style="-fx-border-color: lightBlue; -fx-background-radius: 10px; -fx-border-radius: 10px;">
+          <children>
+             <Label fx:id="labelInformacoesAdicionais" layoutX="104.0" layoutY="342.0" prefHeight="16.0" prefWidth="170.0" />
+          </children>
       </Pane>
-      <Label layoutX="99.0" layoutY="361.0" prefHeight="16.0" prefWidth="160.0" text="Informações adicionais:" />
-      <Label layoutX="478.0" layoutY="43.0" prefHeight="16.0" prefWidth="51.0" text="Classe:" />
-      <Label layoutX="162.0" layoutY="132.0" prefHeight="26.0" prefWidth="37.0" text="Ano:" />
-      <Label fx:id="labelMarca" layoutX="214.0" layoutY="45.0" prefHeight="16.0" prefWidth="245.0" text="    " />
-      <Label fx:id="labelModelo" layoutX="214.0" layoutY="87.0" prefHeight="16.0" prefWidth="174.0" text="    " />
-      <Label fx:id="labelAno" layoutX="214.0" layoutY="137.0" prefHeight="16.0" prefWidth="84.0" text="     " />
-      <Label fx:id="labelPlaca" layoutX="213.0" layoutY="185.0" prefHeight="16.0" prefWidth="134.0" text="      " />
-      <Label fx:id="labelQuilometragem" layoutX="213.0" layoutY="232.0" prefHeight="16.0" prefWidth="160.0" text="      " />
-      <Label fx:id="labelChassi" layoutX="546.0" layoutY="185.0" prefHeight="16.0" prefWidth="235.0" text="      " />
-      <Label fx:id="labelRENAVAM" layoutX="547.0" layoutY="232.0" prefHeight="16.0" prefWidth="185.0" text="      " />
-      <Label fx:id="labelClasse" layoutX="542.0" layoutY="45.0" prefHeight="16.0" prefWidth="185.0" text="      " />
-      <Label fx:id="labelEstado" layoutX="542.0" layoutY="87.0" prefHeight="16.0" prefWidth="185.0" text="      " />
-      <Label fx:id="labelManutencao" layoutX="551.0" layoutY="137.0" prefHeight="16.0" prefWidth="174.0" text="      " />
+      <Label fx:id="labelFilial" layoutX="207.0" layoutY="52.0" prefHeight="16.0" prefWidth="170.0" />
+      <Label fx:id="labelMarca" layoutX="207.0" layoutY="99.0" prefHeight="16.0" prefWidth="170.0" />
+      <Label fx:id="labelModelo" layoutX="207.0" layoutY="145.0" prefHeight="16.0" prefWidth="170.0" />
+      <Label fx:id="labelAno" layoutX="207.0" layoutY="192.0" prefHeight="16.0" prefWidth="170.0" />
+      <Label fx:id="labelQuilometragem" layoutX="206.0" layoutY="237.0" prefHeight="16.0" prefWidth="170.0" />
+      <Label fx:id="labelPlaca" layoutX="540.0" layoutY="52.0" prefHeight="16.0" prefWidth="170.0" />
+      <Label fx:id="labelClasse" layoutX="540.0" layoutY="99.0" prefHeight="16.0" prefWidth="170.0" />
+      <Label fx:id="labelChassi" layoutX="540.0" layoutY="145.0" prefHeight="16.0" prefWidth="170.0" />
+      <Label fx:id="labelRENAVAM" layoutX="540.0" layoutY="192.0" prefHeight="16.0" prefWidth="170.0" />
       <Button layoutX="503.0" layoutY="543.0" mnemonicParsing="false" onMouseClicked="#processarBotaoEditar" prefHeight="33.0" prefWidth="114.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="Editar Dados" />
       <Button layoutX="57.0" layoutY="543.0" mnemonicParsing="false" onMouseClicked="#processarBotaoVoltar" prefHeight="33.0" prefWidth="84.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="Voltar" />
       <Button layoutX="632.0" layoutY="543.0" mnemonicParsing="false" onMouseClicked="#processarBotaoDeletar" prefHeight="33.0" prefWidth="123.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="Deletar Veiculo" />

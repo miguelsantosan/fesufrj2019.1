@@ -27,7 +27,7 @@ public class ResultadosBuscaVeiculoController {
 		
 		if(indexDoVeiculoSelecionado!= -1) {
 			CadastroVeiculo.setveiculoAtual(listaDeVeiculosBuscados.get(indexDoVeiculoSelecionado));
-			manager.mostrarTelaInformacoesDoCliente();
+			manager.mostrarTelaInformacoesDoVeiculo();
 		}
 	}
 	
