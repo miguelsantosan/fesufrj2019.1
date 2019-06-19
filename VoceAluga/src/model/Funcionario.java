@@ -49,6 +49,10 @@ public class Funcionario {
 	public String getCargo() {
 		return this.cargo;
 	}
+	
+	public String getLogin(){
+		return this.login;
+	}
 
 	public String getCPFFormatado(){
 	  	String CPFFormatado = null;
