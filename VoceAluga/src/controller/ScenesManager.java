@@ -134,6 +134,20 @@ public class ScenesManager {
 			 System.err.println(e.getMessage());
 		 }
 	}
+
+
+	public void mostrarTelaCadastroDeFuncionario() {
+		 Parent root;
+		 try {
+			 root = FXMLLoader.load(getClass().getResource("../view/CadastroFuncionario.fxml"));
+			 primaryStage.setTitle("Voce Aluga - Cadastrar Funcionario");
+			 primaryStage.setScene(new Scene(root));
+		 } catch (IOException e) {
+			 System.err.println("Nao foi possivel exibir a tela de cadastro do Funcionario");
+			 System.err.println(e.getMessage());
+		 }
+	 
+	}
 	 
 	 
 	 

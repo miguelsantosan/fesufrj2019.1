@@ -263,9 +263,12 @@ public class TelaPrincipalController {
 	}
 	
 	@FXML
-	void processarBotaoCadastrarFuncionario(){
-		System.out.println("clique");
+	void processarBotaoCadastrarFuncionario(MouseEvent e) throws IOException{
+		CadastroFuncionario.setFuncionarioAtual(new Funcionario());
+		manager.mostrarTelaCadastroDeFuncionario();
 	}
+	
+	
 	 
 
 }
