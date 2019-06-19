@@ -1,8 +1,13 @@
 package controller;
 
+import java.util.Optional;
+
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import model.Funcionario;
 import model.dao.CadastroFuncionario;
@@ -37,12 +42,27 @@ public class InformacoesDoFuncionarioController {
 
     @FXML
     void processarBotaoAlterarCadastro(MouseEvent event) {
-    	
+    	manager.mostrarTelaCadastroDeFuncionario();	
     }
 
     @FXML
     void processarBotaoExcluirFuncionario(MouseEvent event) {
-    	
+    	 Alert alert = new Alert(AlertType.CONFIRMATION);
+		 alert.setTitle("Deletar Dados Do Funcionário");
+		 alert.setHeaderText("Atenção, essa operação é irreversível!");
+		 alert.setContentText("Deseja Continuar?");
+
+		 Optional<ButtonType> result = alert.showAndWait();
+		 if (result.get() == ButtonType.OK){
+		    if(CadastroFuncionario.deletarFuncionario(CadastroFuncionario.getFuncionarioAtual().getCPF())){
+		    	mostrarMensagemDeSucesso("Funcionario deletado com sucesso");
+		    	manager.mostrarTelaPrincipal();
+		    }
+		    else{
+		    	mostrarMensagemDeErro("Não foi possível deletar o funcionário");
+		    }
+		    
+	    } 
     }
 
     @FXML
@@ -51,7 +71,7 @@ public class InformacoesDoFuncionarioController {
     }
 
     @FXML
-    void processarBotaoVotar(MouseEvent event) {
+    void processarBotaoVoltar(MouseEvent event) {
     	manager.mostrarTelaPrincipal();
     }
     
@@ -71,6 +91,22 @@ public class InformacoesDoFuncionarioController {
 		if(funcionario.getCargo()!=null) LabelCargo.setText(funcionario.getCargo());
 
 	}
+    
+    public void mostrarMensagemDeSucesso(String mensagem) {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("");
+    	alert.setHeaderText(mensagem);
+    	alert.setContentText("");
+    	alert.showAndWait();
+    }
+    
+  public void mostrarMensagemDeErro(String mensagem) {
+    	Alert alert = new Alert(AlertType.ERROR);
+    	alert.setTitle("");
+    	alert.setHeaderText(mensagem);
+    	alert.setContentText("");
+    	alert.showAndWait();
+    }
 
 
 }

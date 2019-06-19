@@ -13,7 +13,7 @@
             <Label layoutX="284.0" layoutY="228.0" text="Nome:" />
             <Label layoutX="284.0" layoutY="270.0" text="Cargo:" />
             <Label layoutX="285.0" layoutY="310.0" text="Login:" />
-            <Button fx:id="BotaoVoltar" layoutX="454.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#processarBotaoVotar" prefHeight="34.0" prefWidth="142.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="Voltar" />
+            <Button fx:id="BotaoVoltar" layoutX="454.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#processarBotaoVoltar" prefHeight="34.0" prefWidth="142.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="Voltar" />
             <Button fx:id="BotaoAlterarCadastro" layoutX="204.0" layoutY="445.0" mnemonicParsing="false" onMouseClicked="#processarBotaoAlterarCadastro" prefHeight="34.0" prefWidth="142.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="Alterar Cadastro" />
             <Label fx:id="LabelCPF" layoutX="349.0" layoutY="190.0" prefHeight="16.0" prefWidth="167.0" text="cpf" />
             <Label fx:id="LabelNome" layoutX="349.0" layoutY="228.0" prefHeight="16.0" prefWidth="167.0" text="nome" />

@@ -15,8 +15,8 @@
             <Label layoutX="259.0" layoutY="173.0" text="Nome:" />
             <Label layoutX="259.0" layoutY="215.0" text="Cargo:" />
             <Label layoutX="260.0" layoutY="255.0" text="Login:" />
-            <Label layoutX="254.0" layoutY="324.0" text="Senha:" />
-            <Label layoutX="149.0" layoutY="362.0" text="Confirmação de Senha:" />
+            <Label fx:id="LabelSenha" layoutX="254.0" layoutY="324.0" text="Senha:" />
+            <Label fx:id="LabelConfirmacaoSenha" layoutX="149.0" layoutY="362.0" text="Confirmação de Senha:" />
             <TextField fx:id="CampoCPF" layoutX="318.0" layoutY="130.0" />
             <TextField fx:id="CampoNome" layoutX="318.0" layoutY="168.0" />
             <TextField fx:id="CampoCargo" layoutX="318.0" layoutY="210.0" />
