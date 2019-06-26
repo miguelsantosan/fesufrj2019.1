@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.TreeMap;
 
 import model.Funcionario;
 import model.Gerente;
@@ -172,6 +173,59 @@ public class CadastroFuncionario {
 
 	public static void setFuncionarioAtual(Funcionario funcionario) {
 		funcionarioAtual = funcionario;
+	}
+
+	public static boolean alterarFuncionario(TreeMap<String, String> camposFuncionario) {
+		buscarPorCPF(camposFuncionario.get("CPF"));
+		
+		
+		String query = "UPDATE Clientes SET ";
+		query = adicionarParametrosQueryUpdate(query, camposFuncionario);
+		
+		try {
+			Statement stmt  = MySQLConnector.connection.createStatement();
+			stmt.executeUpdate(query);
+			return true;
+		} catch (SQLException e) {
+			System.err.println("model.dao.CadastroFuncionario: método alterarFuncionario");
+			System.err.println(e.getMessage());
+			return false;
+		}
+	}
+
+	private static String adicionarParametrosQueryUpdate(String query, TreeMap<String, String> campos) {
+		boolean algumParametroAdicionado = false;
+		
+		
+		for(String key : campos.keySet()){
+			
+			if(key.equals("CPF")&& campos.get(key).equals("")){ //nao permite que CPF vazio seja adicionado
+				if(algumParametroAdicionado){
+					query = query + ","+key+"=NULL ";
+				}
+				else{
+					query = query +key+"=NULL ";
+					algumParametroAdicionado=true;
+				}
+			}
+			else{
+				if(algumParametroAdicionado){
+					query = query + ","+key+"=\""+campos.get(key)+"\" ";
+				}
+				else{
+					query = query +key+"=\""+campos.get(key)+"\" ";
+					algumParametroAdicionado=true;
+				}
+			}
+		}
+		query = query + " WHERE ";
+		
+		if(campos.containsKey("CPF")){
+			query = query+"CPF=\""+ campos.get("CPF")+"\";";
+		}
+		
+
+		return query;
 	}
 	
 	
