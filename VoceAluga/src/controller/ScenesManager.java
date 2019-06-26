@@ -129,9 +129,16 @@ public class ScenesManager {
 
 
 	public void mostrarTelaInformacoesDoFuncionario() {
-		// TODO Auto-generated method stub
-		System.err.println("não implementado: ScenesManager, método mostrarTelaInformacoesDoFuncionario");
-		
+		Parent root;
+		 try {
+			 
+			 root = FXMLLoader.load(getClass().getResource("../view/InformacoesDoFuncionario.fxml"));
+			 primaryStage.setTitle("Voce Aluga - Informações do Funcionário");
+			 primaryStage.setScene(new Scene(root));
+		 } catch (IOException e) {
+			 System.err.println("Nao foi possivel exibir a telade resultados de informações do funcionário");
+			 System.err.println(e.getMessage());
+		 }
 	}
 
 

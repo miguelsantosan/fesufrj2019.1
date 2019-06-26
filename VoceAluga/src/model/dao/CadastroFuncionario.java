@@ -27,10 +27,10 @@ public class CadastroFuncionario {
 			
 			while((rs.next())){
 				if(rs.getInt("nivelDeAcesso")==2){
-					funcionarioEncontrado= new Gerente(rs.getString("nome"),rs.getString("CPF"),rs.getString("cargo"));
+					funcionarioEncontrado= new Gerente(rs.getString("nome"),rs.getString("CPF"),rs.getString("cargo"),rs.getString("login"),rs.getString("senha"));
 				}
 				else{
-					funcionarioEncontrado= new Funcionario(rs.getString("nome"),rs.getString("CPF"),rs.getString("cargo"));
+					funcionarioEncontrado= new Funcionario(rs.getString("nome"),rs.getString("CPF"),rs.getString("cargo"),rs.getString("login"),rs.getString("senha"));
 				}	
 		       	 
 		       	 
@@ -85,10 +85,10 @@ public class CadastroFuncionario {
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){ 
 				if(rs.getInt("nivelDeAcesso")==2){
-					funcionarioEncontrado= new Gerente(rs.getString("nome"),rs.getString("CPF"),rs.getString("cargo"));
+					funcionarioEncontrado= new Gerente(rs.getString("nome"),rs.getString("CPF"),rs.getString("cargo"),rs.getString("login"),rs.getString("senha"));
 				}
 				else{
-					funcionarioEncontrado= new Funcionario(rs.getString("nome"),rs.getString("CPF"),rs.getString("cargo"));
+					funcionarioEncontrado= new Funcionario(rs.getString("nome"),rs.getString("CPF"),rs.getString("cargo"),rs.getString("login"),rs.getString("senha"));
 				}
 				 
 				

@@ -28,7 +28,6 @@ public class ResultadosBuscaFuncionarioController {
 	@FXML
 	void processarBotaoConfirmar(MouseEvent e) throws IOException {
 		int indexDoFuncionarioSelecionado = listaExibidaNaTela.getSelectionModel().getSelectedIndex();
-		
 		if(indexDoFuncionarioSelecionado!= -1) {
 			CadastroFuncionario.setFuncionarioAtual(listaDeFuncionariosBuscados.get(indexDoFuncionarioSelecionado));
 			manager.mostrarTelaInformacoesDoFuncionario();
