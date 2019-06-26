@@ -1,5 +1,8 @@
 package model;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Veiculo {
 	private Long id;
 	private String filial;
@@ -190,9 +193,36 @@ public class Veiculo {
 	public void setInformacoesAdicionais(String informacoesAdicionais) {
 		this.informacoesAdicionais = informacoesAdicionais;
 	}
-	public static boolean ValidarChassi(String text) {
-		// TODO Auto-generated method stub
-		return false;
+	public static boolean ValidarChassi(String chassi) {
+
+		//https://respostas.guj.com.br/41944-validar-chassi-chassi-sempre-invalido
+
+		if (chassi.length() != 17)
+		{
+			return false;
+		}
+
+//		Pattern zeroNoPrimeiroDigito = Pattern.compile ("^0");
+//		Matcher matcherZero  = zeroNoPrimeiroDigito.matcher(chassi);
+//
+//		Pattern espacoNoChassi = Pattern.compile (" ");
+//		Matcher matcherEspaco = espacoNoChassi.matcher(chassi);
+//
+//		Pattern repeticaoMaisDe6Vezes = Pattern.compile ("^.{4,}([0-9A-Z])\\1{5,}");
+//		Matcher matcherRepetir = repeticaoMaisDe6Vezes.matcher(chassi);
+//
+//		Pattern caracteresiIoOqQ = Pattern.compile ("[iIoOqQ]");
+//		Matcher matcherCaract = caracteresiIoOqQ.matcher(chassi);
+//
+//		Pattern ultimos6Numericos = Pattern.compile ("[0-9]{6}$");
+//		Matcher matcherUltimos = ultimos6Numericos.matcher(chassi);
+//
+//		if (matcherZero.find() || matcherEspaco.find() || matcherRepetir.find() || matcherCaract.find() || matcherUltimos.find())
+//		{
+//			return false;
+//		}
+
+		return true;
 	}
 
 }

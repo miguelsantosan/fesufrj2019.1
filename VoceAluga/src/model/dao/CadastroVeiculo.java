@@ -23,7 +23,7 @@ public class CadastroVeiculo {
 		//VeiculosBuscados.add(new Veiculo(456789L,"Ford","Ka","DEF-5678","456789",0));
 		
 		Map<String,String> campos = obterValoresDosCamposDoVeiculo(veiculo);
-		String query = "SELECT * FROM Veiculo";
+		String query = "SELECT * FROM Veiculos";
 		query = adicionarParametrosQueryDeBusca(query,campos);
 		
 		try {
@@ -89,7 +89,7 @@ public class CadastroVeiculo {
 		buscarPorChassi(campos.get("chassi"));
 
 
-		String query = "UPDATE Veiculo SET ";
+		String query = "UPDATE Veiculos SET ";
 		query = adicionarParametrosQueryUpdate(query, campos);
 
 		try {
@@ -251,7 +251,7 @@ public class CadastroVeiculo {
 						rs.getString("chassi"),rs.getString("RENAVAM"),
 						rs.getString("placa"),rs.getString("marca"),
 						rs.getString("modelo"),rs.getInt("ano"),
-						rs.getInt("quilometragem"),rs.getString("informacoes adicionais"));
+						rs.getInt("quilometragem"),rs.getString("info_adicionais"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
@@ -278,7 +278,7 @@ public class CadastroVeiculo {
 						rs.getString("chassi"),rs.getString("RENAVAM"),
 						rs.getString("placa"),rs.getString("marca"),
 						rs.getString("modelo"),rs.getInt("ano"),
-						rs.getInt("quilometragem"),rs.getString("informacoes adicionais"));
+						rs.getInt("quilometragem"),rs.getString("info_adicionais"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;

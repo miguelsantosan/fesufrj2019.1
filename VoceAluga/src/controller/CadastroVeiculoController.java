@@ -138,7 +138,8 @@ public class CadastroVeiculoController {
     boolean validarCampos(){
 
         if(campoFilial.getText()== null || campoChassi.getText()== null || campoPlaca.getText().equals("")
-                || campoMarca.getText() == null || campoModelo.getText() == null || campoAno.getText()== null || campoQuilometragem.getText() ==null){
+                || campoMarca.getText() == null || campoModelo.getText() == null || campoAno.getText()== null
+                || campoQuilometragem.getText() == null || campoClasse == null){
             mostrarErroDeCadastro("Preencha todos os campos obrigatórios");
             return false;
         }
