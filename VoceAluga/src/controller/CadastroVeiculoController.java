@@ -56,7 +56,6 @@ public class CadastroVeiculoController {
         if(CadastroVeiculo.getVeiculoAtual()!=null){
             Veiculo veiculo = CadastroVeiculo.getVeiculoAtual();
             preencherCamposComDadosDoVeiculo(veiculo);
-            campoChassi.setDisable(true);
         }
     }
 

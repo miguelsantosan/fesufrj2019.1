@@ -79,6 +79,7 @@ public class CadastroVeiculo {
 		if (veiculo.getAnoDeFabricacao() != null){
 			campos.put("ano", String.valueOf(veiculo.getAnoDeFabricacao()));
 		}
+		if (veiculo.getQuilometragem() != null) campos.put("quilometragem", String.valueOf(veiculo.getQuilometragem()));
 		if (veiculo.getInformacoesAdicionais() != null) campos.put("info_adicionais", veiculo.getInformacoesAdicionais());
 
 		return campos;
@@ -138,7 +139,7 @@ public class CadastroVeiculo {
 	}
 
 	public static boolean cadastrarVeiculo(TreeMap<String,String> campos){
-		String query = "INSERT INTO Veiculo ";
+		String query = "INSERT INTO Veiculos ";
 		query = adicionarParametrosQueryDeInsercao(query,campos);
 
 		try {
@@ -194,7 +195,7 @@ public class CadastroVeiculo {
 	}
 
 	public static boolean deletarVeiculo(String Chassi){
-		String query = "DELETE FROM Veiculo WHERE chassi=\""+Chassi+"\";";
+		String query = "DELETE FROM Veiculos WHERE chassi=\""+Chassi+"\";";
 
 		try {
 			Statement stmt  = MySQLConnector.connection.createStatement();

@@ -193,7 +193,7 @@ public class TelaPrincipalController {
 				System.err.println("Erro na formatacao do Ano de Fabricacao do Veiculo");
 			}
 		}
-		if(!classe.equals("")) veiculo.setClasse(classe.charAt(0));
+		if(!classe.equals("")) veiculo.setClasse(classe);
 		
 		
 		CadastroVeiculo.buscarVeiculos(veiculo);

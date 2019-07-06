@@ -61,7 +61,37 @@ public class InformacoesDoVeiculoController {
 
     @FXML
     void processarBotaoDeletar(MouseEvent event) {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Deletar Dados Do Veiculo");
+        alert.setHeaderText("Atenção, essa operação é irreversível!");
+        alert.setContentText("Deseja Continuar?");
 
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            if(CadastroVeiculo.deletarVeiculo(CadastroVeiculo.getVeiculoAtual().getChassi())){;
+                mostrarMensagemDeSucesso("Cliente deletado com sucesso");
+                manager.mostrarTelaPrincipal();
+            }
+            else{
+                mostrarMensagemDeErro("Não foi possível deletar o veiculo");
+            }
+
+        }
+    }
+
+    public void mostrarMensagemDeSucesso(String mensagem) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("");
+        alert.setHeaderText(mensagem);
+        alert.setContentText("");
+        alert.showAndWait();
+    }
+    public void mostrarMensagemDeErro(String mensagem) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("");
+        alert.setHeaderText(mensagem);
+        alert.setContentText("");
+        alert.showAndWait();
     }
 
     public void initialize() {

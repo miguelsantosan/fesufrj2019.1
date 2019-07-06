@@ -1,8 +1,5 @@
 package model;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Veiculo {
 	private Long id;
 	private String filial;
@@ -13,7 +10,7 @@ public class Veiculo {
 	private String modelo;
 	private Integer anoDeFabricacao;
 	private Integer quilometragem;
-	private char classe;
+	private String classe;
 	private boolean precisaManutencao;
 	private String informacoesAdicionais;
 	/**
@@ -142,7 +139,7 @@ public class Veiculo {
 	/**
 	 * @param classe a classe do veiculo na locadora
 	 */
-	public void setClasse(char classe) {
+	public void setClasse(String classe) {
 		this.classe = classe;
 	}
 	/**
