@@ -22,7 +22,7 @@ public class Veiculo {
 	 * @param quilometragem a quilometragem do veiculo
 	 */
 	public Veiculo(String filial, String chassi, String RENAVAM, String placa, String marca,
-				   String modelo, Integer ano, Integer quilometragem, String informacoesAdicionais){
+				   String modelo, Integer ano, Integer quilometragem, String classe, String informacoesAdicionais){
 		this.filial = filial;
 		this.chassi = chassi;
 		this.RENAVAM = RENAVAM;
@@ -31,6 +31,7 @@ public class Veiculo {
 		this.modelo = modelo;
 		this.anoDeFabricacao = ano;
 		this.quilometragem = quilometragem;
+		this.classe = classe;
 		this.precisaManutencao = false;
 		this.informacoesAdicionais = informacoesAdicionais;
 	}
@@ -134,7 +135,7 @@ public class Veiculo {
 	 * @return a classe do veiculo
 	 */
 	public String getClasse() {
-		return String.valueOf(this.classe);
+		return this.classe;
 	}
 	/**
 	 * @param classe a classe do veiculo na locadora
@@ -161,7 +162,7 @@ public class Veiculo {
 		return quilometragem;
 	}
 	/**
-	 * @param quilometragem a quilometragem do veiculo atual do veiculo
+	 * @param quilometragem a quilometragem do veiculo atual
 	 */
 	public void setQuilometragem(Integer quilometragem) {
 		this.quilometragem = quilometragem;

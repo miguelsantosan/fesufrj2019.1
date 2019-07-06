@@ -99,7 +99,7 @@ public class CadastroVeiculoController {
         }
 
         if(!campoChassi.getText().equals("") && CadastroVeiculo.buscarPorChassi(campoChassi.getText())){
-            mostrarErroDeCadastro("CPF já cadastrado");
+            mostrarErroDeCadastro("Chassi já cadastrado");
             return;
         }
 
@@ -176,10 +176,11 @@ public class CadastroVeiculoController {
         campoAno.setText(String.valueOf(veiculo.getAnoDeFabricacao()));
         campoChassi.setText(veiculo.getChassi());
         campoRENAVAM.setText(veiculo.getRENAVAM());
-        campoClasse.setText(String.valueOf(veiculo.getClasse()));
+        campoClasse.setText(veiculo.getClasse());
         campoPlaca.setText(veiculo.getPlaca());
         campoModelo.setText(veiculo.getModelo());
         campoFilial.setText(veiculo.getFilial());
+        campoQuilometragem.setText(String.valueOf(veiculo.getQuilometragem()));
         campoInformacoesAdicionais.setText(veiculo.getInformacoesAdicionais());
     }
 }

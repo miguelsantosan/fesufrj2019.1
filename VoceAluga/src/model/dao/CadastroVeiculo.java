@@ -35,7 +35,7 @@ public class CadastroVeiculo {
 						rs.getString("chassi"),rs.getString("RENAVAM"),
 						rs.getString("placa"),rs.getString("marca"),
 						rs.getString("modelo"),rs.getInt("ano"),
-						rs.getInt("quilometragem"),rs.getString("infoAdicional"));
+						rs.getInt("quilometragem"),rs.getString("classe"), rs.getString("infoAdicional"));
 				VeiculosBuscados.add(veiculoEncontrado);
 			}
 
@@ -224,7 +224,7 @@ public class CadastroVeiculo {
 						rs.getString("chassi"),rs.getString("RENAVAM"),
 						rs.getString("placa"),rs.getString("marca"),
 						rs.getString("modelo"),rs.getInt("ano"),
-						rs.getInt("quilometragem"),rs.getString("infoAdicional"));
+						rs.getInt("quilometragem"),rs.getString("classe"),rs.getString("infoAdicional"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
@@ -250,7 +250,7 @@ public class CadastroVeiculo {
 						rs.getString("chassi"),rs.getString("RENAVAM"),
 						rs.getString("placa"),rs.getString("marca"),
 						rs.getString("modelo"),rs.getInt("ano"),
-						rs.getInt("quilometragem"),rs.getString("infoAdicional"));
+						rs.getInt("quilometragem"),rs.getString("classe"),rs.getString("infoAdicional"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
@@ -277,7 +277,7 @@ public class CadastroVeiculo {
 						rs.getString("chassi"),rs.getString("RENAVAM"),
 						rs.getString("placa"),rs.getString("marca"),
 						rs.getString("modelo"),rs.getInt("ano"),
-						rs.getInt("quilometragem"),rs.getString("infoAdicional"));
+						rs.getInt("quilometragem"),rs.getString("classe"),rs.getString("infoAdicional"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
