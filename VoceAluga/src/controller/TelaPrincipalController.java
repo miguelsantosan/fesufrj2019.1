@@ -202,7 +202,7 @@ public class TelaPrincipalController {
 	
 	@FXML
 	void processarBotaoCadastrarNovoVeiculo(MouseEvent e) throws IOException {
-		CadastroVeiculo.setveiculoAtual(null);
+		CadastroVeiculo.setVeiculoAtual(null);
 		manager.mostrarTelaCadastroDeVeiculo();
 	}
 

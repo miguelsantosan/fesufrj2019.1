@@ -80,13 +80,13 @@ public class CadastroVeiculoController {
 
         if(!campoChassi.equals("")) campos.put("chassi", campoChassi.getText());
         if(!campoRENAVAM.equals("")) campos.put("RENAVAM", campoRENAVAM.getText());
-        if(campoFilial.getText() != null) campos.put("filail", campoFilial.getText());
+        if(campoFilial.getText() != null) campos.put("filial", campoFilial.getText());
         if(campoPlaca.getText() != null) campos.put("placa", campoPlaca.getText());
         if(campoMarca.getText() != null) campos.put("marca", campoMarca.getText());
         if(campoModelo.getText()!=null) campos.put("modelo", campoModelo.getText());
         if(campoAno.getText() != null) campos.put("ano", campoAno.getText());
         if(campoQuilometragem.getText() !=null) campos.put("quilometragem", campoQuilometragem.getText());
-        if(campoInformacoesAdicionais.getText() != null) campos.put("informacoes adicionais", campoInformacoesAdicionais.getText());
+        if(campoInformacoesAdicionais.getText() != null) campos.put("infoAdicional", campoInformacoesAdicionais.getText());
 
         return campos;
     }

@@ -35,7 +35,7 @@ public class CadastroVeiculo {
 						rs.getString("chassi"),rs.getString("RENAVAM"),
 						rs.getString("placa"),rs.getString("marca"),
 						rs.getString("modelo"),rs.getInt("ano"),
-						rs.getInt("quilometragem"),rs.getString("info_adicionais"));
+						rs.getInt("quilometragem"),rs.getString("infoAdicional"));
 				VeiculosBuscados.add(veiculoEncontrado);
 			}
 
@@ -76,11 +76,9 @@ public class CadastroVeiculo {
 		if (veiculo.getPlaca() != null) campos.put("placa", veiculo.getPlaca());
 		if (veiculo.getMarca() != null) campos.put("marca", veiculo.getMarca());
 		if (veiculo.getModelo() != null) campos.put("modelo", veiculo.getModelo());
-		if (veiculo.getAnoDeFabricacao() != null){
-			campos.put("ano", String.valueOf(veiculo.getAnoDeFabricacao()));
-		}
+		if (veiculo.getAnoDeFabricacao() != null) campos.put("ano", String.valueOf(veiculo.getAnoDeFabricacao()));
 		if (veiculo.getQuilometragem() != null) campos.put("quilometragem", String.valueOf(veiculo.getQuilometragem()));
-		if (veiculo.getInformacoesAdicionais() != null) campos.put("info_adicionais", veiculo.getInformacoesAdicionais());
+		if (veiculo.getInformacoesAdicionais() != null) campos.put("infoAdicional", veiculo.getInformacoesAdicionais());
 
 		return campos;
 	}
@@ -226,7 +224,7 @@ public class CadastroVeiculo {
 						rs.getString("chassi"),rs.getString("RENAVAM"),
 						rs.getString("placa"),rs.getString("marca"),
 						rs.getString("modelo"),rs.getInt("ano"),
-						rs.getInt("quilometragem"),rs.getString("info_adicionais"));
+						rs.getInt("quilometragem"),rs.getString("infoAdicional"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
@@ -252,7 +250,7 @@ public class CadastroVeiculo {
 						rs.getString("chassi"),rs.getString("RENAVAM"),
 						rs.getString("placa"),rs.getString("marca"),
 						rs.getString("modelo"),rs.getInt("ano"),
-						rs.getInt("quilometragem"),rs.getString("info_adicionais"));
+						rs.getInt("quilometragem"),rs.getString("infoAdicional"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
@@ -279,7 +277,7 @@ public class CadastroVeiculo {
 						rs.getString("chassi"),rs.getString("RENAVAM"),
 						rs.getString("placa"),rs.getString("marca"),
 						rs.getString("modelo"),rs.getInt("ano"),
-						rs.getInt("quilometragem"),rs.getString("info_adicionais"));
+						rs.getInt("quilometragem"),rs.getString("infoAdicional"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
@@ -296,7 +294,7 @@ public class CadastroVeiculo {
 		return veiculoAtual;
 	}
 	
-	public static void setveiculoAtual(Veiculo veiculo) {
+	public static void setVeiculoAtual(Veiculo veiculo) {
 		veiculoAtual = veiculo;
 	}
 
