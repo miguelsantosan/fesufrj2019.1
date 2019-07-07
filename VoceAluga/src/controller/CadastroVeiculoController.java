@@ -124,7 +124,7 @@ public class CadastroVeiculoController {
         TreeMap<String,String> camposVeiculo = gerarMapAPartirDoFormularioVeiculo();
         //Correto?
         if(CadastroVeiculo.cadastrarVeiculo(camposVeiculo)){
-            mostrarMensagemDeSucesso("Veiculo cadastrado com sucesso");
+            mostrarMensagemDeSucesso("Veículo cadastrado com sucesso");
             manager.mostrarTelaPrincipal();
         }
         else{
@@ -146,7 +146,7 @@ public class CadastroVeiculoController {
             manager.mostrarTelaPrincipal();
         }
         else{
-            mostrarErroDeCadastro("Não foi possível alterar o cadastro do veiculo");
+            mostrarErroDeCadastro("Não foi possível alterar o cadastro do veículo");
         }
     }
     //ToDo?

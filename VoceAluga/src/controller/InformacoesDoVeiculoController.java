@@ -75,7 +75,7 @@ public class InformacoesDoVeiculoController {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             if(CadastroVeiculo.deletarVeiculo(CadastroVeiculo.getVeiculoAtual().getChassi())){;
-                mostrarMensagemDeSucesso("Cliente deletado com sucesso");
+                mostrarMensagemDeSucesso("Veículo deletado com sucesso");
                 manager.mostrarTelaPrincipal();
             }
             else{
