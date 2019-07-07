@@ -101,6 +101,7 @@ public class CadastroVeiculoController {
         if(campoClasse.getText() != null) campos.put("classe", campoClasse.getText());
         if(campoQuilometragem.getText() != null) campos.put("quilometragem", campoQuilometragem.getText());
         if(campoCor.getText() != null) campos.put("cor", campoCor.getText());
+        if(caixaManutencao.getValue() != null) campos.put("manutencaoEmDia", String.valueOf(caixaManutencao.getValue()));
         if(campoInformacoesAdicionais.getText() != null) campos.put("infoAdicional", campoInformacoesAdicionais.getText());
 
         return campos;
@@ -197,6 +198,7 @@ public class CadastroVeiculoController {
         campoFilial.setText(veiculo.getFilial());
         campoQuilometragem.setText(String.valueOf(veiculo.getQuilometragem()));
         campoCor.setText(veiculo.getCor());
+        caixaManutencao.setValue(veiculo.getManutencaoEmDia());
         campoInformacoesAdicionais.setText(veiculo.getInformacoesAdicionais());
     }
 }

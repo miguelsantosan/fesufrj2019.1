@@ -12,7 +12,7 @@ public class Veiculo {
 	private Integer quilometragem;
 	private String classe;
 	private String cor;
-	private boolean manutencaoEmDia;
+	private String manutencaoEmDia;
 	private String informacoesAdicionais;
 	/**
 	 * Construtor.
@@ -23,7 +23,8 @@ public class Veiculo {
 	 * @param quilometragem a quilometragem do veiculo
 	 */
 	public Veiculo(String filial, String chassi, String RENAVAM, String placa, String marca,
-				   String modelo, Integer ano, Integer quilometragem, String classe, String cor, String informacoesAdicionais){
+				   String modelo, Integer ano, Integer quilometragem, String classe, String cor, String manutencaoEmDia,
+				   String informacoesAdicionais){
 		this.filial = filial;
 		this.chassi = chassi;
 		this.RENAVAM = RENAVAM;
@@ -34,7 +35,7 @@ public class Veiculo {
 		this.quilometragem = quilometragem;
 		this.classe = classe;
 		this.cor = cor;
-		this.manutencaoEmDia = true;
+		this.manutencaoEmDia = manutencaoEmDia;
 		this.informacoesAdicionais = informacoesAdicionais;
 	}
 	
@@ -47,13 +48,12 @@ public class Veiculo {
 		this.placa = placa;
 		this.chassi = chassi;
 		this.quilometragem = quilometragem;
-		this.manutencaoEmDia = true;
 	}
 	//CONSTRUTOR TESTE
 	//================
 
 	public Veiculo(){
-		this.manutencaoEmDia = true;
+
 	}
 	/**
 	 * @return o ID do veiculo
@@ -182,15 +182,15 @@ public class Veiculo {
 		this.cor = cor;
 	}
 	/**
-	 * @return verdadeiro se a manutencao do veiculo esta em dia, falso caso contrario
+	 * @return se a manutencao do veiculo esta em dia, retorna String "SIM" ou "NÂO"
 	 */
-	public boolean isManutencaoEmDia() {
+	public String getManutencaoEmDia() {
 		return manutencaoEmDia;
 	}
 	/**
-	 * @param manutencaoEmDia booleano que indica se o veiculo precisa de manutencao ou nao
+	 * @param manutencaoEmDia String que indica se a manutencao do veiculo esta em dia ou nao
 	 */
-	public void setManutencaoEmDia(boolean manutencaoEmDia) {
+	public void setManutencaoEmDia(String manutencaoEmDia) {
 		this.manutencaoEmDia = manutencaoEmDia;
 	}
 	/**

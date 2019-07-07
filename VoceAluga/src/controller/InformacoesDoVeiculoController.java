@@ -119,6 +119,7 @@ public class InformacoesDoVeiculoController {
         if(veiculo.getAnoDeFabricacao()!=null)labelAno.setText(String.valueOf(veiculo.getAnoDeFabricacao()));
         if(veiculo.getQuilometragem()!=null)labelQuilometragem.setText(String.valueOf(veiculo.getQuilometragem()));
         if(veiculo.getCor()!=null) labelCor.setText(veiculo.getCor());
+        if(veiculo.getManutencaoEmDia()!=null) labelManutencao.setText(veiculo.getManutencaoEmDia());
         if(veiculo.getInformacoesAdicionais()!=null)labelInformacoesAdicionais.setText(veiculo.getInformacoesAdicionais());
     }
 }

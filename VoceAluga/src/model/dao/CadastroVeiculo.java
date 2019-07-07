@@ -32,11 +32,11 @@ public class CadastroVeiculo {
 
 			while((rs.next())){
 				Veiculo veiculoEncontrado = new Veiculo(rs.getString("filial"),
-						rs.getString("chassi"),rs.getString("RENAVAM"),
-						rs.getString("placa"),rs.getString("marca"),
-						rs.getString("modelo"),rs.getInt("ano"),
+						rs.getString("chassi"), rs.getString("RENAVAM"),
+						rs.getString("placa"), rs.getString("marca"),
+						rs.getString("modelo"), rs.getInt("ano"),
 						rs.getInt("quilometragem"),rs.getString("classe"),
-						rs.getString("cor"), rs.getString("infoAdicional"));
+						rs.getString("cor"), rs.getString("manutencaoEmDia"), rs.getString("infoAdicional"));
 				VeiculosBuscados.add(veiculoEncontrado);
 			}
 
@@ -222,11 +222,11 @@ public class CadastroVeiculo {
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
 				Veiculo veiculoEncontrado = new Veiculo(rs.getString("filial"),
-						rs.getString("chassi"),rs.getString("RENAVAM"),
-						rs.getString("placa"),rs.getString("marca"),
-						rs.getString("modelo"),rs.getInt("ano"),
-						rs.getInt("quilometragem"),rs.getString("classe"),
-						rs.getString("cor"), rs.getString("infoAdicional"));
+						rs.getString("chassi"), rs.getString("RENAVAM"),
+						rs.getString("placa"), rs.getString("marca"),
+						rs.getString("modelo"), rs.getInt("ano"),
+						rs.getInt("quilometragem"), rs.getString("classe"),
+						rs.getString("cor"), rs.getString("manutencaoEmDia"), rs.getString("infoAdicional"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
@@ -249,11 +249,11 @@ public class CadastroVeiculo {
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
 				Veiculo veiculoEncontrado = new Veiculo(rs.getString("filial"),
-						rs.getString("chassi"),rs.getString("RENAVAM"),
-						rs.getString("placa"),rs.getString("marca"),
-						rs.getString("modelo"),rs.getInt("ano"),
-						rs.getInt("quilometragem"),rs.getString("classe"),
-						rs.getString("cor"), rs.getString("infoAdicional"));
+						rs.getString("chassi"), rs.getString("RENAVAM"),
+						rs.getString("placa"), rs.getString("marca"),
+						rs.getString("modelo"), rs.getInt("ano"),
+						rs.getInt("quilometragem"), rs.getString("classe"),
+						rs.getString("cor"), rs.getString("manutencaoEmDia"), rs.getString("infoAdicional"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
@@ -277,10 +277,11 @@ public class CadastroVeiculo {
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
 				Veiculo veiculoEncontrado = new Veiculo(rs.getString("filial"),
-						rs.getString("chassi"),rs.getString("RENAVAM"),
-						rs.getString("placa"),rs.getString("marca"),
-						rs.getString("modelo"),rs.getInt("ano"),
-						rs.getInt("quilometragem"),rs.getString("classe"),rs.getString("cor"), rs.getString("infoAdicional"));
+						rs.getString("chassi"), rs.getString("RENAVAM"),
+						rs.getString("placa"), rs.getString("marca"),
+						rs.getString("modelo"), rs.getInt("ano"),
+						rs.getInt("quilometragem"), rs.getString("classe"),
+						rs.getString("cor"), rs.getString("manutencaoEmDia"), rs.getString("infoAdicional"));
 
 				veiculoAtual = veiculoEncontrado;
 				return true;
