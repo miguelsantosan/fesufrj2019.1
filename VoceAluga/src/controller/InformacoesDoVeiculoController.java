@@ -47,6 +47,12 @@ public class InformacoesDoVeiculoController {
     public Label labelRENAVAM;
 
     @FXML
+    public Label labelManutencao;
+
+    @FXML
+    public Label labelCor;
+
+    @FXML
     public Label labelInformacoesAdicionais;
 
     @FXML
@@ -112,6 +118,7 @@ public class InformacoesDoVeiculoController {
         if(veiculo.getModelo()!=null)labelModelo.setText(veiculo.getModelo());
         if(veiculo.getAnoDeFabricacao()!=null)labelAno.setText(String.valueOf(veiculo.getAnoDeFabricacao()));
         if(veiculo.getQuilometragem()!=null)labelQuilometragem.setText(String.valueOf(veiculo.getQuilometragem()));
+        if(veiculo.getCor()!=null) labelCor.setText(veiculo.getCor());
         if(veiculo.getInformacoesAdicionais()!=null)labelInformacoesAdicionais.setText(veiculo.getInformacoesAdicionais());
     }
 }

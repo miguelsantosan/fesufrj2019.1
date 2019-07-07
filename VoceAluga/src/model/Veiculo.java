@@ -11,7 +11,8 @@ public class Veiculo {
 	private Integer anoDeFabricacao;
 	private Integer quilometragem;
 	private String classe;
-	private boolean precisaManutencao;
+	private String cor;
+	private boolean manutencaoEmDia;
 	private String informacoesAdicionais;
 	/**
 	 * Construtor.
@@ -22,7 +23,7 @@ public class Veiculo {
 	 * @param quilometragem a quilometragem do veiculo
 	 */
 	public Veiculo(String filial, String chassi, String RENAVAM, String placa, String marca,
-				   String modelo, Integer ano, Integer quilometragem, String classe, String informacoesAdicionais){
+				   String modelo, Integer ano, Integer quilometragem, String classe, String cor, String informacoesAdicionais){
 		this.filial = filial;
 		this.chassi = chassi;
 		this.RENAVAM = RENAVAM;
@@ -32,7 +33,8 @@ public class Veiculo {
 		this.anoDeFabricacao = ano;
 		this.quilometragem = quilometragem;
 		this.classe = classe;
-		this.precisaManutencao = false;
+		this.cor = cor;
+		this.manutencaoEmDia = true;
 		this.informacoesAdicionais = informacoesAdicionais;
 	}
 	
@@ -45,13 +47,13 @@ public class Veiculo {
 		this.placa = placa;
 		this.chassi = chassi;
 		this.quilometragem = quilometragem;
-		this.precisaManutencao = false;
+		this.manutencaoEmDia = true;
 	}
 	//CONSTRUTOR TESTE
 	//================
 
 	public Veiculo(){
-		this.precisaManutencao = false;
+		this.manutencaoEmDia = true;
 	}
 	/**
 	 * @return o ID do veiculo
@@ -168,16 +170,28 @@ public class Veiculo {
 		this.quilometragem = quilometragem;
 	}
 	/**
-	 * @return verdadeiro se o veiculo precisa de manutencao, falso caso contrario
+	 * @return a cor do veiculo
 	 */
-	public boolean isPrecisaManutencao() {
-		return precisaManutencao;
+	public String getCor() {
+		return cor;
 	}
 	/**
-	 * @param precisaManutencao booleano que indica se o veiculo precisa de manutencao ou nao
+	 * @param cor a cor do veiculo
 	 */
-	public void setPrecisaManutencao(boolean precisaManutencao) {
-		this.precisaManutencao = precisaManutencao;
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+	/**
+	 * @return verdadeiro se a manutencao do veiculo esta em dia, falso caso contrario
+	 */
+	public boolean isManutencaoEmDia() {
+		return manutencaoEmDia;
+	}
+	/**
+	 * @param manutencaoEmDia booleano que indica se o veiculo precisa de manutencao ou nao
+	 */
+	public void setManutencaoEmDia(boolean manutencaoEmDia) {
+		this.manutencaoEmDia = manutencaoEmDia;
 	}
 	/**
 	 * @return as informacoes adicionais do veiculo

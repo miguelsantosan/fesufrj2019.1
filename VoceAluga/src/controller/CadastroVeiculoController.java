@@ -1,8 +1,11 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import model.Veiculo;
@@ -14,6 +17,8 @@ import java.util.TreeMap;
 public class CadastroVeiculoController {
 
     ScenesManager manager = new ScenesManager();
+
+    ObservableList<String> manutencaoList = FXCollections.observableArrayList("SIM","NÂO");
 
     @FXML
     TextField campoFilial;
@@ -43,6 +48,12 @@ public class CadastroVeiculoController {
     TextField campoQuilometragem;
 
     @FXML
+    TextField campoCor;
+
+    @FXML
+    ChoiceBox caixaManutencao;
+
+    @FXML
     TextField campoInformacoesAdicionais;
 
     @FXML
@@ -53,6 +64,8 @@ public class CadastroVeiculoController {
 
 
     public void initialize() {
+        caixaManutencao.setItems(manutencaoList);
+
         if(CadastroVeiculo.getVeiculoAtual()!=null){
             Veiculo veiculo = CadastroVeiculo.getVeiculoAtual();
             preencherCamposComDadosDoVeiculo(veiculo);
@@ -83,9 +96,11 @@ public class CadastroVeiculoController {
         if(campoFilial.getText() != null) campos.put("filial", campoFilial.getText());
         if(campoPlaca.getText() != null) campos.put("placa", campoPlaca.getText());
         if(campoMarca.getText() != null) campos.put("marca", campoMarca.getText());
-        if(campoModelo.getText()!=null) campos.put("modelo", campoModelo.getText());
+        if(campoModelo.getText()!= null) campos.put("modelo", campoModelo.getText());
         if(campoAno.getText() != null) campos.put("ano", campoAno.getText());
-        if(campoQuilometragem.getText() !=null) campos.put("quilometragem", campoQuilometragem.getText());
+        if(campoClasse.getText() != null) campos.put("classe", campoClasse.getText());
+        if(campoQuilometragem.getText() != null) campos.put("quilometragem", campoQuilometragem.getText());
+        if(campoCor.getText() != null) campos.put("cor", campoCor.getText());
         if(campoInformacoesAdicionais.getText() != null) campos.put("infoAdicional", campoInformacoesAdicionais.getText());
 
         return campos;
@@ -181,6 +196,7 @@ public class CadastroVeiculoController {
         campoModelo.setText(veiculo.getModelo());
         campoFilial.setText(veiculo.getFilial());
         campoQuilometragem.setText(String.valueOf(veiculo.getQuilometragem()));
+        campoCor.setText(veiculo.getCor());
         campoInformacoesAdicionais.setText(veiculo.getInformacoesAdicionais());
     }
 }
