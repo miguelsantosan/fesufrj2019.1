@@ -55,6 +55,25 @@ public class InformacoesDoVeiculoController {
     @FXML
     public Label labelInformacoesAdicionais;
 
+    // === Aluguel ===
+    @FXML
+    public Label labelAlugado;
+
+    @FXML
+    public Label labelLocatarioNome;
+
+    @FXML
+    public Label labelLocatarioCPF;
+
+    @FXML
+    public Label labelLocatarioHabilitacao;
+
+    @FXML
+    public Label labelDataLocacao;
+
+    @FXML
+    public Label labelDataDevolucao;
+
     @FXML
     public void processarBotaoVoltar(MouseEvent e) throws IOException {
         manager.mostrarTelaPrincipal();

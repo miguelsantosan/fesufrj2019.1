@@ -3,10 +3,7 @@ package controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import model.Veiculo;
 import model.dao.CadastroVeiculo;
@@ -18,7 +15,7 @@ public class CadastroVeiculoController {
 
     ScenesManager manager = new ScenesManager();
 
-    ObservableList<String> manutencaoList = FXCollections.observableArrayList("SIM","NÂO");
+    ObservableList<String> listaOpcoesSIMeNAO = FXCollections.observableArrayList("SIM","NÂO");
 
     @FXML
     TextField campoFilial;
@@ -56,15 +53,38 @@ public class CadastroVeiculoController {
     @FXML
     TextField campoInformacoesAdicionais;
 
+    // === Aluguel ===
+    @FXML
+    TextField campoLocatarioNome;
+
+    @FXML
+    TextField campoLocatarioCPF;
+
+    @FXML
+    TextField campoLocatarioHabilitacao;
+
+    @FXML
+    TextField campoDataLocacao;
+
+    @FXML
+    TextField campoDataDevolucao;
+
+    @FXML
+    Label labelAlugado;
+
+    // === Botoes ===
     @FXML
     Button BotaoCancelar;
 
     @FXML
     Button BotaoConfirmar;
 
+    @FXML
+    Button BotaoAlugar;
+
 
     public void initialize() {
-        caixaManutencao.setItems(manutencaoList);
+        caixaManutencao.setItems(listaOpcoesSIMeNAO);
 
         if(CadastroVeiculo.getVeiculoAtual()!=null){
             Veiculo veiculo = CadastroVeiculo.getVeiculoAtual();
@@ -83,9 +103,15 @@ public class CadastroVeiculoController {
             System.out.println("Cadastrando veiculo");
             adicionarVeiculo();
         }else{
-            System.out.println("alterando veiculo");
+            System.out.println("Alterando veiculo");
             alterarVeiculo();
         }
+    }
+
+    @FXML
+    void processarBotaoAlugar(MouseEvent event) throws IOException{
+        //ToDo
+        System.out.println("ToDo: Alugar o veículo.");;
     }
 
     TreeMap<String,String> gerarMapAPartirDoFormularioVeiculo(){
@@ -154,7 +180,7 @@ public class CadastroVeiculoController {
 
         if(campoFilial.getText()== null || campoChassi.getText()== null || campoPlaca.getText().equals("")
                 || campoMarca.getText() == null || campoModelo.getText() == null || campoAno.getText()== null
-                || campoQuilometragem.getText() == null || campoClasse == null){
+                || campoQuilometragem.getText() == null || campoClasse == null || campoRENAVAM == null){
             mostrarErroDeCadastro("Preencha todos os campos obrigatórios");
             return false;
         }
