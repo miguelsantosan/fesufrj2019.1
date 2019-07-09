@@ -1,7 +1,7 @@
 package model;
 
 public class Veiculo {
-	private int veiculo_id;
+	private int id;
 	private String filial;
 	private String chassi;
 	private String RENAVAM;
@@ -25,7 +25,7 @@ public class Veiculo {
 	public Veiculo(int id, String filial, String chassi, String RENAVAM, String placa, String marca,
 				   String modelo, Integer ano, Integer quilometragem, String classe, String cor, String manutencaoEmDia,
 				   String informacoesAdicionais){
-		this.veiculo_id = id;
+		this.id = id;
 		this.filial = filial;
 		this.chassi = chassi;
 		this.RENAVAM = RENAVAM;
@@ -42,7 +42,7 @@ public class Veiculo {
 	
 	//====construtor teste====
 	public Veiculo(int id, String marca, String modelo, String placa, String chassi, Integer quilometragem){
-		this.veiculo_id = id;
+		this.id = id;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.placa = placa;
@@ -61,8 +61,8 @@ public class Veiculo {
 	/**
 	 * @return O ID do veiculo
 	 */
-	public int getVeiculo_id() {
-		return this.veiculo_id;
+	public int getId() {
+		return this.id;
 	}
 
 	/**

@@ -21,14 +21,14 @@ public class Cliente {
   private String rua;
   private String numero;
   private String complemento;
-  private int cliente_id;
+  private int id;
 
 // construtor contendo todos os campos
-  public Cliente(int cliente_id,String nome,String cpf,String passaporte,String email,String telefone,String CEP,
+  public Cliente(int id,String nome,String cpf,String passaporte,String email,String telefone,String CEP,
 		         String pais, String estado, String cidade, String bairro, String rua, String numero, String complemento, LocalDate dataDeNascimento){
 
 	  this(nome,cpf,passaporte,CEP,telefone,email);
-	  this.cliente_id =cliente_id;
+	  this.id =id;
 	  this.pais = pais;
 	  this.estado = estado;
 	  this.cidade = cidade;
@@ -60,8 +60,8 @@ public class Cliente {
   }
 
   // ====getters====
-  public int getCliente_id(){
-	  return this.cliente_id;
+  public int getId(){
+	  return this.id;
   }
   
   public String getNome() {

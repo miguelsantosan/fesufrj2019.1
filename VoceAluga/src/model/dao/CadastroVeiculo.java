@@ -31,7 +31,7 @@ public class CadastroVeiculo {
 			ResultSet rs    = stmt.executeQuery(query);
 
 			while((rs.next())){
-				Veiculo veiculoEncontrado = new Veiculo(rs.getInt("veiculo_id"), rs.getString("filial"),
+				Veiculo veiculoEncontrado = new Veiculo(rs.getInt("id"), rs.getString("filial"),
 						rs.getString("chassi"), rs.getString("RENAVAM"),
 						rs.getString("placa"), rs.getString("marca"),
 						rs.getString("modelo"), rs.getInt("ano"),
@@ -222,7 +222,7 @@ public class CadastroVeiculo {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-				Veiculo veiculoEncontrado = new Veiculo(rs.getInt("veiculo_id"), rs.getString("filial"),
+				Veiculo veiculoEncontrado = new Veiculo(rs.getInt("id"), rs.getString("filial"),
 						rs.getString("chassi"), rs.getString("RENAVAM"),
 						rs.getString("placa"), rs.getString("marca"),
 						rs.getString("modelo"), rs.getInt("ano"),
@@ -250,7 +250,7 @@ public class CadastroVeiculo {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-				Veiculo veiculoEncontrado = new Veiculo(rs.getInt("veiculo_id"), rs.getString("filial"),
+				Veiculo veiculoEncontrado = new Veiculo(rs.getInt("id"), rs.getString("filial"),
 						rs.getString("chassi"), rs.getString("RENAVAM"),
 						rs.getString("placa"), rs.getString("marca"),
 						rs.getString("modelo"), rs.getInt("ano"),
@@ -279,7 +279,7 @@ public class CadastroVeiculo {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-				Veiculo veiculoEncontrado = new Veiculo(rs.getInt("veiculo_id"), rs.getString("filial"),
+				Veiculo veiculoEncontrado = new Veiculo(rs.getInt("id"), rs.getString("filial"),
 						rs.getString("chassi"), rs.getString("RENAVAM"),
 						rs.getString("placa"), rs.getString("marca"),
 						rs.getString("modelo"), rs.getInt("ano"),
