@@ -127,18 +127,32 @@ public class InformacoesDoVeiculoController {
 
     public void preencherLabelsComDadosDoVeiculo(Veiculo veiculo) {
 
-        if(veiculo.getFilial()!=null)labelFilial.setText(veiculo.getFilial());
-        if(veiculo.getChassi()!=null)labelChassi.setText(veiculo.getChassi());
+        if(veiculo.getFilial() != null)labelFilial.setText(veiculo.getFilial());
+        if(veiculo.getChassi() != null)labelChassi.setText(veiculo.getChassi());
 
-        if(veiculo.getRENAVAM()!=null)labelRENAVAM.setText(veiculo.getRENAVAM());
-        if(veiculo.getPlaca()!=null)labelPlaca.setText(veiculo.getPlaca());
-        if(veiculo.getClasse()!=null)labelClasse.setText(veiculo.getClasse());
-        if(veiculo.getMarca()!=null)labelMarca.setText(veiculo.getMarca());
-        if(veiculo.getModelo()!=null)labelModelo.setText(veiculo.getModelo());
-        if(veiculo.getAnoDeFabricacao()!=null)labelAno.setText(String.valueOf(veiculo.getAnoDeFabricacao()));
-        if(veiculo.getQuilometragem()!=null)labelQuilometragem.setText(String.valueOf(veiculo.getQuilometragem()));
-        if(veiculo.getCor()!=null) labelCor.setText(veiculo.getCor());
-        if(veiculo.getManutencaoEmDia()!=null) labelManutencao.setText(veiculo.getManutencaoEmDia());
-        if(veiculo.getInformacoesAdicionais()!=null)labelInformacoesAdicionais.setText(veiculo.getInformacoesAdicionais());
+        if(veiculo.getRENAVAM() != null)labelRENAVAM.setText(veiculo.getRENAVAM());
+        if(veiculo.getPlaca() != null)labelPlaca.setText(veiculo.getPlaca());
+        if(veiculo.getClasse() != null)labelClasse.setText(veiculo.getClasse());
+        if(veiculo.getMarca() != null)labelMarca.setText(veiculo.getMarca());
+        if(veiculo.getModelo() != null)labelModelo.setText(veiculo.getModelo());
+        if(veiculo.getAnoDeFabricacao() != null)labelAno.setText(String.valueOf(veiculo.getAnoDeFabricacao()));
+        if(veiculo.getQuilometragem() != null)labelQuilometragem.setText(String.valueOf(veiculo.getQuilometragem()));
+        if(veiculo.getCor() != null) labelCor.setText(veiculo.getCor());
+        if(veiculo.getManutencaoEmDia() != null) labelManutencao.setText(veiculo.getManutencaoEmDia());
+        if(veiculo.getInformacoesAdicionais() != null)labelInformacoesAdicionais.setText(veiculo.getInformacoesAdicionais());
+
+
+        if(veiculo.isAlugado() == true){
+            labelAlugado.setText("SIM");
+        }
+        else {
+            labelAlugado.setText("NÂO");
+        }
+
+        if(veiculo.getLocatario() != null) {
+            labelLocatarioNome.setText(veiculo.getLocatarioNome());
+            labelLocatarioCPF.setText(veiculo.getLocatarioCPF());
+            labelLocatarioHabilitacao.setText(veiculo.getLocatarioHabilitacao());
+        }
     }
 }

@@ -195,7 +195,7 @@ public class TelaPrincipalController {
 		}
 		if(!classe.equals("")) veiculo.setClasse(classe);
 		
-		
+
 		CadastroVeiculo.buscarVeiculos(veiculo);
 		manager.mostrarTelaResultadosBuscaVeiculo();
 	}

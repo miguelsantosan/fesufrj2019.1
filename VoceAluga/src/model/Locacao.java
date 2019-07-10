@@ -16,7 +16,11 @@ public class Locacao {
     public Locacao(int id, int id_cliente, int id_veiculo) {
         this.id = id;
         this.id_cliente = id_cliente;
-        this.id_cliente = id_cliente;
+        this.id_veiculo = id_veiculo;
+        this.dataLocacao = new Date();
+    }
+
+    public Locacao() {
         this.dataLocacao = new Date();
     }
 

@@ -44,7 +44,8 @@ public class ResultadosBuscaVeiculoController {
 		ObservableList <String> listaDeNomesDeVeiculosBuscados = FXCollections.observableArrayList();
 		
 		listaDeVeiculosBuscados.forEach(veiculo ->{
-			listaDeNomesDeVeiculosBuscados.add(veiculo.getModelo() +"   "+veiculo.getAnoDeFabricacao() +"   "+veiculo.getPlaca());
+			listaDeNomesDeVeiculosBuscados.add(veiculo.getMarca() + "   " + veiculo.getModelo() + "   " +
+					veiculo.getAnoDeFabricacao() + "   " + veiculo.getClasse() + "   " + veiculo.getPlaca());
 		});
 
 

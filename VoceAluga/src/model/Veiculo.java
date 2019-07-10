@@ -14,6 +14,11 @@ public class Veiculo {
 	private String cor;
 	private String manutencaoEmDia;
 	private String informacoesAdicionais;
+
+	// === Aluguel ===
+	private boolean alugado;
+	private Cliente locatario;
+
 	/**
 	 * Construtor.
 	 * @param marca 		a marca do veiculo
@@ -265,4 +270,51 @@ public class Veiculo {
 		return true;
 	}
 
+	/**
+	 * @return Valor booleano indicando se o veiculo encontra-se alugado ou nao
+	 */
+	public boolean isAlugado() {
+		return alugado;
+	}
+
+	/**
+	 * @param alugado Boolean para setar o valor alugado do veiculo
+	 */
+	public void setAlugado(boolean alugado) {
+		this.alugado = alugado;
+	}
+
+	/**
+	 * @return O cliente que alugou o veiculo
+	 */
+	public Cliente getLocatario() {
+		return locatario;
+	}
+
+	/**
+	 * @return O nome do cliente que alugou o veiculo
+	 */
+	public String getLocatarioNome() {
+		return locatario.getNome();
+	}
+
+	/**
+	 * @return O CPF do cliente que alugou o veiculo
+	 */
+	public String getLocatarioCPF() {
+		return locatario.getCPF();
+	}
+	/**
+	 * @return O numero de registro do cliente que alugou o veiculo
+	 */
+	public String getLocatarioHabilitacao() {
+		return locatario.getHabilitacao().getNumeroDeRegistro();
+	}
+
+	/**
+	 * @param locatario O Cliente que alugou o veiculo
+	 */
+	public void setLocatarioNome(Cliente locatario) {
+		this.locatario = locatario;
+	}
 }
