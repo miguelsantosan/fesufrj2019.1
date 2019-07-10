@@ -2,6 +2,7 @@ package controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.DatePicker;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -71,10 +72,10 @@ public class CadastroVeiculoController {
     TextField campoLocatarioHabilitacao;
 
     @FXML
-    TextField campoDataLocacao;
+    DatePicker campoDataLocacao;
 
     @FXML
-    TextField campoDataDevolucao;
+    DatePicker campoDataDevolucao;
 
     @FXML
     Label labelAlugado;
@@ -315,8 +316,8 @@ public class CadastroVeiculoController {
             campos.put("id_cliente", String.valueOf(veiculo.getLocatario().getId()));
             campos.put("nome_cliente", campoLocatarioNome.getText());
             campos.put("id_veiculo", String.valueOf(veiculo.getId()));
-            campos.put("dataLocacao", campoDataLocacao.getText());
-            campos.put("dataDevolucao", campoDataDevolucao.getText());
+            campos.put("dataLocacao", campoDataLocacao.getValue().toString());
+            campos.put("dataDevolucao", campoDataDevolucao.getValue().toString());
         }
 
         return campos;
