@@ -313,7 +313,6 @@ public class CadastroVeiculoController {
 
         if(veiculo.getLocatario() != null) {
 
-            campos.put("id_cliente", String.valueOf(veiculo.getLocatario().getId()));
             campos.put("nome_cliente", campoLocatarioNome.getText());
             campos.put("id_veiculo", String.valueOf(veiculo.getId()));
             campos.put("dataLocacao", campoDataLocacao.getValue().toString());

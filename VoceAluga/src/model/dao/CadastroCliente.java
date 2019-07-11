@@ -26,7 +26,7 @@ public class CadastroCliente {
 			ResultSet rs    = stmt.executeQuery(query);
 			
 			while((rs.next())){
-				Cliente clienteEncontrado= new Cliente(rs.getInt("id"), rs.getString("nome"),
+				Cliente clienteEncontrado= new Cliente(rs.getString("nome"),
 						rs.getString("CPF"), rs.getString("passaporte"),
    			 			rs.getString("email"), rs.getString("telefone"),
 						rs.getString("CEP"), rs.getString("pais"),
@@ -232,7 +232,7 @@ public class CadastroCliente {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-				Cliente clienteEncontrado = new Cliente(rs.getInt("id"), rs.getString("nome"),
+				Cliente clienteEncontrado = new Cliente(rs.getString("nome"),
 						rs.getString("CPF"), rs.getString("passaporte"),
 						rs.getString("email"), rs.getString("telefone"),
 						rs.getString("CEP"),rs.getString("pais"),
@@ -265,7 +265,7 @@ public class CadastroCliente {
 			Statement stmt  = MySQLConnector.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-				Cliente clienteEncontrado = new Cliente(rs.getInt("id"), rs.getString("nome"),
+				Cliente clienteEncontrado = new Cliente(rs.getString("nome"),
 						rs.getString("CPF"), rs.getString("passaporte"),
 						rs.getString("email"), rs.getString("telefone"),
 						rs.getString("CEP"),rs.getString("pais"),
